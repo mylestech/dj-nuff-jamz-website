@@ -5,11 +5,14 @@
   "main": "index.html",
   "scripts": {
     "dev": "live-server public --port=3000 --open=/",
-    "build": "npm run build:css && npm run copy:assets",
+    "build": "npm run build:css:prod && npm run copy:assets",
     "build:css": "tailwindcss -i ./src/styles/main.css -o ./public/css/style.css --watch",
+    "build:css:prod": "tailwindcss -i ./src/styles/main.css -o ./public/css/style.css --minify",
     "copy:assets": "cp -r src/assets/* public/ 2>/dev/null || true",
     "setup": "npm install && npm run build",
-    "start": "npm run dev"
+    "start": "npm run dev",
+    "deploy": "vercel --prod",
+    "preview": "vercel"
   },
   "keywords": [
     "dj",
