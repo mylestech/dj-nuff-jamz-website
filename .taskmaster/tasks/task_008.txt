@@ -1,0 +1,18 @@
+# Task ID: 8
+# Title: Implement Service Showcase with Dropdowns
+# Status: pending
+# Dependencies: 2, 3
+# Priority: medium
+# Description: Create a clear presentation of event types and capabilities with hover-activated dropdown menus.
+# Details:
+1. Design service category structure
+2. Implement hover-activated dropdown menus
+3. Create visual icons for each service type
+4. Write concise service descriptions
+5. Ensure mobile compatibility with touch events
+6. Add smooth animations for dropdown transitions
+7. Implement accessibility features for dropdown navigation
+8. Create linkage to booking form with pre-selected service
+
+# Test Strategy:
+Test dropdown functionality across devices. Verify touch events on mobile. Test keyboard accessibility. Verify that service selection properly pre-fills booking form. Test animation performance on lower-end devices.

@@ -1,0 +1,273 @@
+# DJ Nuff Jamz Website - Product Requirements Document
+
+## **Project Overview**
+Create a professional, modern website for DJ Nuff Jamz Entertainment to establish presence in NYC market, showcase 20+ years of experience, and convert visitors into bookings for Afrobeats and multi-genre DJ services.
+
+---
+
+## **User Personas & Target Audience**
+
+### **Primary Persona: Event Planners & Venue Owners**
+- **Demographics**: Adults 25-55, NYC area
+- **Goals**: Find reliable, experienced DJ for events
+- **Pain Points**: Need proof of credibility, want easy booking process
+- **Behavior**: Research DJs online, check reviews, listen to music samples
+
+### **Secondary Persona: Private Event Hosts**
+- **Demographics**: Adults 30-60, disposable income
+- **Goals**: Premium DJ for weddings, parties, corporate events
+- **Pain Points**: Want professional experience, diverse music selection
+- **Behavior**: Browse portfolios, check past client work, value recommendations
+
+---
+
+## **Brand Identity & Positioning**
+
+### **Brand Essence**
+"20+ years of Nigerian excellence, now bringing world-class Afrobeats and multi-genre expertise to NYC"
+
+### **Value Proposition**
+- **Experience**: 2 decades handling major brands (Coca Cola, etisalat, Guinness)
+- **Artist Connections**: Worked with top artists (Fireboy DML, Asake, Seyi Shay)
+- **Genre Mastery**: Afrobeats specialist + multi-genre capability
+- **Market Transition**: Proven international experience entering NYC market
+
+### **Tone of Voice**
+Professional yet approachable, culturally authentic, confidence without arrogance
+
+---
+
+## **Visual Design Requirements**
+
+### **Design Style**: Inspired by DJ One Chance Website
+- **Layout**: Clean header (logo left, navigation right)
+- **Typography**: Bold, modern font family (similar to reference)
+- **Color Scheme**: Dark theme with high contrast, professional feel
+- **Hero Section**: Prominent "Book Your Event" CTA button center-stage
+- **Navigation**: Hover dropdowns for service categories
+
+### **Animation Effects**
+- **Scrolling Text**: Animated section headers (like "REVIEWS" scrolling effect)
+- **Smooth Transitions**: Hover effects on navigation and buttons
+- **Dynamic Elements**: Engaging photo gallery (avoiding generic builder templates)
+
+### **Mobile Responsiveness**
+- Touch-friendly navigation
+- Optimized booking forms
+- Fast loading on mobile networks
+
+---
+
+## **Site Architecture & Navigation**
+
+### **Primary Navigation**
+```
+NUFF JAMZ ENTERTAINMENT (Logo) | Home | Services | Music | Gallery | Reviews | Contact & Booking
+```
+
+### **Services Dropdown** (Hover Effect)
+- Corporate Events
+- Private Parties  
+- Weddings & Celebrations
+- Club & Lounge Gigs
+
+### **Page Structure**
+1. **Homepage** - Hero + Services Preview + About + CTA
+2. **Services** - Detailed service breakdown with pricing tiers
+3. **Music** - Embedded music player with mix catalog
+4. **Gallery** - Dynamic photo/video showcase
+5. **Reviews** - Client testimonials with scrolling effects
+6. **Contact & Booking** - Multi-step booking form
+
+---
+
+## **Core Features & Functionality**
+
+### **1. Music Player System**
+- **Requirements**: Embedded audio player for DJ mixes
+- **Content**: Archive mixes + new productions
+- **Genres**: Afrobeats, Hip-Hop, R&B, Old School, Jazz, Reggaeton, House
+- **User Experience**: 
+  - Play/pause/skip controls
+  - Genre filtering
+  - Download links for booking inquiries
+  - Social sharing capabilities
+
+### **2. Event Calendar Integration**
+- **Display**: Upcoming gigs and availability
+- **Functionality**: 
+  - Month/week view options
+  - Event details on click
+  - Integration with booking system
+  - Past events archive
+- **Admin**: Easy backend updates for new bookings
+
+### **3. Photo/Video Gallery**
+- **Content Types**: 
+  - Performance photos from Nigeria events
+  - Corporate event coverage
+  - Artist collaboration images
+  - Equipment/setup shots
+- **Layout**: Modern grid system with lightbox functionality
+- **Organization**: Filterable by event type/genre
+
+### **4. Online Booking System**
+- **Form Fields** (Based on DJ One Chance reference):
+  - Client Information (Name, Email, Phone)
+  - Event Details (Date, Time, Location, Duration)
+  - Event Type (Wedding, Corporate, Private, Club)
+  - Guest Count
+  - Music Preferences/Special Requests
+  - Budget Range
+  - Additional Services Needed
+- **Process**: 
+  - Instant form submission
+  - Automated email confirmations
+  - Calendar integration
+  - Follow-up sequence
+
+### **5. Blog/News Section**
+- **Content Strategy**:
+  - Event recaps with photos
+  - Music industry news (Afrobeats focus)
+  - Artist spotlights and collaborations
+  - NYC music scene coverage
+  - Behind-the-scenes content
+- **SEO Optimization**: Keyword-rich content for local discovery
+
+### **6. Client Reviews & Testimonials**
+- **Display**: Scrolling text effect (like reference site)
+- **Sources**: Past Nigerian clients + future NYC reviews
+- **Integration**: Google Reviews, social media testimonials
+- **Social Proof**: Corporate client logos, artist collaboration badges
+
+---
+
+## **Content Requirements**
+
+### **Written Content**
+- **About Section**: 20+ years experience, Nigerian success, NYC transition
+- **Service Descriptions**: Detailed breakdowns of event types
+- **Bio**: Professional journey, major clients, artist collaborations
+- **Genre Expertise**: Afrobeats specialty with multi-genre capability
+
+### **Visual Assets Needed**
+- **Logo**: Existing Nuff Jamz Entertainment logo (high-res)
+- **Performance Photos**: Archive images from Nigerian events
+- **Professional Headshots**: DJ in action, professional portraits
+- **Client Logos**: Coca Cola, etisalat, Guinness, other major brands
+- **Equipment Photos**: Professional DJ setup shots
+
+### **Audio Content**
+- **DJ Mixes**: Archive collection + new NYC-focused sets
+- **Genre Samples**: 30-60 second previews by music style
+- **Signature Tracks**: Showcase unique mixing style
+
+---
+
+## **Technical Specifications**
+
+### **Platform Requirements**
+- **CMS**: Custom-built for easy content updates
+- **Hosting**: Premium hosting with CDN for fast loading
+- **SSL**: Security certificate for booking form data
+- **Analytics**: Google Analytics integration for performance tracking
+
+### **Performance Standards**
+- **Page Load**: Under 3 seconds on mobile
+- **Uptime**: 99.9% reliability
+- **Security**: PCI compliance for payment processing (future)
+- **SEO**: Optimized for "DJ NYC", "Afrobeats DJ", "Corporate Event DJ"
+
+### **Integration Requirements**
+- **Social Media**: Instagram (@djnuffjamz_), Facebook, TikTok
+- **Email**: Professional email system (djnuffjamz@gmail.com integration)
+- **Calendar**: Google Calendar sync for availability
+- **Payment**: Future Stripe integration for deposits
+
+---
+
+## **User Stories & Acceptance Criteria**
+
+### **As an Event Planner, I want to:**
+1. **Quickly assess credibility** → See major client logos and 20+ years experience
+2. **Listen to music samples** → Access genre-specific mixes easily
+3. **Check availability** → View calendar and book consultation
+4. **See past work** → Browse gallery of events and artist collaborations
+
+### **As a Private Party Host, I want to:**
+1. **Understand services** → Clear service descriptions and pricing tiers
+2. **Get pricing information** → Contact form with budget ranges
+3. **See reviews** → Read testimonials from similar events
+4. **Book easily** → Streamlined booking process with clear next steps
+
+### **As the DJ (Dennis), I want to:**
+1. **Update content easily** → Simple admin panel for photos, events, blog posts
+2. **Track inquiries** → Dashboard for booking requests and follow-ups
+3. **Showcase expertise** → Platform highlighting Nigerian success and NYC goals
+4. **Generate leads** → SEO-optimized site driving qualified booking inquiries
+
+---
+
+## **Success Metrics & KPIs**
+
+### **Primary Goals**
+- **Booking Inquiries**: 10+ qualified leads per month within 6 months
+- **Brand Awareness**: Top 3 Google results for "Afrobeats DJ NYC"
+- **Engagement**: 2+ minutes average time on site
+- **Conversion**: 15%+ booking form completion rate
+
+### **Secondary Goals**
+- **Social Growth**: 50%+ increase in Instagram followers
+- **Content Engagement**: Blog posts shared across social platforms
+- **Client Retention**: Repeat bookings from satisfied customers
+- **Market Positioning**: Recognized as premier Afrobeats DJ in NYC
+
+---
+
+## **Development Phases**
+
+### **Phase 1: MVP Launch** (Weeks 1-2)
+- Homepage with hero section and booking CTA
+- Basic services page
+- Contact form and calendar integration
+- Mobile responsive design
+
+### **Phase 2: Content Enhancement** (Weeks 3-4)
+- Music player with mix catalog
+- Photo gallery with archive content
+- Blog section setup
+- SEO optimization
+
+### **Phase 3: Advanced Features** (Month 2)
+- Advanced booking system
+- Client portal
+- Email automation
+- Analytics dashboard
+
+### **Phase 4: Growth Features** (Month 3+)
+- Payment processing
+- Client reviews system
+- Advanced SEO campaigns
+- Social media integration
+
+---
+
+## **Competitive Positioning**
+
+### **Key Differentiators**
+1. **Authentic Afrobeats Expertise** - Direct Nigerian experience vs. generic DJs
+2. **Corporate Credibility** - Major brand experience (Coca Cola, Guinness)
+3. **Artist Network** - Connections to Fireboy DML, Asake, other top artists
+4. **Cultural Bridge** - Authentic African experience for NYC's diverse market
+5. **Multi-Genre Mastery** - Not just Afrobeats, full musical range
+
+### **Market Opportunity**
+- **NYC Afrobeats Scene**: Growing demand with limited authentic DJs
+- **Corporate Events**: High-value bookings for companies wanting cultural authenticity
+- **Private Celebrations**: Affluent clients seeking unique musical experiences
+- **Cultural Events**: African diaspora celebrations and cultural organizations
+
+---
+
+*This PRD serves as the foundation for creating a world-class website that positions DJ Nuff Jamz as the premier Afrobeats and multi-genre DJ in NYC, leveraging 20+ years of Nigerian excellence to capture the American market.*

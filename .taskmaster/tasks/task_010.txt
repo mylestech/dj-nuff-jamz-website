@@ -1,0 +1,19 @@
+# Task ID: 10
+# Title: Integrate Google Calendar API for Event Management
+# Status: pending
+# Dependencies: 4, 9
+# Priority: medium
+# Description: Implement calendar integration to display upcoming gigs and availability with past events archive.
+# Details:
+1. Set up Google Calendar API credentials
+2. Implement OAuth authentication flow
+3. Create calendar widget UI with availability indicators
+4. Implement event fetching from Google Calendar
+5. Add past events archive functionality
+6. Create availability checking for booking system
+7. Implement two-way sync for new bookings
+8. Add admin interface for calendar management
+9. Implement caching for performance
+
+# Test Strategy:
+Test calendar display across devices. Verify event data accuracy. Test availability checking functionality. Verify two-way sync with test events. Measure API performance and optimize if necessary.

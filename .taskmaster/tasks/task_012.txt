@@ -1,0 +1,18 @@
+# Task ID: 12
+# Title: Integrate SendGrid API for Email Automation
+# Status: pending
+# Dependencies: 4, 9
+# Priority: medium
+# Description: Implement email automation for booking confirmations and follow-ups using SendGrid API.
+# Details:
+1. Set up SendGrid API credentials
+2. Create email templates for booking confirmations
+3. Implement email sending functionality
+4. Create automated email sequences for follow-ups
+5. Add email tracking and analytics
+6. Implement email personalization
+7. Create admin interface for email template management
+8. Set up email scheduling functionality
+
+# Test Strategy:
+Test email delivery to various email providers. Verify personalization functionality. Test email tracking accuracy. Verify template rendering across email clients. Test automated sequences with various triggers.

@@ -1,0 +1,280 @@
+<context>
+# Overview  
+Problem: DJ Nuff Jamz Entertainment needs to establish credibility and generate bookings in the competitive NYC market after transitioning from 20+ years of success in Nigeria.
+
+Solution: A professional, modern website that showcases Dennis's extensive experience with major brands (Coca Cola, etisalat, Guinness), artist collaborations (Fireboy DML, Asake), and Afrobeats expertise while providing streamlined booking functionality.
+
+Target Users: Event planners, venue owners, private party hosts, and corporate clients seeking experienced DJ services in NYC.
+
+Value Proposition: Bridge authentic African musical expertise with American market expectations through a credible, conversion-focused digital presence.
+
+# Core Features  
+
+## 1. Hero Section with Booking CTA
+- What it does: Immediate visual impact with prominent "Book Your Event" button
+- Why it's important: Converts visitors into leads within seconds of landing
+- How it works: Full-screen hero with DJ branding, tagline, and central booking button
+
+## 2. Music Player System
+- What it does: Embedded audio player showcasing DJ mixes across multiple genres
+- Why it's important: Allows clients to evaluate musical style before booking
+- How it works: Streaming player with genre filtering (Afrobeats, Hip-Hop, R&B, Old School, Jazz)
+
+## 3. Service Showcase with Dropdowns
+- What it does: Clear presentation of event types and capabilities
+- Why it's important: Educates visitors on service offerings and builds confidence
+- How it works: Hover-activated dropdown menus revealing service categories
+
+## 4. Dynamic Photo Gallery
+- What it does: Professional event photography demonstrating experience and crowd engagement
+- Why it's important: Visual proof of successful events builds trust and credibility
+- How it works: Modern grid layout with lightbox functionality, filterable by event type
+
+## 5. Client Testimonials with Animation
+- What it does: Scrolling testimonials from Nigerian corporate clients and events
+- Why it's important: Social proof overcomes skepticism about transition to NYC market
+- How it works: Animated scrolling text effect displaying client feedback
+
+## 6. Online Booking System
+- What it does: Multi-step form capturing event details and client information
+- Why it's important: Streamlines lead generation and qualification process
+- How it works: Progressive form with event type, date, budget, and special requirements
+
+## 7. Event Calendar Integration
+- What it does: Displays upcoming gigs and availability
+- Why it's important: Shows active booking schedule and availability transparency
+- How it works: Calendar widget with past events archive and availability indicators
+
+# User Experience  
+
+## User Personas
+
+### Primary: Corporate Event Planners
+- Demographics: 28-45, NYC-based, budget authority
+- Goals: Find credible DJ with diverse musical knowledge
+- Pain Points: Need proof of experience, cultural authenticity concerns
+- Behavior: Research thoroughly, check references, value professional presentation
+
+### Secondary: Private Party Hosts
+- Demographics: 30-60, disposable income, hosting milestone events
+- Goals: Unique musical experience for guests
+- Pain Points: Want something different from typical American DJs
+- Behavior: Browse portfolios, read reviews, seek recommendations
+
+## Key User Flows
+
+### Discovery to Booking Flow
+1. Landing → Hero section with immediate value proposition
+2. Exploration → Music samples + photo gallery browsing
+3. Credibility → Testimonials and past client logos
+4. Decision → Service details and pricing transparency
+5. Action → Booking form completion and submission
+
+### Mobile Experience Flow
+1. Touch-optimized navigation with hamburger menu
+2. Swipe-enabled gallery for photo browsing
+3. Simplified booking form with mobile-friendly inputs
+4. Click-to-call functionality for immediate contact
+
+## UI/UX Considerations
+- Visual Style: Dark theme with bold typography (inspired by DJ One Chance)
+- Loading Speed: Under 3 seconds on mobile networks
+- Accessibility: High contrast, keyboard navigation, screen reader compatibility
+- Cultural Sensitivity: Authentic representation without stereotyping
+</context>
+
+<PRD>
+# Technical Architecture  
+
+## System Components
+- Frontend: Custom HTML/CSS/JavaScript with responsive framework
+- Backend: Node.js/Express for form processing and content management
+- Database: MongoDB for content storage and booking data
+- Media Storage: AWS S3 for audio files and high-resolution images
+- Email Service: SendGrid for automated booking confirmations
+
+## Data Models
+
+### Booking Requests
+{
+  clientInfo: { name, email, phone },
+  eventDetails: { date, time, location, type, duration },
+  requirements: { musicGenres, specialRequests, budget },
+  status: { pending, confirmed, completed }
+}
+
+### Music Catalog
+{
+  mixId, title, genre, duration, audioUrl, 
+  uploadDate, playCount, featured
+}
+
+### Gallery Items
+{
+  imageId, title, eventType, venue, date,
+  imageUrl, thumbnailUrl, featured
+}
+
+## APIs and Integrations
+- Google Calendar API: Event scheduling and availability
+- Instagram API: Social media feed integration
+- SendGrid API: Email automation for bookings
+- Stripe API: Future payment processing capability
+- Google Analytics: Traffic and conversion tracking
+
+## Infrastructure Requirements
+- Hosting: Premium shared hosting with CDN (Cloudflare)
+- SSL Certificate: Security for booking form data
+- Backup System: Daily automated backups
+- Monitoring: Uptime monitoring and performance alerts
+
+# Development Roadmap  
+
+## Phase 1: Foundation MVP
+Scope: Basic functional website with core conversion elements
+- Static homepage with hero section and booking CTA
+- Contact form with email notifications
+- Basic service pages with descriptions
+- Mobile-responsive design framework
+- Domain setup and hosting configuration
+
+## Phase 2: Content Integration
+Scope: Dynamic content and media functionality
+- Music player with uploaded DJ mixes
+- Photo gallery with archive images
+- About page with professional biography
+- Client testimonial section (static initially)
+- Basic SEO optimization and meta tags
+
+## Phase 3: Interactive Features
+Scope: Enhanced user engagement and functionality
+- Advanced booking form with multi-step process
+- Calendar integration showing availability
+- Animated elements (scrolling text, hover effects)
+- Blog section for content marketing
+- Social media integration
+
+## Phase 4: Business Enhancement
+Scope: Advanced business functionality and optimization
+- Admin dashboard for content management
+- Email automation sequences
+- Advanced analytics and conversion tracking
+- Client portal for booking management
+- Payment processing integration
+
+## Phase 5: Growth Features
+Scope: Scaling and market expansion capabilities
+- Multi-language support (Spanish for NYC market)
+- Advanced SEO campaigns and local optimization
+- Vendor network integration
+- Franchise/partnership opportunities
+- Mobile app development
+
+# Logical Dependency Chain
+
+## Foundation Layer (Build First)
+1. Domain and hosting setup → Everything depends on this
+2. Basic HTML structure → Framework for all content
+3. Responsive CSS framework → Mobile compatibility from start
+4. Contact form functionality → Immediate lead capture capability
+
+## Content Layer (Build Second)
+1. Static homepage → Establishes brand presence
+2. Service pages → Educates visitors on offerings
+3. About section → Builds credibility and trust
+4. Basic navigation → Enables site exploration
+
+## Engagement Layer (Build Third)
+1. Music player → Demonstrates skill and style
+2. Photo gallery → Visual proof of experience
+3. Testimonials → Social proof for conversions
+4. Advanced booking form → Qualified lead generation
+
+## Optimization Layer (Build Fourth)
+1. Analytics integration → Measure performance
+2. SEO optimization → Organic traffic generation
+3. Email automation → Lead nurturing
+4. Admin dashboard → Content management efficiency
+
+## Pacing Strategy
+- Atomic Features: Each feature functions independently
+- Progressive Enhancement: Basic functionality first, polish later
+- Quick Wins: Prioritize features that immediately improve conversions
+- Iterative Improvement: Build, test, refine, repeat
+
+# Risks and Mitigations  
+
+## Technical Challenges
+
+### Risk: Audio streaming performance on mobile
+Mitigation: Implement progressive loading, compressed audio formats, CDN delivery
+
+### Risk: Gallery loading times with high-resolution images
+Mitigation: Thumbnail generation, lazy loading, image optimization pipeline
+
+### Risk: Form abandonment on mobile devices
+Mitigation: Multi-step forms, progress indicators, auto-save functionality
+
+## MVP Definition and Scope
+
+### Risk: Feature creep delaying launch
+Mitigation: Strict MVP definition - homepage, contact form, basic gallery only
+
+### Risk: Content bottleneck waiting for Dennis
+Mitigation: Build with placeholder content, parallel content gathering process
+
+### Risk: Over-engineering initial version
+Mitigation: Manual processes acceptable for MVP, automation in later phases
+
+## Resource Constraints
+
+### Risk: Single developer bandwidth limitations
+Mitigation: Prioritize high-impact features, defer nice-to-have elements
+
+### Risk: Content quality and quantity from client
+Mitigation: Clear content requirements, multiple rounds of feedback
+
+### Risk: Technical expertise gaps
+Mitigation: Use proven technologies, avoid experimental frameworks
+
+# Appendix  
+
+## Research Findings
+
+### Competitive Analysis
+- Most NYC DJs lack authentic Afrobeats expertise
+- Corporate clients value proven experience over flashy presentations
+- Mobile bookings increasing 40% year-over-year in entertainment industry
+- Video content drives 80% higher engagement than static images
+
+### Market Insights
+- NYC Afrobeats market growing 25% annually
+- Corporate events average $2,000-5,000 budgets for premium DJs
+- Wedding market values cultural authenticity and personalization
+- Social proof most important factor in DJ selection process
+
+## Technical Specifications
+
+### Performance Requirements
+- Page Load Speed: <3 seconds on 3G networks
+- Uptime: 99.9% availability
+- Mobile Optimization: Google PageSpeed score >90
+- Accessibility: WCAG 2.1 AA compliance
+
+### Browser Support
+- Chrome, Firefox, Safari, Edge (latest 2 versions)
+- iOS Safari, Android Chrome (mobile)
+- Progressive enhancement for older browsers
+
+### Security Requirements
+- SSL certificate for all pages
+- Form data encryption
+- Regular security updates
+- GDPR compliance for EU visitors
+
+### Content Management
+- Admin panel for non-technical updates
+- Image upload and optimization tools
+- Music file management system
+- Booking request dashboard
+</PRD>

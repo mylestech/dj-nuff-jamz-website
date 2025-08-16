@@ -1,0 +1,54 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+dev-debug.log
+
+# Dependency directories
+node_modules/
+
+# Environment variables
+.env
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS specific
+.DS_Store
+
+# Build directories
+build/
+dist/
+out/
+
+# Static assets (when not in version control)
+uploads/
+media/
+public/uploads/
+
+# Backup files
+*.backup
+*.bak
+
+# Task Master (keep structure but ignore sensitive data)
+.taskmaster/state.json
+
+# Hosting and deployment
+.vercel
+.netlify
+
+# Cache directories
+.cache/
+.parcel-cache/
+
+# Temporary files
+tmp/
+temp/ 
