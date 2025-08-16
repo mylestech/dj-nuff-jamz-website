@@ -1,0 +1,33 @@
+{
+  "name": "dj-nuff-jamz-website",
+  "version": "0.1.0",
+  "description": "Professional website for DJ Nuff Jamz Entertainment showcasing 20+ years of experience and providing streamlined booking functionality for NYC market",
+  "main": "index.html",
+  "scripts": {
+    "dev": "live-server public --port=3000 --open=/",
+    "build": "npm run build:css && npm run copy:assets",
+    "build:css": "tailwindcss -i ./src/styles/main.css -o ./public/css/style.css --watch",
+    "copy:assets": "cp -r src/assets/* public/ 2>/dev/null || true",
+    "setup": "npm install && npm run build",
+    "start": "npm run dev"
+  },
+  "keywords": [
+    "dj",
+    "entertainment",
+    "afrobeats",
+    "nyc",
+    "booking",
+    "events",
+    "music"
+  ],
+  "author": "DJ Nuff Jamz Entertainment",
+  "license": "MIT",
+  "devDependencies": {
+    "tailwindcss": "^3.4.0",
+    "live-server": "^1.2.2",
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.10",
+    "autoprefixer": "^10.4.16"
+  },
+  "dependencies": {}
+}
