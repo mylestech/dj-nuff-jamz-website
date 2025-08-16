@@ -142,11 +142,33 @@
 @layer utilities {
   /* Custom Animations */
   .animate-fade-in {
-    animation: fadeIn 0.5s ease-in-out;
+    animation: fadeIn 0.8s ease-in-out;
   }
 
   .animate-slide-up {
-    animation: slideUp 0.3s ease-out;
+    animation: slideUp 0.6s ease-out;
+  }
+
+  /* Hero-specific animations */
+  .animate-hero-float {
+    animation: heroFloat 6s ease-in-out infinite;
+  }
+
+  @keyframes heroFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* Enhanced button hover effects */
+  .btn-hero-primary {
+    background: linear-gradient(135deg, #facc15, #eab308);
+    box-shadow: 0 10px 25px rgba(251, 191, 36, 0.4);
+    transition: all 0.3s ease;
+  }
+
+  .btn-hero-primary:hover {
+    box-shadow: 0 15px 35px rgba(251, 191, 36, 0.6);
+    transform: translateY(-2px);
   }
 
   /* Text Utilities */

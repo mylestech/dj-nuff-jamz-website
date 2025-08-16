@@ -127,23 +127,96 @@
 
     <!-- Main Content -->
     <main id="main-content" role="main">
-        <!-- Hero Section Placeholder -->
-        <section class="min-h-screen flex items-center justify-center section-padding pt-32" aria-labelledby="hero-heading">
-            <div class="container-custom text-center">
-                <h1 id="hero-heading" class="hero-gradient mb-6 animate-fade-in">
-                    Professional DJ Services
-                </h1>
-                <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto animate-slide-up">
-                    20+ years of experience bringing authentic African beats and international sounds to NYC events
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up">
-                    <a href="#booking" class="btn-accent text-lg px-8 py-4 focus-visible">
-                        Book Your Event
-                    </a>
-                    <a href="#music" class="btn-secondary text-lg px-8 py-4 focus-visible">
-                        Listen to Mixes
-                    </a>
+        <!-- Enhanced Hero Section -->
+        <section class="relative min-h-screen flex items-center justify-center overflow-hidden" aria-labelledby="hero-heading">
+            <!-- Background Pattern/Gradient -->
+            <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800"></div>
+            <div class="absolute inset-0 bg-black/20"></div>
+            
+            <!-- Animated Background Elements -->
+            <div class="absolute inset-0 overflow-hidden">
+                <div class="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-r from-blue-500/10 to-yellow-500/10 rotate-12 animate-pulse-slow"></div>
+                <div class="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-l from-yellow-500/10 to-blue-500/10 -rotate-12 animate-pulse-slow" style="animation-delay: 1s;"></div>
+            </div>
+
+            <!-- Hero Content -->
+            <div class="relative z-10 container-custom text-center px-4 pt-20 pb-16">
+                <!-- Branding Badge -->
+                <div class="inline-block mb-8 animate-fade-in">
+                    <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-yellow-500/20 text-yellow-300 border border-yellow-500/30">
+                        <span class="w-2 h-2 bg-yellow-500 rounded-full mr-2 animate-pulse"></span>
+                        20+ Years of Excellence
+                    </span>
                 </div>
+
+                <!-- Main Headline -->
+                <h1 id="hero-heading" class="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 animate-fade-in text-shadow-lg">
+                    <span class="block hero-gradient">DJ NUFF JAMZ</span>
+                    <span class="block text-3xl md:text-4xl lg:text-5xl text-gray-300 font-normal mt-2">
+                        Entertainment
+                    </span>
+                </h1>
+
+                <!-- Tagline -->
+                <p class="text-xl md:text-2xl lg:text-3xl text-gray-300 mb-4 max-w-4xl mx-auto animate-slide-up leading-relaxed">
+                    Authentic <span class="text-yellow-400 font-semibold">Afrobeats</span> meets
+                    <span class="text-blue-400 font-semibold">NYC Energy</span>
+                </p>
+                
+                <!-- Sub-description -->
+                <p class="text-lg md:text-xl text-gray-400 mb-12 max-w-2xl mx-auto animate-slide-up" style="animation-delay: 0.2s;">
+                    From Nigerian corporate giants to NYC's hottest venues. 
+                    Elevating events with world-class sound and cultural authenticity.
+                </p>
+
+                <!-- Primary CTA Section -->
+                <div class="flex flex-col items-center space-y-6 animate-slide-up" style="animation-delay: 0.4s;">
+                    <!-- Main Booking Button -->
+                    <a href="#booking" 
+                       class="group relative inline-flex items-center justify-center px-12 py-5 text-xl font-bold text-slate-900 bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-full shadow-2xl hover:from-yellow-300 hover:to-yellow-400 transition-all duration-300 transform hover:scale-105 focus-visible min-w-[280px]"
+                       aria-label="Book your event with DJ Nuff Jamz">
+                        <span class="absolute inset-0 bg-white/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                        <span class="relative flex items-center">
+                            📅 Book Your Event
+                            <svg class="ml-3 w-6 h-6 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                            </svg>
+                        </span>
+                    </a>
+
+                    <!-- Secondary Actions -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                        <a href="#music" class="group flex items-center px-8 py-3 text-lg font-semibold text-white bg-transparent border-2 border-white/30 rounded-full hover:border-white/60 hover:bg-white/10 transition-all duration-300 focus-visible">
+                            <span class="mr-2">🎵</span>
+                            Listen to Mixes
+                        </a>
+                        <a href="#gallery" class="group flex items-center px-8 py-3 text-lg font-semibold text-white bg-transparent border-2 border-white/30 rounded-full hover:border-white/60 hover:bg-white/10 transition-all duration-300 focus-visible">
+                            <span class="mr-2">📸</span>
+                            View Events
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Trust Indicators -->
+                <div class="mt-16 animate-fade-in" style="animation-delay: 0.6s;">
+                    <p class="text-sm text-gray-500 mb-4">Trusted by Major Brands</p>
+                    <div class="flex flex-wrap justify-center items-center gap-8 opacity-60">
+                        <span class="text-lg font-bold text-gray-400">Coca-Cola</span>
+                        <span class="text-lg font-bold text-gray-400">Guinness</span>
+                        <span class="text-lg font-bold text-gray-400">Etisalat</span>
+                        <span class="text-lg font-bold text-gray-400">+ More</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <a href="#about" class="flex flex-col items-center text-gray-400 hover:text-white transition-colors duration-300 focus-visible" aria-label="Scroll to learn more">
+                    <span class="text-sm mb-2">Learn More</span>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
+                </a>
             </div>
         </section>
 
