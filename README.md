@@ -8,35 +8,50 @@
 - **Secondary Domain**: [nuffjamz.com](https://nuffjamz.com) *(pending DNS configuration)*
 - **Temporary URL**: [https://dj-nuff-jamz-website-hrctt3zam-croaks-projects-209ddc18.vercel.app](https://dj-nuff-jamz-website-hrctt3zam-croaks-projects-209ddc18.vercel.app)
 
-## ⚡ DNS Configuration Required
+## ⚡ DNS Configuration & CDN Options
 
-To activate your custom domains, add these DNS records in your Namecheap account:
+### Option A: Direct Vercel Hosting (Basic Setup)
+To activate your custom domains with basic Vercel hosting:
 
-### For djnuffjamz.com:
 ```
-Type: A
-Host: @
-Value: 76.76.21.21
-TTL: Automatic
-```
-
-### For nuffjamz.com:
-```
-Type: A
-Host: @  
-Value: 76.76.21.21
-TTL: Automatic
+Type: A       Host: @     Value: 76.76.21.21    TTL: Automatic
+Type: A       Host: www   Value: 76.76.21.21    TTL: Automatic  
+Type: CNAME   Host: *     Value: cname.vercel-dns.com   TTL: Automatic
 ```
 
-### Optional - WWW Redirect:
-```
-Type: CNAME
-Host: www
-Value: djnuffjamz.com
-TTL: Automatic
+### Option B: Cloudflare CDN Integration ⚡ (Recommended)
+
+**🚀 Enhanced Performance, Security & Global CDN**
+
+**Quick Setup:**
+```bash
+# 1. Follow detailed guide
+open scripts/cloudflare-setup.md
+
+# 2. Automated configuration (requires API credentials)
+export CLOUDFLARE_API_TOKEN="your-token"
+export CLOUDFLARE_ZONE_ID="your-zone-id"
+./scripts/cloudflare-automation.sh
+
+# 3. Test performance improvements
+node scripts/test-cloudflare-performance.js
 ```
 
-**Note**: DNS propagation can take 24-48 hours. Vercel will automatically provision SSL certificates once domains are verified.
+**Expected Benefits:**
+- ⚡ **30-60% faster load times** via global CDN
+- 🌍 **Edge caching** from 200+ locations worldwide
+- 🔒 **Enhanced security** with DDoS protection
+- 🗜️ **Automatic compression** (Brotli/Gzip)
+- 📊 **Advanced analytics** and monitoring
+- 🛡️ **Firewall protection** against malicious traffic
+
+**Files Created for Cloudflare:**
+- `scripts/cloudflare-setup.md` - Complete setup guide
+- `scripts/cloudflare-config.json` - Configuration template
+- `scripts/cloudflare-automation.sh` - Automated setup script
+- `scripts/test-cloudflare-performance.js` - Performance testing
+
+**Note**: DNS propagation can take 24-48 hours. SSL certificates are automatically provisioned.
 
 ## 🚀 Features
 
@@ -62,6 +77,7 @@ TTL: Automatic
 - **Styling**: Tailwind CSS with custom components
 - **Build Tool**: Native CSS compilation
 - **Hosting**: Vercel (includes CDN, SSL, global edge network)
+- **CDN**: Cloudflare (global performance optimization, security)
 - **Version Control**: Git + GitHub
 - **Domain Management**: Namecheap
 - **Project Management**: Task Master AI
@@ -76,7 +92,11 @@ website/
 │   └── assets/            # Static assets
 ├── src/
 │   └── styles/main.css    # Source CSS with Tailwind
-├── scripts/               # Project documentation
+├── scripts/               # Setup guides and automation
+│   ├── cloudflare-setup.md           # Cloudflare CDN guide
+│   ├── cloudflare-config.json        # CDN configuration  
+│   ├── cloudflare-automation.sh      # Automated setup
+│   └── test-cloudflare-performance.js # Performance testing
 ├── .taskmaster/           # Task management
 ├── package.json           # Dependencies and scripts
 ├── tailwind.config.js     # Tailwind configuration

@@ -1,0 +1,161 @@
+{
+  "cloudflare_config": {
+    "domain": "djnuffjamz.com",
+    "plan": "free",
+    "dns_records": [
+      {
+        "type": "A",
+        "name": "@",
+        "content": "76.76.19.61",
+        "ttl": 1,
+        "proxied": true,
+        "comment": "Primary domain pointing to Vercel"
+      },
+      {
+        "type": "A", 
+        "name": "www",
+        "content": "76.76.19.61",
+        "ttl": 1,
+        "proxied": true,
+        "comment": "WWW subdomain pointing to Vercel"
+      },
+      {
+        "type": "CNAME",
+        "name": "*",
+        "content": "cname.vercel-dns.com",
+        "ttl": 1,
+        "proxied": true,
+        "comment": "Wildcard subdomain for Vercel"
+      }
+    ],
+    "page_rules": [
+      {
+        "url": "djnuffjamz.com/css/*",
+        "priority": 1,
+        "status": "active",
+        "actions": {
+          "cache_level": "cache_everything",
+          "edge_cache_ttl": 31536000,
+          "browser_cache_ttl": 31536000
+        },
+        "description": "Cache CSS files for 1 year"
+      },
+      {
+        "url": "djnuffjamz.com/assets/*",
+        "priority": 2,
+        "status": "active", 
+        "actions": {
+          "cache_level": "cache_everything",
+          "edge_cache_ttl": 2592000,
+          "browser_cache_ttl": 2592000
+        },
+        "description": "Cache static assets for 1 month"
+      },
+      {
+        "url": "djnuffjamz.com/*",
+        "priority": 3,
+        "status": "active",
+        "actions": {
+          "cache_level": "cache_everything",
+          "edge_cache_ttl": 7200,
+          "browser_cache_ttl": 14400
+        },
+        "description": "Cache HTML with 2-4 hour TTL"
+      }
+    ],
+    "speed_settings": {
+      "minify": {
+        "css": "on",
+        "js": "on", 
+        "html": "on"
+      },
+      "brotli": "on",
+      "rocket_loader": "on",
+      "mirage": "on",
+      "polish": "lossless",
+      "webp": "on"
+    },
+    "security_settings": {
+      "ssl_mode": "full_strict",
+      "always_use_https": "on",
+      "min_tls_version": "1.2",
+      "tls_1_3": "on",
+      "security_level": "medium",
+      "browser_integrity_check": "on"
+    },
+    "firewall_rules": [
+      {
+        "description": "Block known bad bots",
+        "expression": "(cf.client.bot)",
+        "action": "challenge"
+      },
+      {
+        "description": "Rate limit login attempts", 
+        "expression": "(http.request.uri.path eq \"/login\" and http.request.method eq \"POST\")",
+        "action": "rate_limit",
+        "rate_limit": {
+          "threshold": 5,
+          "period": 60
+        }
+      }
+    ],
+    "analytics": {
+      "web_analytics": "on",
+      "performance_insights": "on"
+    }
+  },
+  "vercel_integration": {
+    "domains": [
+      "djnuffjamz.com",
+      "www.djnuffjamz.com",
+      "nuffjamz.com", 
+      "www.nuffjamz.com"
+    ],
+    "ssl": "auto",
+    "headers": [
+      {
+        "source": "/css/(.*)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=31536000, immutable"
+          },
+          {
+            "key": "X-Content-Type-Options",
+            "value": "nosniff"
+          }
+        ]
+      },
+      {
+        "source": "/assets/(.*)",
+        "headers": [
+          {
+            "key": "Cache-Control", 
+            "value": "public, max-age=2592000, immutable"
+          },
+          {
+            "key": "X-Content-Type-Options",
+            "value": "nosniff"
+          }
+        ]
+      }
+    ]
+  },
+  "monitoring": {
+    "uptime_checks": [
+      "https://djnuffjamz.com",
+      "https://www.djnuffjamz.com"
+    ],
+    "core_web_vitals": {
+      "target_lcp": "< 2.5s",
+      "target_fid": "< 100ms", 
+      "target_cls": "< 0.1"
+    },
+    "performance_budget": {
+      "total_size": "< 2MB",
+      "image_size": "< 1MB",
+      "js_size": "< 300KB",
+      "css_size": "< 100KB"
+    }
+  }
+}
