@@ -199,6 +199,61 @@
   .responsive-flex {
     @apply flex flex-col md:flex-row;
   }
+
+  /* Service Showcase Dropdown Styles */
+  .service-card {
+    position: relative;
+  }
+
+  .service-card .dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #1e293b;
+    border: 1px solid #475569;
+    border-radius: 0.75rem;
+    margin-top: 0.5rem;
+    padding: 1.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 10;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+  }
+
+  .service-card:hover .dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* Mobile touch support */
+  @media (max-width: 768px) {
+    .service-card {
+      position: static;
+    }
+    
+    .service-card .dropdown-content {
+      position: static;
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      margin-top: 1rem;
+      background: #334155;
+      border: 1px solid #64748b;
+    }
+
+    .service-card .card {
+      margin-bottom: 0;
+    }
+  }
+
+  /* Service card hover effects */
+  .service-card .card:hover {
+    transform: translateY(-5px);
+  }
 }
 
 /* Print Styles */
