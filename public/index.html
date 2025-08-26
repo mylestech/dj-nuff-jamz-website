@@ -128,7 +128,7 @@
     <!-- Main Content -->
     <main id="main-content" role="main">
         <!-- Enhanced Hero Section -->
-        <section class="relative min-h-screen flex items-center justify-center overflow-hidden" aria-labelledby="hero-heading">
+        <section class="relative min-h-screen flex items-center justify-center overflow-hidden mt-16 md:mt-20" aria-labelledby="hero-heading">
             <!-- Background Pattern/Gradient -->
             <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800"></div>
             <div class="absolute inset-0 bg-black/20"></div>
@@ -209,8 +209,11 @@
                 </div>
             </div>
 
-            <!-- Scroll Indicator -->
-            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        </section>
+
+        <!-- Scroll Indicator -->
+        <div class="flex justify-center py-8 bg-dark-900">
+            <div class="animate-bounce">
                 <a href="#about" class="flex flex-col items-center text-gray-400 hover:text-white transition-colors duration-300 focus-visible" aria-label="Scroll to learn more">
                     <span class="text-sm mb-2">Learn More</span>
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -218,7 +221,7 @@
                     </svg>
                 </a>
             </div>
-        </section>
+        </div>
 
         <!-- Content Sections Placeholders -->
         <section id="about" class="section-padding bg-dark-800/50" aria-labelledby="about-heading">
@@ -613,6 +616,90 @@
                 }
             }
         });
+    </script>
+
+    <!-- Vercel Analytics -->
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+
+    <!-- Web Vitals Monitoring -->
+    <script>
+        // Core Web Vitals monitoring
+        function sendToAnalytics(metric) {
+            // Send to Vercel Analytics
+            if (window.va) {
+                window.va('track', 'Web Vital', {
+                    name: metric.name,
+                    value: metric.value,
+                    rating: metric.rating,
+                    delta: metric.delta,
+                    id: metric.id
+                });
+            }
+            
+            // Log to console for debugging
+            console.log('Web Vital:', metric);
+        }
+
+        // Import and use web-vitals library
+        import('https://unpkg.com/web-vitals@3/dist/web-vitals.js').then(({ onCLS, onFID, onFCP, onLCP, onTTFB }) => {
+            onCLS(sendToAnalytics);
+            onFID(sendToAnalytics);
+            onFCP(sendToAnalytics);
+            onLCP(sendToAnalytics);
+            onTTFB(sendToAnalytics);
+        }).catch(err => {
+            console.warn('Web Vitals library failed to load:', err);
+        });
+    </script>
+
+    <!-- Error Tracking -->
+    <script>
+        // Global error handler
+        window.addEventListener('error', function(event) {
+            if (window.va) {
+                window.va('track', 'JavaScript Error', {
+                    message: event.message,
+                    filename: event.filename,
+                    lineno: event.lineno,
+                    colno: event.colno,
+                    stack: event.error ? event.error.stack : 'No stack trace'
+                });
+            }
+            console.error('JavaScript Error:', event);
+        });
+
+        // Unhandled promise rejection handler
+        window.addEventListener('unhandledrejection', function(event) {
+            if (window.va) {
+                window.va('track', 'Unhandled Promise Rejection', {
+                    reason: event.reason,
+                    stack: event.reason && event.reason.stack ? event.reason.stack : 'No stack trace'
+                });
+            }
+            console.error('Unhandled Promise Rejection:', event);
+        });
+
+        // Performance observer for navigation timing
+        if ('PerformanceObserver' in window) {
+            const observer = new PerformanceObserver((list) => {
+                for (const entry of list.getEntries()) {
+                    if (entry.entryType === 'navigation') {
+                        if (window.va) {
+                            window.va('track', 'Navigation Timing', {
+                                domContentLoaded: entry.domContentLoadedEventEnd - entry.domContentLoadedEventStart,
+                                loadComplete: entry.loadEventEnd - entry.loadEventStart,
+                                domInteractive: entry.domInteractive - entry.fetchStart,
+                                responseTime: entry.responseEnd - entry.requestStart
+                            });
+                        }
+                    }
+                }
+            });
+            observer.observe({ entryTypes: ['navigation'] });
+        }
     </script>
 
     <!-- Performance and Accessibility -->
