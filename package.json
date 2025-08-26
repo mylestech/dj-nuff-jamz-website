@@ -6,13 +6,20 @@
   "scripts": {
     "dev": "live-server public --port=3000 --open=/",
     "build": "npm run build:css:prod && npm run copy:assets",
+    "build:dev": "npm run build:css:dev && npm run copy:assets",
+    "build:staging": "npm run build:css:staging && npm run copy:assets",
     "build:css": "tailwindcss -i ./src/styles/main.css -o ./public/css/style.css --watch",
+    "build:css:dev": "tailwindcss -i ./src/styles/main.css -o ./public/css/style.css",
+    "build:css:staging": "tailwindcss -i ./src/styles/main.css -o ./public/css/style.css",
     "build:css:prod": "tailwindcss -i ./src/styles/main.css -o ./public/css/style.css --minify",
     "copy:assets": "cp -r src/assets/* public/ 2>/dev/null || true",
     "setup": "npm install && npm run build",
     "start": "npm run dev",
-    "deploy": "vercel --prod",
-    "preview": "vercel"
+    "deploy": "./scripts/deploy.sh production --build",
+    "deploy:dev": "./scripts/deploy.sh development --build",
+    "deploy:staging": "./scripts/deploy.sh staging --build",
+    "deploy:prod": "./scripts/deploy.sh production --build",
+    "preview": "./scripts/deploy.sh preview"
   },
   "keywords": [
     "dj",
