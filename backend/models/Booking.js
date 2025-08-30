@@ -56,16 +56,15 @@ const bookingSchema = new mongoose.Schema({
   },
   
   guestCount: {
-    type: Number,
+    type: String,
     required: [true, 'Guest count is required'],
-    min: [1, 'Guest count must be at least 1'],
-    max: [10000, 'Guest count cannot exceed 10,000']
+    enum: ['1-25', '26-50', '51-100', '101-200', '201-500', '500+']
   },
   
   // Optional Details
   budget: {
-    type: Number,
-    min: [0, 'Budget cannot be negative']
+    type: String,
+    enum: ['under-1000', '1000-2500', '2500-5000', '5000-10000', '10000+', 'discuss']
   },
   
   musicPreferences: {

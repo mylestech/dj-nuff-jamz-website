@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DJ Nuff Jamz - Admin Login</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    
+    <!-- Admin-specific meta tags -->
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="DJ Nuff Jamz Admin Login - Secure Access">
+</head>
+<body class="bg-dark-900 text-gray-100 min-h-screen flex items-center justify-center">
+    <div class="max-w-md w-full space-y-8 p-8">
+        <div class="text-center">
+            <h2 class="mt-6 text-3xl font-extrabold text-white">
+                DJ Nuff Jamz
+            </h2>
+            <p class="mt-2 text-sm text-gray-400">
+                Admin Dashboard Login
+            </p>
+        </div>
+        
+        <form class="mt-8 space-y-6" id="loginForm">
+            <div class="rounded-md shadow-sm -space-y-px">
+                <div>
+                    <label for="username" class="sr-only">Username</label>
+                    <input id="username" name="username" type="text" required 
+                           class="relative block w-full px-3 py-2 border border-slate-600 placeholder-gray-500 text-white bg-slate-800 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm" 
+                           placeholder="Username">
+                </div>
+                <div>
+                    <label for="password" class="sr-only">Password</label>
+                    <input id="password" name="password" type="password" required 
+                           class="relative block w-full px-3 py-2 border border-slate-600 placeholder-gray-500 text-white bg-slate-800 rounded-b-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm" 
+                           placeholder="Password">
+                </div>
+            </div>
+
+            <div id="errorMessage" class="hidden bg-red-900 border border-red-700 text-red-200 px-4 py-3 rounded relative" role="alert">
+                <span class="block sm:inline" id="errorText">Invalid credentials</span>
+            </div>
+
+            <div>
+                <button type="submit" id="loginButton" 
+                        class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed">
+                    <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+                        <svg class="h-5 w-5 text-blue-500 group-hover:text-blue-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+                        </svg>
+                    </span>
+                    <span id="loginButtonText">Sign in</span>
+                </button>
+            </div>
+        </form>
+
+        <div class="text-center">
+            <a href="/" class="text-blue-400 hover:text-blue-300 text-sm">
+                ← Back to Website
+            </a>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-slate-800 p-6 rounded-lg">
+            <div class="flex items-center space-x-3">
+                <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-500"></div>
+                <span class="text-white">Signing in...</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class AdminLogin {
+            constructor() {
+                this.form = document.getElementById('loginForm');
+                this.usernameInput = document.getElementById('username');
+                this.passwordInput = document.getElementById('password');
+                this.loginButton = document.getElementById('loginButton');
+                this.loginButtonText = document.getElementById('loginButtonText');
+                this.errorMessage = document.getElementById('errorMessage');
+                this.errorText = document.getElementById('errorText');
+                this.loadingOverlay = document.getElementById('loadingOverlay');
+                
+                this.init();
+            }
+
+            init() {
+                this.form.addEventListener('submit', (e) => this.handleLogin(e));
+                
+                // Check if already logged in
+                const token = localStorage.getItem('adminToken');
+                if (token) {
+                    this.redirectToDashboard();
+                }
+            }
+
+            async handleLogin(e) {
+                e.preventDefault();
+                
+                const username = this.usernameInput.value.trim();
+                const password = this.passwordInput.value;
+                
+                if (!username || !password) {
+                    this.showError('Please enter both username and password');
+                    return;
+                }
+
+                this.setLoading(true);
+                this.hideError();
+
+                try {
+                    const response = await fetch('/api/admin/login', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ username, password })
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok && data.success) {
+                        // Store the token
+                        localStorage.setItem('adminToken', data.data.token);
+                        localStorage.setItem('adminUser', JSON.stringify(data.data.user));
+                        
+                        // Redirect to dashboard
+                        this.redirectToDashboard();
+                    } else {
+                        this.showError(data.message || 'Login failed');
+                    }
+                } catch (error) {
+                    console.error('Login error:', error);
+                    this.showError('Network error. Please try again.');
+                } finally {
+                    this.setLoading(false);
+                }
+            }
+
+            setLoading(loading) {
+                this.loginButton.disabled = loading;
+                this.loadingOverlay.classList.toggle('hidden', !loading);
+                
+                if (loading) {
+                    this.loginButtonText.textContent = 'Signing in...';
+                } else {
+                    this.loginButtonText.textContent = 'Sign in';
+                }
+            }
+
+            showError(message) {
+                this.errorText.textContent = message;
+                this.errorMessage.classList.remove('hidden');
+            }
+
+            hideError() {
+                this.errorMessage.classList.add('hidden');
+            }
+
+            redirectToDashboard() {
+                window.location.href = '/admin-dashboard.html';
+            }
+        }
+
+        // Initialize the login system
+        document.addEventListener('DOMContentLoaded', () => {
+            new AdminLogin();
+        });
+    </script>
+</body>
+</html>

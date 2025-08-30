@@ -1,35 +1,37 @@
 /**
  * Admin Routes
- * Handles admin authentication and management
+ * Handles admin authentication and dashboard functionality
  */
 
 const express = require('express');
 const router = express.Router();
-const { admin: adminController } = require('../controllers');
-const { validateAdminLogin } = require('../middleware/validation');
+const adminController = require('../controllers/adminController');
+const { requireAuth, requireAdmin } = require('../middleware/auth');
 
-// POST /api/admin/login - Admin login
-router.post('/login', validateAdminLogin, adminController.login);
+// Public admin routes (no auth required)
+router.post('/login', adminController.login);
 
-// POST /api/admin/logout - Admin logout
-router.post('/logout', adminController.logout);
+// Protected admin routes (require authentication)
+router.use(requireAuth);
+router.use(requireAdmin);
 
-// GET /api/admin/dashboard - Get comprehensive dashboard stats
+// Dashboard routes
 router.get('/dashboard', adminController.getDashboard);
+router.get('/dashboard-stats', adminController.getDashboardStats);
+router.get('/content-stats', adminController.getContentStats);
 
-// GET /api/admin/activity - Get recent system activity
+// Profile management
+router.get('/profile', adminController.getProfile);
+router.put('/profile', adminController.updateProfile);
+
+// Activity and analytics
 router.get('/activity', adminController.getRecentActivity);
-
-// GET /api/admin/analytics - Get analytics data
 router.get('/analytics', adminController.getAnalytics);
 
-// GET /api/admin/health - Get system health information
+// System health
 router.get('/health', adminController.getSystemHealth);
 
-// GET /api/admin/profile - Get admin profile
-router.get('/profile', adminController.getProfile);
-
-// PUT /api/admin/profile - Update admin profile
-router.put('/profile', adminController.updateProfile);
+// Logout
+router.post('/logout', adminController.logout);
 
 module.exports = router;

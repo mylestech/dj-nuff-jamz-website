@@ -3,15 +3,17 @@
  * Exports all model modules for easy importing
  */
 
-const Photo = require('./Photo');
 const Booking = require('./Booking');
 const Contact = require('./Contact');
-const User = require('./User');
+const Music = require('./Music');
+const Gallery = require('./Gallery');
+const Testimonial = require('./Testimonial');
 
 module.exports = {
-  Photo,
   Booking,
   Contact,
-  User
+  Music,
+  Gallery,
+  Testimonial
 };
 

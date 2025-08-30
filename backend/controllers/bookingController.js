@@ -5,11 +5,12 @@
 
 const BaseController = require('./BaseController');
 const Booking = require('../models/Booking');
-const emailService = require('../utils/emailService');
+const EmailService = require('../services/emailService');
 
 class BookingController extends BaseController {
   constructor() {
     super();
+    this.emailService = new EmailService();
     // Bind methods to maintain 'this' context
     this.createBooking = this.asyncHandler(this.createBooking.bind(this));
     this.getAllBookings = this.asyncHandler(this.getAllBookings.bind(this));
@@ -35,8 +36,8 @@ class BookingController extends BaseController {
 
       // Send confirmation emails
       try {
-        await emailService.sendBookingConfirmation(booking);
-        await emailService.sendAdminBookingNotification(booking);
+        await this.emailService.sendBookingConfirmation(booking);
+        console.log('Booking confirmation email sent successfully');
       } catch (emailError) {
         console.error('Email sending failed:', emailError);
         // Continue execution - don't fail the booking creation due to email issues

@@ -1,23 +1,23 @@
 /**
  * Email Service
- * Handles sending emails for notifications and responses
+ * Handles sending emails for notifications and responses using SendGrid
  */
 
-const fs = require('fs').promises;
-const path = require('path');
+const sgMail = require('@sendgrid/mail');
 
 class EmailService {
   constructor() {
     this.isConfigured = this.checkConfiguration();
+    if (this.isConfigured) {
+      sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+    }
   }
 
   /**
    * Check if email service is properly configured
    */
   checkConfiguration() {
-    // For now, we'll use a simple logging approach
-    // In production, this would check for SMTP or SendGrid configuration
-    return process.env.SENDGRID_API_KEY || process.env.SMTP_HOST || false;
+    return !!process.env.SENDGRID_API_KEY && process.env.SENDGRID_API_KEY !== 'YOUR_SENDGRID_API_KEY_HERE';
   }
 
   /**
@@ -42,8 +42,17 @@ class EmailService {
       };
 
       if (this.isConfigured) {
-        // TODO: Implement actual email sending with SendGrid or SMTP
-        console.log('📧 Would send booking confirmation email:', emailData);
+        const template = await this.generateEmailTemplate(emailData.template, emailData.data);
+        const msg = {
+          to: emailData.to,
+          from: emailData.from,
+          subject: emailData.subject,
+          text: template,
+          html: template.replace(/\n/g, '<br>')
+        };
+        
+        await sgMail.send(msg);
+        console.log('📧 ✅ Booking confirmation email sent to:', emailData.to);
       } else {
         console.log('📧 Email service not configured - logging booking confirmation:');
         console.log(JSON.stringify(emailData, null, 2));
@@ -117,8 +126,40 @@ class EmailService {
       };
 
       if (this.isConfigured) {
-        // TODO: Implement actual email sending
-        console.log('📧 Would send admin booking notification:', emailData.subject);
+        const msg = {
+          to: emailData.to,
+          from: emailData.from,
+          subject: emailData.subject,
+          text: `New Booking Request
+
+Name: ${booking.name}
+Email: ${booking.email}
+Phone: ${booking.phone}
+Event Type: ${booking.eventType}
+Event Date: ${new Date(booking.eventDate).toLocaleDateString()}
+Location: ${booking.eventLocation}
+Guest Count: ${booking.guestCount}
+Budget: ${booking.budget}
+Music Preferences: ${booking.musicPreferences}
+Special Requests: ${booking.specialRequests}
+
+Booking ID: ${booking._id}`,
+          html: `<h2>New Booking Request</h2>
+<p><strong>Name:</strong> ${booking.name}</p>
+<p><strong>Email:</strong> ${booking.email}</p>
+<p><strong>Phone:</strong> ${booking.phone}</p>
+<p><strong>Event Type:</strong> ${booking.eventType}</p>
+<p><strong>Event Date:</strong> ${new Date(booking.eventDate).toLocaleDateString()}</p>
+<p><strong>Location:</strong> ${booking.eventLocation}</p>
+<p><strong>Guest Count:</strong> ${booking.guestCount}</p>
+<p><strong>Budget:</strong> ${booking.budget}</p>
+<p><strong>Music Preferences:</strong> ${booking.musicPreferences}</p>
+<p><strong>Special Requests:</strong> ${booking.specialRequests}</p>
+<p><strong>Booking ID:</strong> ${booking._id}</p>`
+        };
+        
+        await sgMail.send(msg);
+        console.log('📧 ✅ Admin notification sent for booking:', booking._id);
       } else {
         console.log('📧 Email service not configured - logging admin notification:');
         console.log(`New booking from ${booking.name} for ${booking.eventType} on ${new Date(booking.eventDate).toLocaleDateString()}`);

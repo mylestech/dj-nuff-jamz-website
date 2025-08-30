@@ -236,8 +236,115 @@
         "dependencies": [
           4
         ],
-        "status": "pending",
-        "subtasks": []
+        "status": "done",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Set up MongoDB Atlas cluster or local MongoDB instance",
+            "description": "Create and configure a MongoDB database environment either using MongoDB Atlas cloud service or setting up a local MongoDB instance for development.",
+            "dependencies": [],
+            "details": "1. Choose between MongoDB Atlas or local installation based on project needs\n2. If using Atlas, create an account and set up a new cluster\n3. Configure network access and security settings\n4. Create database user with appropriate permissions\n5. Note connection string for later use",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Design and implement Booking Requests schema",
+            "description": "Create the Mongoose schema for booking requests with all required fields and validation rules.",
+            "dependencies": [
+              "5.1"
+            ],
+            "details": "1. Define schema with fields: clientInfo, eventDetails, requirements, status\n2. Implement validation for required fields\n3. Add timestamps for creation and updates\n4. Define appropriate data types for each field\n5. Add custom validation methods if needed",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Design and implement Music Catalog schema",
+            "description": "Create the Mongoose schema for music catalog entries with all required fields and validation rules.",
+            "dependencies": [
+              "5.1"
+            ],
+            "details": "1. Define schema with fields: mixId, title, genre, duration, audioUrl, uploadDate, playCount, featured\n2. Implement validation for required fields\n3. Add timestamps for creation and updates\n4. Define appropriate data types for each field\n5. Add custom validation methods for audio URLs",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Design and implement Gallery Items schema",
+            "description": "Create the Mongoose schema for gallery items with all required fields and validation rules.",
+            "dependencies": [
+              "5.1"
+            ],
+            "details": "1. Define schema with fields: imageId, title, eventType, venue, date, imageUrl, thumbnailUrl, featured\n2. Implement validation for required fields\n3. Add timestamps for creation and updates\n4. Define appropriate data types for each field\n5. Add custom validation methods for image URLs",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Create database connection module",
+            "description": "Implement a reusable database connection module that handles connection establishment, error handling, and reconnection logic.",
+            "dependencies": [
+              "5.1"
+            ],
+            "details": "1. Create a connection utility module\n2. Implement connection string configuration using environment variables\n3. Add error handling for connection failures\n4. Implement reconnection logic\n5. Add connection events logging\n6. Create connection pooling configuration",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Set up database indexes for performance optimization",
+            "description": "Identify and implement appropriate indexes for each collection to optimize query performance.",
+            "dependencies": [
+              "5.2",
+              "5.3",
+              "5.4"
+            ],
+            "details": "1. Analyze common query patterns for each model\n2. Create indexes for frequently queried fields\n3. Set up compound indexes where appropriate\n4. Implement text indexes for search functionality\n5. Document indexing strategy\n6. Test query performance with and without indexes",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Implement CRUD operations for Booking Requests",
+            "description": "Create controller functions for creating, reading, updating, and deleting booking request records.",
+            "dependencies": [
+              "5.2",
+              "5.5"
+            ],
+            "details": "1. Implement create function with validation\n2. Create read functions (findAll, findById, findByStatus)\n3. Implement update function with validation\n4. Create delete/archive functionality\n5. Add filtering capabilities\n6. Implement pagination for listing requests",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 8,
+            "title": "Implement CRUD operations for Music Catalog and Gallery Items",
+            "description": "Create controller functions for creating, reading, updating, and deleting music catalog and gallery item records.",
+            "dependencies": [
+              "5.3",
+              "5.4",
+              "5.5"
+            ],
+            "details": "1. Implement create functions with validation for both models\n2. Create read functions with filtering options\n3. Implement update functions\n4. Create delete functionality\n5. Add sorting capabilities\n6. Implement pagination\n7. Add featured items filtering",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 9,
+            "title": "Create and implement seed data for development",
+            "description": "Generate and implement seed data for all three data models to facilitate development and testing.",
+            "dependencies": [
+              "5.2",
+              "5.3",
+              "5.4",
+              "5.7",
+              "5.8"
+            ],
+            "details": "1. Create sample data for booking requests\n2. Generate test data for music catalog entries\n3. Create sample gallery items\n4. Implement seeding script\n5. Add option to reset database to initial state\n6. Document seeding process\n7. Test seeded data with application features",
+            "status": "done",
+            "testStrategy": ""
+          }
+        ]
       },
       {
         "id": 6,
@@ -250,8 +357,147 @@
           4,
           5
         ],
-        "status": "pending",
-        "subtasks": []
+        "status": "done",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Set up AWS S3 bucket for audio storage",
+            "description": "Create and configure an AWS S3 bucket specifically for storing DJ mix audio files with appropriate permissions and CORS settings.",
+            "dependencies": [],
+            "details": "Create S3 bucket with appropriate naming convention, configure public read access for audio files, set up CORS policy to allow web player access, implement proper folder structure for organizing by genre, and create IAM user with restricted permissions for upload functionality.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Implement audio file upload functionality",
+            "description": "Create a secure backend system for uploading audio files to the S3 bucket with proper validation and metadata handling.",
+            "dependencies": [
+              "6.1"
+            ],
+            "details": "Develop server-side upload handlers, implement file type validation for audio formats, add metadata extraction for artist, title, and duration, create progress indicators for upload process, and implement error handling for failed uploads.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Design responsive audio player UI",
+            "description": "Create the visual design and layout for the custom audio player that works across all device sizes.",
+            "dependencies": [],
+            "details": "Design player controls (play/pause, volume, seek bar), create responsive layout for desktop and mobile views, design playlist display area, implement genre filter UI elements, and ensure accessibility compliance with proper contrast and ARIA attributes.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Implement core audio playback functionality",
+            "description": "Develop the JavaScript functionality for audio playback with custom controls and event handling.",
+            "dependencies": [
+              "6.1",
+              "6.3"
+            ],
+            "details": "Implement HTML5 audio API integration, create custom play/pause controls, develop seek functionality with progress bar, implement volume controls with mute option, and add event listeners for all player interactions.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Develop genre filtering system",
+            "description": "Create a filtering mechanism to allow users to browse DJ mixes by genre categories.",
+            "dependencies": [
+              "6.2",
+              "6.4"
+            ],
+            "details": "Implement filter UI for the five genres (Afrobeats, Hip-Hop, R&B, Old School, Jazz), create backend query functionality to filter by genre metadata, ensure smooth transitions when changing filters, add visual indicators for active filters, and implement URL parameters for shareable filtered views.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Implement play count tracking",
+            "description": "Create a system to track and store play counts for analytics and popularity sorting.",
+            "dependencies": [
+              "6.4"
+            ],
+            "details": "Develop backend API endpoint for recording play events, implement client-side tracking with debounce to prevent duplicate counts, create database schema for storing play statistics, add timestamp tracking for time-based analytics, and implement basic reporting functionality.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Develop progressive loading for mobile",
+            "description": "Implement techniques to optimize audio loading on mobile devices and slower connections.",
+            "dependencies": [
+              "6.4"
+            ],
+            "details": "Implement chunked audio loading, create adaptive bitrate selection based on connection speed, develop loading indicators for user feedback, implement background preloading of next tracks, and add connection quality detection for automatic quality adjustment.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 8,
+            "title": "Implement audio format optimization",
+            "description": "Set up support for compressed audio formats to improve loading performance while maintaining quality.",
+            "dependencies": [
+              "6.2",
+              "6.7"
+            ],
+            "details": "Configure server-side transcoding for multiple formats (MP3, AAC, Opus), implement format selection based on browser support, create fallback mechanisms for unsupported formats, optimize encoding settings for quality/size balance, and implement audio caching strategies.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 9,
+            "title": "Develop playlist functionality",
+            "description": "Create playlist capabilities to allow continuous playback of multiple DJ mixes.",
+            "dependencies": [
+              "6.4",
+              "6.5"
+            ],
+            "details": "Implement playlist queue management, create UI for displaying current playlist, add drag-and-drop reordering functionality, develop auto-play for next track, implement repeat and shuffle options, and add playlist saving functionality if user accounts are available.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 10,
+            "title": "Create audio visualization features",
+            "description": "Implement visual representations of the audio being played to enhance the user experience.",
+            "dependencies": [
+              "6.4"
+            ],
+            "details": "Implement Web Audio API integration, create canvas-based visualization rendering, develop multiple visualization styles (waveform, frequency bars, circular), add user controls to toggle visualizations, and ensure performance optimization for mobile devices.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 11,
+            "title": "Implement cross-browser compatibility",
+            "description": "Ensure the audio player works consistently across all major browsers and platforms.",
+            "dependencies": [
+              "6.4",
+              "6.7",
+              "6.8",
+              "6.10"
+            ],
+            "details": "Test and fix functionality in Chrome, Firefox, Safari, and Edge, implement polyfills for browser-specific issues, address iOS-specific audio playback limitations, ensure consistent styling across browsers, and document any remaining browser-specific limitations.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 12,
+            "title": "Integrate player with admin dashboard",
+            "description": "Connect the music player system with the admin dashboard for content management.",
+            "dependencies": [
+              "6.1",
+              "6.2",
+              "6.5",
+              "6.6"
+            ],
+            "details": "Create API endpoints for admin audio management, implement track upload interface in admin dashboard, develop analytics display for play counts, add functionality for managing genre categories, and implement bulk operations for audio file management.",
+            "status": "done",
+            "testStrategy": ""
+          }
+        ]
       },
       {
         "id": 7,
@@ -264,8 +510,117 @@
           4,
           5
         ],
-        "status": "pending",
-        "subtasks": []
+        "status": "done",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Set up AWS S3 bucket for image storage",
+            "description": "Create and configure an AWS S3 bucket specifically for storing gallery images with appropriate permissions and CORS settings.",
+            "dependencies": [],
+            "details": "1. Create a new S3 bucket with appropriate naming\n2. Configure bucket permissions for public read access\n3. Set up CORS configuration for web access\n4. Create IAM user with limited permissions for application use\n5. Generate and securely store access keys\n6. Configure bucket lifecycle policies for cost optimization\n7. Set up bucket logging for monitoring",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Implement image upload functionality",
+            "description": "Create a secure system for uploading images to the S3 bucket with proper validation and error handling.",
+            "dependencies": [
+              "7.1"
+            ],
+            "details": "1. Create server-side endpoint for handling uploads\n2. Implement client-side upload form with drag-and-drop support\n3. Add file type and size validation\n4. Implement progress indicators for uploads\n5. Create error handling for failed uploads\n6. Add security measures to prevent unauthorized uploads\n7. Implement metadata capture during upload (event type, date, etc.)",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Develop image processing pipeline",
+            "description": "Create a system to process uploaded images, including optimization, metadata extraction, and preparation for display.",
+            "dependencies": [
+              "7.2"
+            ],
+            "details": "1. Implement server-side image processing using Sharp or similar library\n2. Create workflow for extracting and storing image metadata\n3. Implement image optimization to reduce file sizes\n4. Add watermarking capability if needed\n5. Create database entries for processed images\n6. Implement error handling for processing failures\n7. Set up logging for processing operations",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Create thumbnail generation system",
+            "description": "Implement automatic generation of thumbnails in various sizes for performance optimization across different devices.",
+            "dependencies": [
+              "7.3"
+            ],
+            "details": "1. Define thumbnail size requirements for different views\n2. Implement server-side thumbnail generation using image processing library\n3. Create naming convention for thumbnail files\n4. Set up storage structure for thumbnails in S3\n5. Implement caching strategy for thumbnails\n6. Create fallback mechanism for missing thumbnails\n7. Optimize thumbnail quality vs. file size",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Implement lazy loading for gallery images",
+            "description": "Create a system that loads images only as they come into the viewport to improve initial page load performance.",
+            "dependencies": [
+              "7.4"
+            ],
+            "details": "1. Research and select appropriate lazy loading library or implement custom solution\n2. Configure image placeholders during loading\n3. Implement intersection observer for detecting when images enter viewport\n4. Add progressive loading effects for better user experience\n5. Create fallback for browsers without intersection observer support\n6. Implement preloading for images just outside viewport\n7. Add error handling for failed image loads",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Design responsive grid layout",
+            "description": "Create a modern, responsive grid layout for the photo gallery that adapts to different screen sizes and orientations.",
+            "dependencies": [
+              "7.5"
+            ],
+            "details": "1. Design grid layout with CSS Grid or Flexbox\n2. Implement responsive breakpoints for different device sizes\n3. Create masonry-style layout for varied image sizes\n4. Optimize spacing and margins for visual appeal\n5. Ensure consistent loading and appearance across browsers\n6. Implement animation for grid items on page load\n7. Add hover effects for grid items",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Add lightbox functionality",
+            "description": "Implement a lightbox feature that allows users to view full-size images with navigation controls and additional information.",
+            "dependencies": [
+              "7.6"
+            ],
+            "details": "1. Research and select appropriate lightbox library or implement custom solution\n2. Implement image click handlers to open lightbox\n3. Create navigation controls for moving between images\n4. Add image metadata display in lightbox view\n5. Implement keyboard navigation support\n6. Create smooth transitions between images\n7. Add close button and click-outside-to-close functionality",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 8,
+            "title": "Implement filtering by event type",
+            "description": "Create a filtering system that allows users to filter gallery images by event type or other metadata.",
+            "dependencies": [
+              "7.6"
+            ],
+            "details": "1. Design filter UI components (buttons, dropdowns, etc.)\n2. Implement client-side filtering logic\n3. Create smooth transitions when filter changes\n4. Add URL parameter support for shareable filtered views\n5. Implement multiple filter criteria support\n6. Create filter reset functionality\n7. Add count indicators for each filter category",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 9,
+            "title": "Optimize images for various screen sizes",
+            "description": "Implement a system that serves appropriately sized images based on the user's device and screen resolution.",
+            "dependencies": [
+              "7.4"
+            ],
+            "details": "1. Implement responsive image techniques using srcset and sizes attributes\n2. Create server-side component to generate appropriate image URLs\n3. Implement client-side detection of device capabilities\n4. Add WebP format support with fallbacks\n5. Create image quality tiers for different connection speeds\n6. Implement automated testing for image loading performance\n7. Create documentation for image optimization strategy",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 10,
+            "title": "Implement swipe gestures for mobile browsing",
+            "description": "Add touch gesture support for mobile users to navigate through gallery images with natural swipe motions.",
+            "dependencies": [
+              "7.7"
+            ],
+            "details": "1. Research and select appropriate touch gesture library or implement custom solution\n2. Implement left/right swipe detection for navigation\n3. Add pinch-to-zoom functionality for detailed viewing\n4. Create smooth animations for gesture responses\n5. Implement velocity-based navigation (faster swipe = skip multiple images)\n6. Add haptic feedback for gesture actions where supported\n7. Create fallback controls for devices without touch support",
+            "status": "done",
+            "testStrategy": ""
+          }
+        ]
       },
       {
         "id": 8,
@@ -292,8 +647,132 @@
           4,
           5
         ],
-        "status": "pending",
-        "subtasks": []
+        "status": "done",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Design Multi-Step Form UI/UX",
+            "description": "Create wireframes and mockups for the multi-step booking form, focusing on user experience and visual design.",
+            "dependencies": [],
+            "details": "Design form layout, color scheme, typography, and visual elements. Create mockups for desktop, tablet, and mobile views. Include progress indicators, navigation buttons, and form field styling.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Implement Form Structure and Navigation",
+            "description": "Build the HTML/CSS structure for the multi-step form and implement navigation between steps.",
+            "dependencies": [
+              "9.1"
+            ],
+            "details": "Create HTML structure for all form steps. Implement next/previous navigation buttons. Ensure proper tab order for accessibility. Set up initial CSS styling based on design mockups.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Develop Event Details Form Section",
+            "description": "Create form fields for event type, date selection, budget range, and special requirements.",
+            "dependencies": [
+              "9.2"
+            ],
+            "details": "Implement event type dropdown/selection. Create date picker with validation. Add budget range slider or input. Include special requirements text area with character counter. Ensure all fields have proper labels and accessibility attributes.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Develop Client Information Form Section",
+            "description": "Create form fields for collecting client contact information including name, email, and phone number.",
+            "dependencies": [
+              "9.2"
+            ],
+            "details": "Implement name fields (first/last). Create email input with validation. Add phone number input with formatting. Include optional company name field. Ensure all fields have proper validation and error messaging.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Implement Form Validation Logic",
+            "description": "Create client-side validation for all form fields with appropriate error messages.",
+            "dependencies": [
+              "9.3",
+              "9.4"
+            ],
+            "details": "Implement input validation for required fields. Add email format validation. Create phone number format validation. Implement date validation logic. Show inline error messages. Prevent navigation to next step if current step has validation errors.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Create Form Progress Indicators",
+            "description": "Implement visual indicators showing form completion progress and current step.",
+            "dependencies": [
+              "9.2"
+            ],
+            "details": "Design and implement progress bar or step indicators. Update progress indicators as user navigates between steps. Add visual cues for completed vs. pending steps. Ensure indicators are accessible and responsive.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Implement Auto-Save Functionality",
+            "description": "Create functionality to automatically save form progress to prevent data loss during form abandonment.",
+            "dependencies": [
+              "9.5"
+            ],
+            "details": "Implement local storage for form data persistence. Create auto-save triggers on field changes and step navigation. Add functionality to restore saved data when user returns. Include clear indication when data is being saved.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 8,
+            "title": "Develop Form Submission Handler",
+            "description": "Create backend API endpoint and frontend submission logic to process and store completed form data.",
+            "dependencies": [
+              "9.5"
+            ],
+            "details": "Create API endpoint for form submission. Implement server-side validation. Set up database schema and storage logic. Create frontend submission handler with loading states and error handling. Implement CSRF protection.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 9,
+            "title": "Implement Email Notification System",
+            "description": "Set up automated email notifications for both clients and administrators upon form submission.",
+            "dependencies": [
+              "9.8"
+            ],
+            "details": "Set up SendGrid API integration. Create email templates for client confirmation and admin notification. Implement email sending logic in backend. Add error handling and retry logic for failed email attempts. Include booking details in email content.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 10,
+            "title": "Integrate Form Analytics Tracking",
+            "description": "Implement analytics to track form usage, completion rates, and abandonment patterns.",
+            "dependencies": [
+              "9.8"
+            ],
+            "details": "Set up event tracking for form interactions. Track step completion rates. Measure form abandonment points. Implement conversion tracking. Create dashboard for visualizing form analytics data. Set up regular analytics reporting.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 11,
+            "title": "Optimize Form for Mobile Devices",
+            "description": "Ensure the booking form is fully responsive and provides optimal user experience on mobile devices.",
+            "dependencies": [
+              "9.2",
+              "9.3",
+              "9.4",
+              "9.6"
+            ],
+            "details": "Test and optimize form layout for various screen sizes. Adjust input fields for touch interaction. Optimize loading performance for mobile networks. Ensure form is usable on iOS and Android devices. Test with various mobile browsers.",
+            "status": "done",
+            "testStrategy": ""
+          }
+        ]
       },
       {
         "id": 10,
@@ -306,8 +785,122 @@
           4,
           9
         ],
-        "status": "pending",
-        "subtasks": []
+        "status": "done",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Set up Google Calendar API project and credentials",
+            "description": "Create a Google Cloud project, enable the Calendar API, and generate necessary API credentials (OAuth client ID and client secret).",
+            "dependencies": [],
+            "details": "1. Create a new project in Google Cloud Console\n2. Enable Google Calendar API for the project\n3. Configure OAuth consent screen\n4. Generate OAuth 2.0 client credentials\n5. Store credentials securely in environment variables",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Implement OAuth authentication flow",
+            "description": "Create the authentication flow to allow users to grant calendar access permissions to the application.",
+            "dependencies": [
+              "10.1"
+            ],
+            "details": "1. Create authentication endpoints\n2. Implement authorization code flow\n3. Handle token exchange\n4. Implement token refresh mechanism\n5. Create secure token storage\n6. Add sign-out functionality to revoke access",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Develop calendar widget UI components",
+            "description": "Create responsive UI components for displaying calendar data with availability indicators.",
+            "dependencies": [],
+            "details": "1. Design month/week/day view components\n2. Implement date navigation controls\n3. Create availability indicator styling\n4. Ensure responsive design for all screen sizes\n5. Add accessibility features\n6. Implement event tooltips/popups",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Implement event fetching and processing",
+            "description": "Create service to fetch, process, and format calendar events from Google Calendar API.",
+            "dependencies": [
+              "10.1",
+              "10.2"
+            ],
+            "details": "1. Implement API client for Google Calendar\n2. Create event fetching service\n3. Implement date range filtering\n4. Add event type categorization\n5. Handle recurring events\n6. Implement error handling for API failures",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Create past events archive functionality",
+            "description": "Implement a searchable and filterable archive of past events with pagination.",
+            "dependencies": [
+              "10.4"
+            ],
+            "details": "1. Create archive UI component\n2. Implement date-based filtering\n3. Add search functionality\n4. Implement pagination\n5. Create event detail view\n6. Add sorting options (date, event type, etc.)",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Implement availability checking system",
+            "description": "Create a system to check calendar availability for the booking system.",
+            "dependencies": [
+              "10.4"
+            ],
+            "details": "1. Create availability checking service\n2. Implement conflict detection algorithm\n3. Add buffer time settings\n4. Create availability API endpoints\n5. Implement date range availability queries\n6. Add blackout dates functionality",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Develop two-way synchronization for bookings",
+            "description": "Implement bidirectional sync between the booking system and Google Calendar.",
+            "dependencies": [
+              "10.2",
+              "10.4",
+              "10.6"
+            ],
+            "details": "1. Create event creation service\n2. Implement event update functionality\n3. Add event deletion handling\n4. Create webhook for calendar changes\n5. Implement conflict resolution\n6. Add sync status tracking",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 8,
+            "title": "Build admin interface for calendar management",
+            "description": "Create an admin dashboard for managing calendar settings, events, and synchronization.",
+            "dependencies": [
+              "10.4",
+              "10.7"
+            ],
+            "details": "1. Design admin calendar view\n2. Implement manual event creation/editing\n3. Add calendar settings configuration\n4. Create sync status monitoring\n5. Implement batch operations\n6. Add event categorization management",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 9,
+            "title": "Implement caching system for calendar data",
+            "description": "Create a caching layer to improve performance and reduce API calls to Google Calendar.",
+            "dependencies": [
+              "10.4"
+            ],
+            "details": "1. Design caching strategy\n2. Implement cache storage\n3. Add cache invalidation rules\n4. Create background refresh mechanism\n5. Implement cache hit/miss metrics\n6. Add cache bypass for critical operations",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 10,
+            "title": "Implement error handling and monitoring",
+            "description": "Create comprehensive error handling, logging, and monitoring for the calendar integration.",
+            "dependencies": [
+              "10.2",
+              "10.4",
+              "10.7",
+              "10.9"
+            ],
+            "details": "1. Implement error logging system\n2. Create user-friendly error messages\n3. Add retry mechanisms for transient failures\n4. Implement API quota monitoring\n5. Create admin notifications for critical errors\n6. Add system health dashboard",
+            "status": "done",
+            "testStrategy": ""
+          }
+        ]
       },
       {
         "id": 11,
@@ -320,8 +913,98 @@
           2,
           5
         ],
-        "status": "pending",
-        "subtasks": []
+        "status": "done",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Design Testimonial Display Component",
+            "description": "Create the UI component for displaying client testimonials with appropriate styling and layout.",
+            "dependencies": [],
+            "details": "Design a visually appealing component that fits the site's aesthetic. Include placeholders for client name, company, testimonial text, and logo. Consider using cards or panels with subtle borders and background colors to separate testimonials.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Implement Animated Scrolling Text Effect",
+            "description": "Develop the animation effects for testimonial text to create engaging transitions between testimonials.",
+            "dependencies": [
+              "11.1"
+            ],
+            "details": "Use CSS animations or a JavaScript animation library like GSAP for smooth text transitions. Implement fade-in/fade-out effects, sliding animations, or text highlighting. Ensure animations are subtle and professional for a corporate audience.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Create Testimonial Data Structure in Database",
+            "description": "Design and implement the database schema for storing client testimonials and related information.",
+            "dependencies": [],
+            "details": "Create a database model with fields for client name, company, testimonial text, date, logo image path, and display order. Include validation for required fields and implement proper indexing for efficient queries.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Add Admin Interface for Testimonial Management",
+            "description": "Develop an admin panel section for adding, editing, and removing testimonials.",
+            "dependencies": [
+              "11.3"
+            ],
+            "details": "Create CRUD functionality for testimonials with form validation. Include features for reordering testimonials, toggling visibility, and previewing how testimonials will appear on the site. Add image upload capability for client logos.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Implement Client Logo Display",
+            "description": "Add functionality to display client company logos alongside their testimonials.",
+            "dependencies": [
+              "11.1",
+              "11.3"
+            ],
+            "details": "Implement image optimization for logos to ensure fast loading. Create consistent sizing and positioning of logos within the testimonial component. Add fallback display for missing logos.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Add Controls for Pausing/Resuming Animation",
+            "description": "Implement user controls to pause, resume, and navigate through testimonials.",
+            "dependencies": [
+              "11.2"
+            ],
+            "details": "Add intuitive control buttons (pause/play, next/previous) that appear on hover. Implement keyboard navigation support. Ensure controls are accessible and follow ARIA best practices.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Ensure Mobile Responsiveness",
+            "description": "Optimize the testimonial component for various screen sizes and touch devices.",
+            "dependencies": [
+              "11.1",
+              "11.2",
+              "11.6"
+            ],
+            "details": "Adjust layout, font sizes, and spacing for mobile devices. Replace hover interactions with touch-friendly alternatives. Test on various device sizes to ensure proper display and functionality.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 8,
+            "title": "Implement Performance Optimizations",
+            "description": "Optimize animation and component performance to ensure smooth operation.",
+            "dependencies": [
+              "11.2",
+              "11.5",
+              "11.7"
+            ],
+            "details": "Use requestAnimationFrame for smooth animations. Implement lazy loading for testimonial content and images. Reduce DOM operations during animations. Add options to reduce motion for users with vestibular disorders or preferences for reduced motion.",
+            "status": "done",
+            "testStrategy": ""
+          }
+        ]
       },
       {
         "id": 12,
@@ -334,8 +1017,99 @@
           4,
           9
         ],
-        "status": "pending",
-        "subtasks": []
+        "status": "done",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Set up SendGrid API credentials and environment",
+            "description": "Create SendGrid account, generate API keys, and configure environment variables for secure API access",
+            "dependencies": [],
+            "details": "1. Create SendGrid account\n2. Generate API keys with appropriate permissions\n3. Set up environment variables for API keys\n4. Configure security policies\n5. Test API connection with basic request",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Design and create email templates",
+            "description": "Design and implement responsive email templates for booking confirmations and follow-ups",
+            "dependencies": [
+              "12.1"
+            ],
+            "details": "1. Design booking confirmation template\n2. Design follow-up email templates\n3. Implement responsive HTML/CSS for templates\n4. Test rendering across email clients\n5. Create template variables for personalization",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Implement core email sending functionality",
+            "description": "Develop the core functionality to send emails through SendGrid API with proper error handling",
+            "dependencies": [
+              "12.1",
+              "12.2"
+            ],
+            "details": "1. Create email service class\n2. Implement send method with proper parameters\n3. Add error handling and retry logic\n4. Create logging for email sending events\n5. Implement test coverage for sending functionality",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Develop automated email sequence system",
+            "description": "Create a system to trigger and manage automated email sequences based on booking events",
+            "dependencies": [
+              "12.3"
+            ],
+            "details": "1. Design sequence data structure\n2. Implement sequence trigger system\n3. Create timing logic for follow-up emails\n4. Add conditional logic for sequence branching\n5. Implement sequence termination conditions",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Implement email tracking and analytics",
+            "description": "Set up tracking for email opens, clicks, and engagement metrics with analytics dashboard",
+            "dependencies": [
+              "12.3"
+            ],
+            "details": "1. Configure SendGrid tracking settings\n2. Implement webhook endpoints for tracking events\n3. Create database schema for tracking data\n4. Develop analytics dashboard UI\n5. Implement reporting functionality",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Add email personalization features",
+            "description": "Implement dynamic content insertion and personalization based on recipient data",
+            "dependencies": [
+              "12.2",
+              "12.3"
+            ],
+            "details": "1. Create personalization variable system\n2. Implement dynamic content blocks\n3. Add conditional rendering based on recipient data\n4. Create fallbacks for missing data\n5. Test personalization across different recipient profiles",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Create admin interface for email template management",
+            "description": "Develop an admin interface for creating, editing, and managing email templates",
+            "dependencies": [
+              "12.2",
+              "12.3"
+            ],
+            "details": "1. Design template management UI\n2. Implement template CRUD operations\n3. Add template preview functionality\n4. Create template versioning system\n5. Implement template testing tools",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 8,
+            "title": "Implement email scheduling system",
+            "description": "Create functionality to schedule emails for future delivery with management interface",
+            "dependencies": [
+              "12.3",
+              "12.4"
+            ],
+            "details": "1. Design scheduling data structure\n2. Implement scheduling queue system\n3. Create cron job for processing scheduled emails\n4. Develop UI for scheduling management\n5. Add timezone handling for global scheduling",
+            "status": "done",
+            "testStrategy": ""
+          }
+        ]
       },
       {
         "id": 13,
@@ -348,8 +1122,108 @@
           3,
           9
         ],
-        "status": "pending",
-        "subtasks": []
+        "status": "done",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Set up Google Analytics account and implement tracking code",
+            "description": "Create a Google Analytics account for the website, configure property settings, and implement the tracking code across all pages.",
+            "dependencies": [],
+            "details": "Create GA4 property, generate tracking ID, implement gtag.js or Google Tag Manager, verify proper installation with real-time reports, and ensure tracking code is present on all pages including error pages.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Implement event tracking for key user interactions",
+            "description": "Set up custom event tracking for important user interactions such as button clicks, form interactions, and page scrolling.",
+            "dependencies": [
+              "13.1"
+            ],
+            "details": "Define key user interactions to track, implement event listeners, configure event parameters, test event firing, and verify data collection in Google Analytics reports.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Configure conversion goals and funnel visualization",
+            "description": "Set up conversion goals for booking form submissions and create funnel visualization to track user journey.",
+            "dependencies": [
+              "13.1",
+              "13.2"
+            ],
+            "details": "Define conversion goals, set up goal funnels, configure goal values, implement enhanced ecommerce tracking if applicable, and create custom reports for conversion analysis.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Implement SEO meta tags and structured data",
+            "description": "Optimize all pages with proper meta tags and implement schema.org structured data for rich snippets.",
+            "dependencies": [],
+            "details": "Create title tags, meta descriptions, canonical tags, Open Graph tags, Twitter Card markup, and implement schema.org JSON-LD markup for events, services, and organization information.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Create XML sitemap and robots.txt",
+            "description": "Generate an XML sitemap for all important pages and configure robots.txt file for proper search engine crawling.",
+            "dependencies": [
+              "13.4"
+            ],
+            "details": "Create comprehensive XML sitemap with proper priority settings, implement sitemap index if needed, configure robots.txt with appropriate directives, and submit sitemap to Google Search Console.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Optimize page speed and Core Web Vitals",
+            "description": "Improve website performance by optimizing page speed factors and Core Web Vitals metrics.",
+            "dependencies": [],
+            "details": "Optimize image sizes and formats, implement lazy loading, minimize CSS/JS, leverage browser caching, reduce server response time, optimize LCP, FID, and CLS metrics, and implement critical CSS.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Create custom analytics dashboard for client",
+            "description": "Develop a custom analytics dashboard that provides key insights and metrics for the client.",
+            "dependencies": [
+              "13.1",
+              "13.2",
+              "13.3"
+            ],
+            "details": "Identify key metrics to display, create custom Google Analytics dashboard, set up automated reports, implement data visualization for key metrics, and provide documentation for client usage.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 8,
+            "title": "Implement local SEO optimizations for NYC market",
+            "description": "Optimize the website for local search in the New York City market with location-specific SEO tactics.",
+            "dependencies": [
+              "13.4",
+              "13.5"
+            ],
+            "details": "Create Google Business Profile, optimize NAP information, implement local schema markup, create location-specific content, build local citations, and optimize for local keywords relevant to NYC event planning.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 9,
+            "title": "Set up SEO and analytics monitoring tools",
+            "description": "Implement tools for ongoing monitoring of SEO performance and analytics data.",
+            "dependencies": [
+              "13.1",
+              "13.4",
+              "13.5"
+            ],
+            "details": "Set up Google Search Console, configure rank tracking tools, implement SEO audit tools, set up automated alerts for traffic changes, and create documentation for ongoing monitoring procedures.",
+            "status": "done",
+            "testStrategy": ""
+          }
+        ]
       },
       {
         "id": 14,
@@ -365,8 +1239,151 @@
           9,
           12
         ],
-        "status": "pending",
-        "subtasks": []
+        "status": "done",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Design Admin Dashboard UI Wireframes",
+            "description": "Create wireframes for the admin dashboard layout including navigation, content areas, and key components.",
+            "dependencies": [],
+            "details": "Include wireframes for dashboard home, content management sections, booking management, user management, and analytics views. Consider responsive design for both desktop and mobile admin access.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Implement Admin Authentication System",
+            "description": "Develop a secure authentication system with login, password recovery, and session management.",
+            "dependencies": [],
+            "details": "Implement JWT-based authentication, password hashing, account lockout after failed attempts, and secure password reset functionality. Include remember-me functionality and session timeout settings.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Develop Music Management Interface",
+            "description": "Create interface for uploading, editing, and managing music mixes in the admin dashboard.",
+            "dependencies": [
+              "14.2"
+            ],
+            "details": "Build UI for music uploads with drag-and-drop functionality, metadata editing (title, genre, duration), featured status toggling, and deletion. Include batch operations and sorting/filtering capabilities.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Implement Gallery Management Interface",
+            "description": "Develop interface for uploading, organizing, and managing gallery images.",
+            "dependencies": [
+              "14.2"
+            ],
+            "details": "Create image upload with preview, cropping tools, metadata editing (title, event type, venue, date), featured status toggling, and album organization. Include image optimization for web display.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Create Testimonial Management System",
+            "description": "Build interface for adding, editing, and moderating client testimonials.",
+            "dependencies": [
+              "14.2"
+            ],
+            "details": "Implement testimonial entry form with client name, event type, date, testimonial text, and approval status. Include moderation workflow and featured testimonial selection.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Develop Service Information Management",
+            "description": "Create interface for updating service offerings, packages, and pricing information.",
+            "dependencies": [
+              "14.2"
+            ],
+            "details": "Build forms for managing service categories, package details, pricing information, and service descriptions. Include rich text editing for service descriptions and image uploads for service illustrations.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Implement Booking Request Management System",
+            "description": "Develop interface for viewing, responding to, and managing booking requests.",
+            "dependencies": [
+              "14.2"
+            ],
+            "details": "Create booking request dashboard with status filtering (new, in-progress, confirmed, completed, cancelled), detailed view of request information, communication log, and status update functionality. Include calendar view of bookings.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 8,
+            "title": "Add Analytics Dashboard",
+            "description": "Implement analytics display showing website traffic, booking conversions, and content engagement.",
+            "dependencies": [
+              "14.1",
+              "14.2"
+            ],
+            "details": "Create visual charts and metrics for page views, user engagement, booking request trends, music play counts, and conversion rates. Include date range filtering and data export functionality.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 9,
+            "title": "Develop User Role Management",
+            "description": "Create system for managing admin users with different permission levels.",
+            "dependencies": [
+              "14.2"
+            ],
+            "details": "Implement role-based access control with at least three levels: super admin, content manager, and booking manager. Create interface for adding/removing users and assigning permissions. Include user invitation system.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 10,
+            "title": "Implement Activity Logging System",
+            "description": "Create comprehensive logging system for admin actions for security and auditing.",
+            "dependencies": [
+              "14.2"
+            ],
+            "details": "Log all admin actions including logins, content changes, booking status updates, and user management. Create searchable activity log interface with filtering by user, action type, and date range.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 11,
+            "title": "Develop Content Preview Functionality",
+            "description": "Implement preview system to view content changes before publishing to the live site.",
+            "dependencies": [
+              "14.3",
+              "14.4",
+              "14.5",
+              "14.6"
+            ],
+            "details": "Create preview mode for all content types including music player, gallery, testimonials, and service information. Implement side-by-side comparison between current live content and pending changes.",
+            "status": "done",
+            "testStrategy": ""
+          },
+          {
+            "id": 12,
+            "title": "Create Admin Dashboard Documentation",
+            "description": "Develop comprehensive documentation for the admin dashboard functionality.",
+            "dependencies": [
+              "14.1",
+              "14.2",
+              "14.3",
+              "14.4",
+              "14.5",
+              "14.6",
+              "14.7",
+              "14.8",
+              "14.9",
+              "14.10",
+              "14.11"
+            ],
+            "details": "Create user manual with step-by-step instructions for all dashboard functions. Include screenshots, video tutorials, and troubleshooting guides for non-technical users. Provide documentation in both PDF and in-dashboard help system.",
+            "status": "done",
+            "testStrategy": ""
+          }
+        ]
       },
       {
         "id": 15,
@@ -379,13 +1396,113 @@
           2,
           13
         ],
-        "status": "pending",
-        "subtasks": []
+        "status": "deferred",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Set up Instagram API credentials",
+            "description": "Register application with Instagram Developer Portal and obtain necessary API keys and credentials",
+            "dependencies": [],
+            "details": "Create developer account if needed, register new application, configure OAuth redirect URIs, and securely store API credentials using environment variables",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Implement OAuth authentication flow",
+            "description": "Create authentication system for Instagram API access using OAuth protocol",
+            "dependencies": [
+              "15.1"
+            ],
+            "details": "Build login with Instagram functionality, handle authorization code exchange, implement token refresh mechanism, and store user access tokens securely",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Create social media feed display component",
+            "description": "Develop frontend component to display Instagram feed with proper styling and layout",
+            "dependencies": [
+              "15.2"
+            ],
+            "details": "Create responsive grid layout for media items, implement media preview functionality, display captions and engagement metrics, and ensure proper error handling for missing content",
+            "status": "in-progress",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Add caching for API responses",
+            "description": "Implement caching system to store Instagram API responses and reduce API calls",
+            "dependencies": [
+              "15.3"
+            ],
+            "details": "Set up Redis or similar caching solution, implement cache invalidation strategy, configure TTL for cached responses, and add cache hit/miss logging",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Implement social sharing buttons for content",
+            "description": "Add functionality to share website content to various social media platforms",
+            "dependencies": [],
+            "details": "Integrate sharing buttons for Facebook, Twitter, LinkedIn, and WhatsApp, implement Open Graph tags for shared content, create share count tracking, and ensure mobile compatibility",
+            "status": "in-progress",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Create fallback for API rate limiting",
+            "description": "Develop system to handle Instagram API rate limits and service disruptions",
+            "dependencies": [
+              "15.3",
+              "15.4"
+            ],
+            "details": "Implement exponential backoff strategy, create static fallback content, add user-friendly error messages, and implement circuit breaker pattern to prevent cascading failures",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Add auto-refresh functionality for feed",
+            "description": "Implement automatic refresh of social media feed at regular intervals",
+            "dependencies": [
+              "15.3",
+              "15.4",
+              "15.6"
+            ],
+            "details": "Create configurable refresh interval, implement background refresh without disrupting user experience, add visual indicators for new content, and ensure refresh respects API rate limits",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 8,
+            "title": "Implement lazy loading for social media content",
+            "description": "Add lazy loading to optimize performance when displaying social media content",
+            "dependencies": [
+              "15.3"
+            ],
+            "details": "Implement intersection observer for detecting viewport entry, add loading placeholders, optimize image loading with proper sizing and formats, and ensure accessibility is maintained",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 9,
+            "title": "Add analytics tracking for social interactions",
+            "description": "Implement tracking for user interactions with social media components",
+            "dependencies": [
+              "15.3",
+              "15.5"
+            ],
+            "details": "Configure event tracking for feed views, content interactions, and sharing actions, integrate with existing Google Analytics setup, create custom reports for social engagement, and implement privacy-compliant tracking",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
       }
     ],
     "metadata": {
       "created": "2025-08-16T16:41:45.171Z",
-      "updated": "2025-08-28T19:55:23.934Z",
+      "updated": "2025-08-30T15:37:13.044Z",
       "description": "Tasks for master context"
     }
   }

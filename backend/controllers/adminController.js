@@ -6,6 +6,8 @@
 const BaseController = require('./BaseController');
 const Booking = require('../models/Booking');
 const Contact = require('../models/Contact');
+const { Music } = require('../models');
+const { Gallery } = require('../models');
 
 class AdminController extends BaseController {
   constructor() {
@@ -19,6 +21,8 @@ class AdminController extends BaseController {
     this.getRecentActivity = this.asyncHandler(this.getRecentActivity.bind(this));
     this.getAnalytics = this.asyncHandler(this.getAnalytics.bind(this));
     this.getSystemHealth = this.asyncHandler(this.getSystemHealth.bind(this));
+    this.getDashboardStats = this.asyncHandler(this.getDashboardStats.bind(this));
+    this.getContentStats = this.asyncHandler(this.getContentStats.bind(this));
   }
 
   /**
@@ -363,6 +367,111 @@ class AdminController extends BaseController {
     } catch (error) {
       console.error('System health error:', error);
       this.sendError(res, 'Failed to retrieve system health', 500);
+    }
+  }
+
+  /**
+   * Get dashboard statistics for the admin dashboard
+   */
+  async getDashboardStats(req, res) {
+    try {
+      // Get basic counts
+      const totalBookings = await Booking.countDocuments();
+      const totalMusic = await Music.countDocuments();
+      const totalGallery = await Gallery.countDocuments();
+      const totalContacts = await Contact.countDocuments();
+
+      // Calculate revenue
+      const revenueResult = await Booking.aggregate([
+        { $match: { status: 'completed', quotedPrice: { $exists: true } } },
+        { $group: { _id: null, total: { $sum: '$quotedPrice' } } }
+      ]);
+      const totalRevenue = revenueResult[0]?.total || 0;
+
+      // Get website visitors (mock data for now)
+      const websiteVisitors = Math.floor(Math.random() * 2000) + 1000;
+
+      // Calculate conversion rate
+      const confirmedBookings = await Booking.countDocuments({ status: 'confirmed' });
+      const conversionRate = totalBookings > 0 ? 
+        ((confirmedBookings / totalBookings) * 100).toFixed(1) + '%' : '0%';
+
+      const stats = {
+        totalBookings,
+        totalRevenue: `₦${totalRevenue.toLocaleString()}`,
+        websiteVisitors,
+        conversionRate,
+        totalMusic,
+        totalGallery,
+        totalContacts
+      };
+
+      this.sendSuccess(res, stats, 'Dashboard stats retrieved successfully');
+    } catch (error) {
+      console.error('Dashboard stats error:', error);
+      this.sendError(res, 'Failed to retrieve dashboard stats', 500);
+    }
+  }
+
+  /**
+   * Get content statistics for admin dashboard
+   */
+  async getContentStats(req, res) {
+    try {
+      // Get music statistics
+      const musicStats = await Music.aggregate([
+        {
+          $group: {
+            _id: '$genre',
+            count: { $sum: 1 },
+            totalPlays: { $sum: { $ifNull: ['$plays', 0] } }
+          }
+        },
+        { $sort: { count: -1 } }
+      ]);
+
+      // Get gallery statistics
+      const galleryStats = await Gallery.aggregate([
+        {
+          $group: {
+            _id: '$eventType',
+            count: { $sum: 1 }
+          }
+        },
+        { $sort: { count: -1 } }
+      ]);
+
+      // Get recent uploads
+      const recentMusic = await Music.find()
+        .sort({ createdAt: -1 })
+        .limit(5)
+        .select('title artist genre createdAt plays')
+        .lean();
+
+      const recentGallery = await Gallery.find()
+        .sort({ createdAt: -1 })
+        .limit(5)
+        .select('title eventType createdAt')
+        .lean();
+
+      const contentStats = {
+        music: {
+          total: await Music.countDocuments(),
+          byGenre: musicStats,
+          recent: recentMusic,
+          totalPlays: musicStats.reduce((sum, genre) => sum + genre.totalPlays, 0)
+        },
+        gallery: {
+          total: await Gallery.countDocuments(),
+          byEventType: galleryStats,
+          recent: recentGallery
+        }
+      };
+
+      this.sendSuccess(res, contentStats, 'Content stats retrieved successfully');
+    } catch (error) {
+      console.error('Content stats error:', error);
+      this.sendError(res, 'Failed to retrieve content stats', 500);
     }
   }
 

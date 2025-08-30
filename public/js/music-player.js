@@ -1,0 +1,443 @@
+/**
+ * DJ Nuff Jamz Music Player
+ * A responsive audio player for showcasing DJ mixes
+ */
+
+class MusicPlayer {
+    constructor() {
+        this.currentTrack = 0;
+        this.isPlaying = false;
+        this.audio = null;
+        this.tracks = [
+            {
+                id: 1,
+                title: "Summer Vibes Mix 2024",
+                artist: "DJ Nuff Jamz",
+                genre: "house",
+                duration: "60:00",
+                audioUrl: "/audio/sample-track.mp3", // Placeholder for now
+                description: "A perfect deep house mix for summer parties and beach events",
+                tags: ["summer", "deep", "house", "vibes", "live"]
+            },
+            {
+                id: 2,
+                title: "Hip Hop Heat",
+                artist: "DJ Nuff Jamz", 
+                genre: "hip-hop",
+                duration: "3:30",
+                audioUrl: "/audio/sample-track.mp3", // Placeholder for now
+                description: "High-energy hip hop track perfect for clubs and parties",
+                tags: ["hip-hop", "rap", "urban", "party"]
+            },
+            {
+                id: 3,
+                title: "Latin Fusion",
+                artist: "DJ Nuff Jamz",
+                genre: "latin",
+                duration: "4:45", 
+                audioUrl: "/audio/sample-track.mp3", // Placeholder for now
+                description: "A fusion of traditional Latin rhythms with modern electronic beats",
+                tags: ["latin", "reggaeton", "fusion", "dance"]
+            }
+        ];
+        
+        this.genres = ["all", "house", "hip-hop", "latin", "r&b", "jazz", "afrobeat"];
+        this.currentGenre = "all";
+        
+        this.init();
+    }
+
+    init() {
+        this.createPlayerHTML();
+        this.bindEvents();
+        this.loadTrack(0);
+        
+        // Try to load real tracks from API
+        this.loadTracksFromAPI();
+    }
+
+    createPlayerHTML() {
+        const musicSection = document.getElementById('music');
+        if (!musicSection) return;
+
+        const container = musicSection.querySelector('.container-custom');
+        if (!container) return;
+
+        // Replace the placeholder content
+        container.innerHTML = `
+            <h2 id="music-heading" class="text-center mb-12 text-gray-100">Music Portfolio</h2>
+            
+            <!-- Genre Filter -->
+            <div class="flex flex-wrap justify-center gap-4 mb-8">
+                ${this.genres.map(genre => `
+                    <button class="genre-filter px-4 py-2 rounded-lg border border-slate-600 text-gray-300 hover:bg-slate-700 hover:text-white transition-colors ${genre === 'all' ? 'bg-blue-600 text-white border-blue-600' : ''}" 
+                            data-genre="${genre}">
+                        ${genre.charAt(0).toUpperCase() + genre.slice(1)}
+                    </button>
+                `).join('')}
+            </div>
+
+            <!-- Music Player -->
+            <div class="max-w-4xl mx-auto">
+                <!-- Current Track Display -->
+                <div class="card mb-6">
+                    <div class="flex flex-col md:flex-row gap-6">
+                        <!-- Track Art Placeholder -->
+                        <div class="w-full md:w-48 h-48 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                            <div class="text-white text-center">
+                                <div class="text-4xl mb-2">🎵</div>
+                                <div class="text-sm">DJ Nuff Jamz</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Track Info -->
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-gray-100 mb-2" id="current-track-title">
+                                Select a track to play
+                            </h3>
+                            <p class="text-gray-400 mb-2" id="current-track-artist">DJ Nuff Jamz</p>
+                            <p class="text-gray-300 text-sm mb-4" id="current-track-description">
+                                Choose from the playlist below to start listening
+                            </p>
+                            
+                            <!-- Track Tags -->
+                            <div class="flex flex-wrap gap-2 mb-4" id="current-track-tags">
+                                <!-- Tags will be populated dynamically -->
+                            </div>
+                            
+                            <!-- Audio Controls -->
+                            <div class="space-y-4">
+                                <!-- Play/Pause and Time -->
+                                <div class="flex items-center gap-4">
+                                    <button id="play-pause-btn" class="w-12 h-12 bg-blue-600 hover:bg-blue-700 rounded-full flex items-center justify-center text-white transition-colors">
+                                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M8 5v14l11-7z"/>
+                                        </svg>
+                                    </button>
+                                    
+                                    <div class="text-gray-300 text-sm">
+                                        <span id="current-time">0:00</span> / <span id="total-time">0:00</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Progress Bar -->
+                                <div class="w-full">
+                                    <div class="w-full bg-slate-700 rounded-full h-2 cursor-pointer" id="progress-container">
+                                        <div class="bg-blue-600 h-2 rounded-full transition-all duration-300" id="progress-bar" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Volume Control -->
+                                <div class="flex items-center gap-2">
+                                    <svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                                    </svg>
+                                    <input type="range" id="volume-slider" class="flex-1 h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer" 
+                                           min="0" max="100" value="70">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Playlist -->
+                <div class="card">
+                    <h4 class="text-lg font-semibold text-gray-100 mb-4">Playlist</h4>
+                    <div class="space-y-2" id="playlist">
+                        <!-- Playlist items will be populated dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hidden Audio Element -->
+            <audio id="audio-player" preload="metadata"></audio>
+        `;
+    }
+
+    bindEvents() {
+        // Genre filter buttons
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('genre-filter')) {
+                this.filterByGenre(e.target.dataset.genre);
+            }
+        });
+
+        // Play/Pause button
+        const playPauseBtn = document.getElementById('play-pause-btn');
+        if (playPauseBtn) {
+            playPauseBtn.addEventListener('click', () => this.togglePlayPause());
+        }
+
+        // Progress bar
+        const progressContainer = document.getElementById('progress-container');
+        if (progressContainer) {
+            progressContainer.addEventListener('click', (e) => this.seek(e));
+        }
+
+        // Volume slider
+        const volumeSlider = document.getElementById('volume-slider');
+        if (volumeSlider) {
+            volumeSlider.addEventListener('input', (e) => this.setVolume(e.target.value));
+        }
+
+        // Audio events
+        this.audio = document.getElementById('audio-player');
+        if (this.audio) {
+            this.audio.addEventListener('loadedmetadata', () => this.updateDuration());
+            this.audio.addEventListener('timeupdate', () => this.updateProgress());
+            this.audio.addEventListener('ended', () => this.nextTrack());
+        }
+    }
+
+    filterByGenre(genre) {
+        this.currentGenre = genre;
+        
+        // Update filter buttons
+        document.querySelectorAll('.genre-filter').forEach(btn => {
+            btn.classList.remove('bg-blue-600', 'text-white', 'border-blue-600');
+            btn.classList.add('text-gray-300', 'border-slate-600');
+        });
+        
+        document.querySelector(`[data-genre="${genre}"]`).classList.add('bg-blue-600', 'text-white', 'border-blue-600');
+        document.querySelector(`[data-genre="${genre}"]`).classList.remove('text-gray-300', 'border-slate-600');
+        
+        this.updatePlaylist();
+    }
+
+    updatePlaylist() {
+        const playlist = document.getElementById('playlist');
+        if (!playlist) return;
+
+        const filteredTracks = this.currentGenre === 'all' 
+            ? this.tracks 
+            : this.tracks.filter(track => track.genre === this.currentGenre);
+
+        playlist.innerHTML = filteredTracks.map((track, index) => `
+            <div class="playlist-item flex items-center gap-4 p-3 rounded-lg hover:bg-slate-700 cursor-pointer transition-colors ${this.currentTrack === this.tracks.indexOf(track) ? 'bg-slate-700 border-l-4 border-blue-600' : ''}" 
+                 data-track-index="${this.tracks.indexOf(track)}">
+                <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white text-sm">
+                    ${this.tracks.indexOf(track) + 1}
+                </div>
+                <div class="flex-1">
+                    <div class="text-gray-100 font-medium">${track.title}</div>
+                    <div class="text-gray-400 text-sm">${track.genre} • ${track.duration}</div>
+                </div>
+                <div class="text-gray-400 text-sm">
+                    ${track.duration}
+                </div>
+            </div>
+        `).join('');
+
+        // Add click events to playlist items
+        document.querySelectorAll('.playlist-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const trackIndex = parseInt(item.dataset.trackIndex);
+                this.loadTrack(trackIndex);
+            });
+        });
+    }
+
+    loadTrack(index) {
+        if (index < 0 || index >= this.tracks.length) return;
+        
+        this.currentTrack = index;
+        const track = this.tracks[index];
+        
+        // Update current track display
+        document.getElementById('current-track-title').textContent = track.title;
+        document.getElementById('current-track-artist').textContent = track.artist;
+        document.getElementById('current-track-description').textContent = track.description;
+        
+        // Update tags
+        const tagsContainer = document.getElementById('current-track-tags');
+        tagsContainer.innerHTML = track.tags.map(tag => 
+            `<span class="px-2 py-1 bg-slate-700 text-gray-300 text-xs rounded">${tag}</span>`
+        ).join('');
+        
+        // Load audio (placeholder for now since we don't have actual audio files)
+        if (this.audio) {
+            this.audio.src = track.audioUrl;
+        }
+        
+        // Update playlist highlighting
+        this.updatePlaylist();
+        
+        // Reset play state
+        this.isPlaying = false;
+        this.updatePlayButton();
+        this.playTracked = false; // Reset play tracking flag
+    }
+
+    togglePlayPause() {
+        if (!this.audio || !this.audio.src) {
+            // Show message that audio is not available
+            this.showMessage('Audio file not available. This is a demo version.');
+            return;
+        }
+
+        if (this.isPlaying) {
+            this.audio.pause();
+        } else {
+            this.audio.play().catch(e => {
+                console.log('Playback failed:', e);
+                this.showMessage('Unable to play audio. File may not be available.');
+            });
+            
+            // Track play event (only once per track load)
+            if (!this.playTracked) {
+                this.trackPlay();
+                this.playTracked = true;
+            }
+        }
+        
+        this.isPlaying = !this.isPlaying;
+        this.updatePlayButton();
+    }
+
+    updatePlayButton() {
+        const playPauseBtn = document.getElementById('play-pause-btn');
+        if (!playPauseBtn) return;
+
+        const icon = this.isPlaying 
+            ? '<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>'
+            : '<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+        
+        playPauseBtn.innerHTML = icon;
+    }
+
+    updateProgress() {
+        if (!this.audio) return;
+        
+        const progress = (this.audio.currentTime / this.audio.duration) * 100;
+        const progressBar = document.getElementById('progress-bar');
+        if (progressBar) {
+            progressBar.style.width = `${progress}%`;
+        }
+        
+        const currentTime = document.getElementById('current-time');
+        if (currentTime) {
+            currentTime.textContent = this.formatTime(this.audio.currentTime);
+        }
+    }
+
+    updateDuration() {
+        if (!this.audio) return;
+        
+        const totalTime = document.getElementById('total-time');
+        if (totalTime) {
+            totalTime.textContent = this.formatTime(this.audio.duration);
+        }
+    }
+
+    seek(e) {
+        if (!this.audio) return;
+        
+        const progressContainer = e.currentTarget;
+        const clickX = e.offsetX;
+        const width = progressContainer.offsetWidth;
+        const percentage = clickX / width;
+        
+        this.audio.currentTime = percentage * this.audio.duration;
+    }
+
+    setVolume(value) {
+        if (this.audio) {
+            this.audio.volume = value / 100;
+        }
+    }
+
+    nextTrack() {
+        const nextIndex = (this.currentTrack + 1) % this.tracks.length;
+        this.loadTrack(nextIndex);
+        if (this.isPlaying) {
+            this.togglePlayPause();
+        }
+    }
+
+    formatTime(seconds) {
+        if (isNaN(seconds)) return '0:00';
+        
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = Math.floor(seconds % 60);
+        return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+    }
+
+    async trackPlay() {
+        const track = this.tracks[this.currentTrack];
+        if (!track || !track.id) return;
+
+        try {
+            const response = await fetch(`/api/music/${track.id}/play`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                console.log('Play tracked:', data);
+                
+                // Update local play count if available
+                if (data.data && data.data.playCount) {
+                    track.playCount = data.data.playCount;
+                }
+            }
+        } catch (error) {
+            console.log('Failed to track play:', error);
+            // Don't show error to user as this is background functionality
+        }
+    }
+
+    async loadTracksFromAPI() {
+        try {
+            const response = await fetch('/api/music?limit=50');
+            if (response.ok) {
+                const data = await response.json();
+                if (data.success && data.data.music) {
+                    // Update tracks with real data from API
+                    this.tracks = data.data.music.map(track => ({
+                        id: track._id,
+                        title: track.title,
+                        artist: track.artist,
+                        genre: track.genre,
+                        duration: this.formatTime(track.duration),
+                        audioUrl: track.audioUrl,
+                        description: track.description || `${track.genre} track by ${track.artist}`,
+                        tags: track.tags || [track.genre],
+                        playCount: track.playCount || 0
+                    }));
+                    
+                    // Update playlist display
+                    this.updatePlaylist();
+                    
+                    // Load first track if available
+                    if (this.tracks.length > 0) {
+                        this.loadTrack(0);
+                    }
+                }
+            }
+        } catch (error) {
+            console.log('Failed to load tracks from API:', error);
+            // Keep using sample data
+        }
+    }
+
+    showMessage(message) {
+        // Create a temporary notification
+        const notification = document.createElement('div');
+        notification.className = 'fixed top-4 right-4 bg-slate-800 border border-slate-600 text-white px-4 py-2 rounded-lg shadow-lg z-50';
+        notification.textContent = message;
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.remove();
+        }, 3000);
+    }
+}
+
+// Initialize the music player when the DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    new MusicPlayer();
+});

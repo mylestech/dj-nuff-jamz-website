@@ -20,13 +20,9 @@ class DatabaseConfig {
       const connectionString = this.getConnectionString();
       
       const options = {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
         maxPoolSize: 10,
         serverSelectionTimeoutMS: 5000,
-        socketTimeoutMS: 45000,
-        bufferCommands: false,
-        bufferMaxEntries: 0
+        socketTimeoutMS: 45000
       };
 
       await mongoose.connect(connectionString, options);

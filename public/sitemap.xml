@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+    
+    <!-- Homepage -->
+    <url>
+        <loc>https://djnuffjamz.com/</loc>
+        <lastmod>2024-08-30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://djnuffjamz.com/assets/og-image.jpg</image:loc>
+            <image:title>DJ Nuff Jamz Entertainment - Professional DJ Services NYC</image:title>
+            <image:caption>Professional DJ services in New York City with 20+ years of experience</image:caption>
+        </image:image>
+    </url>
+    
+    <!-- Services Pages -->
+    <url>
+        <loc>https://djnuffjamz.com/#services</loc>
+        <lastmod>2024-08-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- Gallery -->
+    <url>
+        <loc>https://djnuffjamz.com/#gallery</loc>
+        <lastmod>2024-08-30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://djnuffjamz.com/images/gallery/wedding-event-1.jpg</image:loc>
+            <image:title>Wedding DJ Services - DJ Nuff Jamz</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://djnuffjamz.com/images/gallery/corporate-event-1.jpg</image:loc>
+            <image:title>Corporate Event DJ Services</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://djnuffjamz.com/images/gallery/dj-setup-1.jpg</image:loc>
+            <image:title>Professional DJ Equipment Setup</image:title>
+        </image:image>
+    </url>
+    
+    <!-- Music Section -->
+    <url>
+        <loc>https://djnuffjamz.com/#music</loc>
+        <lastmod>2024-08-30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Calendar/Availability -->
+    <url>
+        <loc>https://djnuffjamz.com/#calendar</loc>
+        <lastmod>2024-08-30</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Booking -->
+    <url>
+        <loc>https://djnuffjamz.com/#booking</loc>
+        <lastmod>2024-08-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- Contact -->
+    <url>
+        <loc>https://djnuffjamz.com/#contact</loc>
+        <lastmod>2024-08-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Admin Upload (noindex) -->
+    <url>
+        <loc>https://djnuffjamz.com/admin-upload.html</loc>
+        <lastmod>2024-08-30</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.1</priority>
+    </url>
+    
+    <!-- Service-specific landing pages (virtual) -->
+    <url>
+        <loc>https://djnuffjamz.com/wedding-dj-nyc</loc>
+        <lastmod>2024-08-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://djnuffjamz.com/corporate-event-dj-nyc</loc>
+        <lastmod>2024-08-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://djnuffjamz.com/private-party-dj-nyc</loc>
+        <lastmod>2024-08-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://djnuffjamz.com/afrobeats-dj-nyc</loc>
+        <lastmod>2024-08-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+</urlset>

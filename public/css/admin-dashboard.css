@@ -1,0 +1,434 @@
+/* DJ Nuff Jamz Admin Dashboard Styles */
+
+/* Admin Layout */
+.admin-layout {
+    min-height: calc(100vh - 80px);
+}
+
+.admin-sidebar {
+    position: sticky;
+    top: 0;
+    height: calc(100vh - 80px);
+    overflow-y: auto;
+}
+
+.admin-content {
+    background: #0f172a;
+    min-height: calc(100vh - 80px);
+    overflow-y: auto;
+}
+
+/* Navigation */
+.nav-link {
+    @apply text-gray-300 hover:text-white hover:bg-slate-700 transition-colors duration-200;
+}
+
+.nav-link.active {
+    @apply text-white bg-blue-600;
+}
+
+.nav-link:hover {
+    @apply bg-slate-700;
+}
+
+.nav-link.active:hover {
+    @apply bg-blue-700;
+}
+
+/* Content Sections */
+.content-section {
+    @apply animate-fade-in;
+}
+
+.content-section.hidden {
+    @apply hidden;
+}
+
+/* Stats Cards */
+.stat-card {
+    @apply transition-transform duration-200 hover:scale-105;
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+}
+
+.stat-card:hover {
+    @apply shadow-lg;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Quick Action Buttons */
+.quick-action-btn {
+    @apply transition-all duration-200 hover:scale-105;
+}
+
+.quick-action-btn:hover {
+    @apply shadow-lg transform -translate-y-1;
+}
+
+/* Tables */
+.admin-table {
+    @apply w-full bg-slate-800 rounded-lg overflow-hidden;
+}
+
+.admin-table th {
+    @apply bg-slate-700 px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider;
+}
+
+.admin-table td {
+    @apply px-6 py-4 whitespace-nowrap text-sm text-gray-300 border-b border-slate-700;
+}
+
+.admin-table tr:hover {
+    @apply bg-slate-700;
+}
+
+/* Forms */
+.admin-form {
+    @apply space-y-6;
+}
+
+.form-group {
+    @apply space-y-2;
+}
+
+.form-label {
+    @apply block text-sm font-medium text-gray-300;
+}
+
+.form-input {
+    @apply w-full px-3 py-2 bg-slate-700 border border-slate-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+}
+
+.form-textarea {
+    @apply w-full px-3 py-2 bg-slate-700 border border-slate-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-vertical;
+}
+
+.form-select {
+    @apply w-full px-3 py-2 bg-slate-700 border border-slate-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+}
+
+/* Buttons */
+.btn-admin {
+    @apply px-4 py-2 rounded-lg font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-800;
+}
+
+.btn-admin-primary {
+    @apply bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500;
+}
+
+.btn-admin-secondary {
+    @apply bg-slate-600 text-white hover:bg-slate-700 focus:ring-slate-500;
+}
+
+.btn-admin-success {
+    @apply bg-green-600 text-white hover:bg-green-700 focus:ring-green-500;
+}
+
+.btn-admin-danger {
+    @apply bg-red-600 text-white hover:bg-red-700 focus:ring-red-500;
+}
+
+.btn-admin-warning {
+    @apply bg-yellow-600 text-white hover:bg-yellow-700 focus:ring-yellow-500;
+}
+
+/* Cards */
+.admin-card {
+    @apply bg-slate-800 rounded-lg border border-slate-700 p-6;
+}
+
+.admin-card-header {
+    @apply border-b border-slate-700 pb-4 mb-4;
+}
+
+.admin-card-title {
+    @apply text-lg font-semibold text-white;
+}
+
+.admin-card-subtitle {
+    @apply text-sm text-gray-400 mt-1;
+}
+
+/* Status Badges */
+.status-badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+.status-pending {
+    @apply bg-yellow-100 text-yellow-800;
+}
+
+.status-confirmed {
+    @apply bg-green-100 text-green-800;
+}
+
+.status-cancelled {
+    @apply bg-red-100 text-red-800;
+}
+
+.status-completed {
+    @apply bg-blue-100 text-blue-800;
+}
+
+/* Dark theme status badges */
+.dark .status-pending {
+    @apply bg-yellow-900 text-yellow-200;
+}
+
+.dark .status-confirmed {
+    @apply bg-green-900 text-green-200;
+}
+
+.dark .status-cancelled {
+    @apply bg-red-900 text-red-200;
+}
+
+.dark .status-completed {
+    @apply bg-blue-900 text-blue-200;
+}
+
+/* Modals */
+.admin-modal {
+    @apply fixed inset-0 z-50 overflow-y-auto;
+}
+
+.admin-modal-backdrop {
+    @apply fixed inset-0 bg-black bg-opacity-50 transition-opacity;
+}
+
+.admin-modal-container {
+    @apply flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0;
+}
+
+.admin-modal-content {
+    @apply inline-block align-bottom bg-slate-800 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full;
+}
+
+.admin-modal-header {
+    @apply bg-slate-700 px-4 py-3 sm:px-6;
+}
+
+.admin-modal-title {
+    @apply text-lg leading-6 font-medium text-white;
+}
+
+.admin-modal-body {
+    @apply bg-slate-800 px-4 pt-5 pb-4 sm:p-6 sm:pb-4;
+}
+
+.admin-modal-footer {
+    @apply bg-slate-700 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse;
+}
+
+/* File Upload */
+.file-upload-area {
+    @apply border-2 border-dashed border-slate-600 rounded-lg p-6 text-center hover:border-blue-500 transition-colors duration-200 cursor-pointer;
+}
+
+.file-upload-area.dragover {
+    @apply border-blue-500 bg-blue-900 bg-opacity-20;
+}
+
+.file-upload-icon {
+    @apply mx-auto h-12 w-12 text-slate-400;
+}
+
+.file-upload-text {
+    @apply mt-2 block text-sm font-medium text-gray-300;
+}
+
+.file-upload-subtext {
+    @apply block text-xs text-gray-500;
+}
+
+/* Progress Bars */
+.progress-bar {
+    @apply w-full bg-slate-700 rounded-full h-2;
+}
+
+.progress-bar-fill {
+    @apply bg-blue-600 h-2 rounded-full transition-all duration-300;
+}
+
+/* Notifications */
+.notification {
+    @apply fixed top-4 right-4 max-w-sm w-full bg-slate-800 border border-slate-700 rounded-lg shadow-lg z-50 transform transition-all duration-300;
+}
+
+.notification.show {
+    @apply translate-x-0 opacity-100;
+}
+
+.notification.hide {
+    @apply translate-x-full opacity-0;
+}
+
+.notification-success {
+    @apply border-l-4 border-green-500;
+}
+
+.notification-error {
+    @apply border-l-4 border-red-500;
+}
+
+.notification-warning {
+    @apply border-l-4 border-yellow-500;
+}
+
+.notification-info {
+    @apply border-l-4 border-blue-500;
+}
+
+/* Charts */
+.chart-container {
+    @apply bg-slate-800 p-6 rounded-lg border border-slate-700;
+}
+
+.chart-title {
+    @apply text-lg font-semibold text-white mb-4;
+}
+
+/* Data Lists */
+.data-list {
+    @apply space-y-3;
+}
+
+.data-list-item {
+    @apply flex items-center justify-between p-3 bg-slate-700 rounded-lg hover:bg-slate-600 transition-colors duration-200;
+}
+
+.data-list-item-content {
+    @apply flex-1;
+}
+
+.data-list-item-title {
+    @apply font-medium text-white;
+}
+
+.data-list-item-subtitle {
+    @apply text-sm text-gray-400;
+}
+
+.data-list-item-actions {
+    @apply flex items-center space-x-2;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .admin-sidebar {
+        @apply hidden;
+    }
+    
+    .admin-content {
+        @apply w-full;
+    }
+    
+    .admin-layout {
+        @apply flex-col;
+    }
+    
+    .stat-card {
+        @apply hover:scale-100;
+    }
+    
+    .quick-action-btn {
+        @apply hover:scale-100 hover:transform-none;
+    }
+}
+
+@media (max-width: 640px) {
+    .admin-content {
+        @apply p-4;
+    }
+    
+    .admin-card {
+        @apply p-4;
+    }
+    
+    .stat-card {
+        @apply p-4;
+    }
+}
+
+/* Loading States */
+.loading {
+    @apply animate-pulse;
+}
+
+.loading-skeleton {
+    @apply bg-slate-700 rounded;
+}
+
+.loading-text {
+    @apply h-4 bg-slate-700 rounded w-3/4;
+}
+
+.loading-title {
+    @apply h-6 bg-slate-700 rounded w-1/2;
+}
+
+/* Animations */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fade-in 0.3s ease-out;
+}
+
+@keyframes slide-in-right {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+.animate-slide-in-right {
+    animation: slide-in-right 0.3s ease-out;
+}
+
+/* Scrollbar Styling */
+.admin-sidebar::-webkit-scrollbar,
+.admin-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.admin-sidebar::-webkit-scrollbar-track,
+.admin-content::-webkit-scrollbar-track {
+    background: #1e293b;
+}
+
+.admin-sidebar::-webkit-scrollbar-thumb,
+.admin-content::-webkit-scrollbar-thumb {
+    background: #475569;
+    border-radius: 3px;
+}
+
+.admin-sidebar::-webkit-scrollbar-thumb:hover,
+.admin-content::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+}
+
+/* Print Styles */
+@media print {
+    .admin-sidebar,
+    .admin-header {
+        @apply hidden;
+    }
+    
+    .admin-content {
+        @apply w-full p-0;
+    }
+    
+    .admin-card {
+        @apply border border-gray-300 bg-white text-black;
+    }
+}

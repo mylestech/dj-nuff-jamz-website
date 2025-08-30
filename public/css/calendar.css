@@ -1,0 +1,203 @@
+/* DJ Nuff Jamz Calendar Styles */
+
+.calendar-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.calendar-grid {
+    border: 1px solid #374151;
+}
+
+.calendar-day {
+    @apply relative p-3 text-center cursor-pointer transition-colors duration-200 rounded-lg min-h-[60px] flex flex-col items-center justify-center;
+    background: #1e293b;
+    border: 1px solid #334155;
+}
+
+.calendar-day:hover {
+    @apply bg-slate-700;
+}
+
+.calendar-day.empty {
+    @apply cursor-default;
+    background: transparent;
+    border: none;
+}
+
+.calendar-day.today {
+    @apply bg-blue-900 border-blue-500;
+}
+
+.calendar-day.past {
+    @apply text-gray-500;
+    background: #0f172a;
+}
+
+.calendar-day.available {
+    @apply bg-green-900 border-green-500 text-green-100;
+}
+
+.calendar-day.available:hover {
+    @apply bg-green-800;
+}
+
+.calendar-day.booked {
+    @apply bg-blue-900 border-blue-500 text-blue-100;
+}
+
+.calendar-day.booked:hover {
+    @apply bg-blue-800;
+}
+
+.calendar-day.pending {
+    @apply bg-yellow-900 border-yellow-500 text-yellow-100;
+}
+
+.calendar-day.pending:hover {
+    @apply bg-yellow-800;
+}
+
+.calendar-day.unavailable {
+    @apply bg-gray-800 border-gray-600 text-gray-400;
+}
+
+.day-number {
+    @apply text-sm font-medium mb-1;
+}
+
+.event-dot {
+    @apply w-2 h-2 rounded-full;
+}
+
+.event-card {
+    @apply transition-all duration-200;
+}
+
+.event-card:hover {
+    @apply transform scale-105;
+}
+
+.status-badge {
+    @apply font-medium uppercase tracking-wide;
+}
+
+.status-available {
+    @apply bg-green-600 text-green-100;
+}
+
+.status-confirmed {
+    @apply bg-blue-600 text-blue-100;
+}
+
+.status-pending {
+    @apply bg-yellow-600 text-yellow-100;
+}
+
+.status-cancelled {
+    @apply bg-red-600 text-red-100;
+}
+
+/* Calendar responsive design */
+@media (max-width: 768px) {
+    .calendar-day {
+        @apply min-h-[50px] p-2;
+    }
+    
+    .day-number {
+        @apply text-xs;
+    }
+    
+    .event-dot {
+        @apply w-1.5 h-1.5;
+    }
+    
+    .calendar-legend {
+        @apply grid-cols-2;
+    }
+}
+
+@media (max-width: 640px) {
+    .calendar-day {
+        @apply min-h-[40px] p-1;
+    }
+    
+    .calendar-controls h3 {
+        @apply text-lg;
+    }
+}
+
+/* Animation for modal */
+#eventModal {
+    @apply transition-opacity duration-300;
+}
+
+#eventModal.hidden {
+    @apply opacity-0 pointer-events-none;
+}
+
+#eventModal:not(.hidden) {
+    @apply opacity-100;
+}
+
+/* Calendar loading state */
+.calendar-loading {
+    @apply animate-pulse;
+}
+
+.calendar-loading .calendar-day {
+    @apply bg-gray-700;
+}
+
+/* Event type colors */
+.event-wedding {
+    @apply border-pink-500 bg-pink-900;
+}
+
+.event-corporate {
+    @apply border-blue-500 bg-blue-900;
+}
+
+.event-birthday {
+    @apply border-purple-500 bg-purple-900;
+}
+
+.event-private {
+    @apply border-indigo-500 bg-indigo-900;
+}
+
+/* Accessibility improvements */
+.calendar-day:focus {
+    @apply outline-none ring-2 ring-blue-500 ring-opacity-50;
+}
+
+.btn-calendar {
+    @apply px-4 py-2 rounded-lg font-medium transition-colors duration-200;
+}
+
+.btn-calendar-primary {
+    @apply bg-blue-600 text-white hover:bg-blue-700;
+}
+
+.btn-calendar-secondary {
+    @apply bg-gray-600 text-white hover:bg-gray-700;
+}
+
+/* Calendar header styling */
+.calendar-header h2 {
+    @apply bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent;
+}
+
+/* Legend styling */
+.legend-item {
+    @apply transition-opacity duration-200 hover:opacity-80;
+}
+
+/* Upcoming events styling */
+.upcoming-events {
+    @apply bg-slate-800 rounded-lg p-6;
+}
+
+.upcoming-events h3 {
+    @apply text-white border-b border-slate-600 pb-2;
+}

@@ -29,6 +29,8 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/calendar.css">
+    <link rel="stylesheet" href="/src/styles/booking-form.css">
     
     <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,11 +39,151 @@
 
     <title>DJ Nuff Jamz Entertainment - Professional DJ Services NYC</title>
 
-    <!-- Structured Data for SEO -->
+    <!-- Enhanced SEO Meta Tags -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow">
+    <meta name="bingbot" content="index, follow">
+    <meta name="rating" content="general">
+    <meta name="revisit-after" content="7 days">
+    <meta name="language" content="en-US">
+    <meta name="geo.region" content="US-NY">
+    <meta name="geo.placename" content="New York City">
+    <meta name="geo.position" content="40.7128;-74.0060">
+    <meta name="ICBM" content="40.7128, -74.0060">
+    
+    <!-- Local Business Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "@id": "https://djnuffjamz.com/#business",
+        "name": "DJ Nuff Jamz Entertainment",
+        "alternateName": "DJ Nuff Jamz",
+        "url": "https://djnuffjamz.com",
+        "logo": "https://djnuffjamz.com/assets/logo.png",
+        "image": [
+            "https://djnuffjamz.com/assets/og-image.jpg",
+            "https://djnuffjamz.com/images/gallery/dj-setup-1.jpg",
+            "https://djnuffjamz.com/images/gallery/wedding-event-1.jpg"
+        ],
+        "description": "Professional DJ services in NYC with 20+ years of experience, specializing in Afrobeats, Hip-Hop, R&B, corporate events, weddings, and private parties.",
+        "telephone": "+1-555-123-4567",
+        "email": "info@djnuffjamz.com",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "123 Music Avenue",
+            "addressLocality": "New York",
+            "addressRegion": "NY",
+            "postalCode": "10001",
+            "addressCountry": "US"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 40.7128,
+            "longitude": -74.0060
+        },
+        "areaServed": [
+            {
+                "@type": "City",
+                "name": "New York City"
+            },
+            {
+                "@type": "State",
+                "name": "New York"
+            },
+            {
+                "@type": "City",
+                "name": "Brooklyn"
+            },
+            {
+                "@type": "City",
+                "name": "Queens"
+            },
+            {
+                "@type": "City",
+                "name": "Manhattan"
+            },
+            {
+                "@type": "City",
+                "name": "Bronx"
+            },
+            {
+                "@type": "City",
+                "name": "Staten Island"
+            }
+        ],
+        "serviceType": "DJ Services",
+        "priceRange": "$500-$5000",
+        "openingHours": "Mo-Su 09:00-23:00",
+        "paymentAccepted": ["Cash", "Credit Card", "Check", "PayPal", "Venmo"],
+        "currenciesAccepted": "USD",
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "DJ Services",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Wedding DJ Services",
+                        "description": "Complete wedding DJ services with professional sound system and lighting"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Corporate Event DJ",
+                        "description": "Professional DJ services for corporate events and business functions"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Private Party DJ",
+                        "description": "DJ services for birthday parties, anniversaries, and private celebrations"
+                    }
+                }
+            ]
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "127",
+            "bestRating": "5",
+            "worstRating": "1"
+        },
+        "review": [
+            {
+                "@type": "Review",
+                "author": {
+                    "@type": "Person",
+                    "name": "Sarah Johnson"
+                },
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5"
+                },
+                "reviewBody": "DJ Nuff Jamz made our wedding absolutely perfect! Amazing music selection and professional service."
+            }
+        ],
+        "sameAs": [
+            "https://www.facebook.com/djnuffjamz",
+            "https://www.instagram.com/djnuffjamz",
+            "https://twitter.com/djnuffjamz",
+            "https://www.linkedin.com/company/djnuffjamz"
+        ]
+    }
+    </script>
+    
+    <!-- Music Group Schema -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "MusicGroup",
+        "@id": "https://djnuffjamz.com/#musicgroup",
         "name": "DJ Nuff Jamz Entertainment",
         "url": "https://djnuffjamz.com",
         "logo": "https://djnuffjamz.com/assets/logo.png",
@@ -505,11 +647,22 @@
             </div>
         </section>
 
-        <section id="testimonials" class="section-padding bg-dark-800/50" aria-labelledby="testimonials-heading">
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="section-padding bg-gradient-to-b from-dark-800 to-dark-900" aria-labelledby="testimonials-heading">
             <div class="container-custom">
-                <h2 id="testimonials-heading" class="text-center mb-12 text-gray-100">Client Testimonials</h2>
-                <div class="text-center">
-                    <p class="text-lg text-gray-300">Testimonials coming soon...</p>
+                <div id="testimonials-container">
+                    <!-- Testimonials will be loaded here by JavaScript -->
+                    <div class="text-center">
+                        <div class="animate-pulse">
+                            <div class="h-8 bg-slate-700 rounded w-64 mx-auto mb-4"></div>
+                            <div class="h-4 bg-slate-700 rounded w-96 mx-auto mb-8"></div>
+                            <div class="bg-slate-800 rounded-lg p-8 max-w-2xl mx-auto">
+                                <div class="h-4 bg-slate-700 rounded mb-4"></div>
+                                <div class="h-4 bg-slate-700 rounded mb-4"></div>
+                                <div class="h-4 bg-slate-700 rounded w-3/4"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -533,12 +686,7 @@
         </section>
 
         <section id="booking" class="section-padding bg-primary-900/20" aria-labelledby="booking-heading">
-            <div class="container-custom">
-                <h2 id="booking-heading" class="text-center mb-12 text-gray-100">Book Your Event</h2>
-                <div class="text-center">
-                    <p class="text-lg text-gray-300">Booking form coming soon...</p>
-                </div>
-            </div>
+            <!-- Booking form will be rendered here by JavaScript -->
         </section>
     </main>
 
@@ -563,6 +711,9 @@
         </div>
     </footer>
 
+    <!-- Booking Form JavaScript -->
+    <script src="/src/components/BookingForm.js"></script>
+    
     <!-- JavaScript for Mobile Menu and Basic Interactions -->
     <script>
         // Mobile menu toggle
@@ -600,6 +751,12 @@
                     mobileMenuButton.setAttribute('aria-expanded', 'false');
                 });
             });
+
+            // Initialize booking form
+            if (window.BookingForm) {
+                const bookingForm = new BookingForm();
+                bookingForm.init();
+            }
         });
 
         // Keyboard navigation support
@@ -712,5 +869,27 @@
             }
         </style>
     </noscript>
+    
+    <!-- Analytics Configuration -->
+    <script>
+        // Google Analytics Configuration
+        window.GA_MEASUREMENT_ID = 'G-XXXXXXXXXX'; // Replace with actual GA4 Measurement ID
+        
+        // Performance optimization
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => console.log('SW registered'))
+                    .catch(error => console.log('SW registration failed'));
+            });
+        }
+    </script>
+    
+    <!-- Scripts -->
+    <script src="js/analytics.js"></script>
+    <script src="js/music-player.js"></script>
+    <script src="js/gallery.js"></script>
+    <script src="js/testimonials.js"></script>
+    <script src="js/calendar.js"></script>
 </body>
 </html>

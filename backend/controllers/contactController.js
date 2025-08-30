@@ -5,11 +5,12 @@
 
 const BaseController = require('./BaseController');
 const Contact = require('../models/Contact');
-const emailService = require('../utils/emailService');
+const EmailService = require('../services/emailService');
 
 class ContactController extends BaseController {
   constructor() {
     super();
+    this.emailService = new EmailService();
     // Bind methods to maintain 'this' context
     this.submitContactForm = this.asyncHandler(this.submitContactForm.bind(this));
     this.getAllContacts = this.asyncHandler(this.getAllContacts.bind(this));
@@ -35,8 +36,8 @@ class ContactController extends BaseController {
 
       // Send acknowledgment and notification emails
       try {
-        await emailService.sendContactAcknowledgment(contact);
-        await emailService.sendAdminContactNotification(contact);
+        await this.emailService.sendContactResponse(contact);
+        console.log('Contact response email sent successfully');
       } catch (emailError) {
         console.error('Email sending failed:', emailError);
         // Continue execution - don't fail the contact creation due to email issues

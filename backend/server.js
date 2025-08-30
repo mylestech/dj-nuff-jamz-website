@@ -7,9 +7,12 @@ require('dotenv').config({ path: require('path').join(__dirname, '../.env') });
 console.log('🔍 Environment check:', {
   ADMIN_USERNAME: process.env.ADMIN_USERNAME,
   ADMIN_PASSWORD: process.env.ADMIN_PASSWORD ? 'SET' : 'NOT SET',
-  JWT_SECRET: process.env.JWT_SECRET ? 'SET' : 'NOT SET'
+  JWT_SECRET: process.env.JWT_SECRET ? 'SET' : 'NOT SET',
+  MONGODB_URI: process.env.MONGODB_URI ? 'SET' : 'NOT SET'
 });
+
 const express = require('express');
+const database = require('./config/database');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
@@ -68,7 +71,8 @@ app.get('/api', (req, res) => {
       gallery: '/api/gallery',
       booking: '/api/booking',
       contact: '/api/contact',
-      admin: '/api/admin'
+      admin: '/api/admin',
+      music: '/api/music'
     }
   });
 });
@@ -78,12 +82,22 @@ const galleryRoutes = require('./routes/gallery');
 const bookingRoutes = require('./routes/booking');
 const contactRoutes = require('./routes/contact');
 const adminRoutes = require('./routes/admin');
+const musicRoutes = require('./routes/music');
+const testimonialsRoutes = require('./routes/testimonials');
+const calendarRoutes = require('./routes/calendar');
+const emailRoutes = require('./routes/email');
+const analyticsRoutes = require('./routes/analytics');
 
 // Mount routes
 app.use('/api/gallery', galleryRoutes);
 app.use('/api/booking', bookingRoutes);
 app.use('/api/contact', contactRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/music', musicRoutes);
+app.use('/api/testimonials', testimonialsRoutes);
+app.use('/api/calendar', calendarRoutes);
+app.use('/api/email', emailRoutes);
+app.use('/api/analytics', analyticsRoutes);
 
 // 404 handler
 app.use('*', (req, res) => {
@@ -91,7 +105,7 @@ app.use('*', (req, res) => {
     error: 'Not Found',
     message: 'The requested endpoint does not exist',
     requestedUrl: req.originalUrl,
-    availableEndpoints: ['/api', '/api/health', '/api/gallery', '/api/booking', '/api/contact', '/api/admin']
+    availableEndpoints: ['/api', '/api/health', '/api/gallery', '/api/booking', '/api/contact', '/api/admin', '/api/music']
   });
 });
 
@@ -105,12 +119,25 @@ app.use((err, req, res, next) => {
   });
 });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`🚀 DJ Nuff Jamz Backend API Server running on port ${PORT}`);
-  console.log(`📍 Environment: ${process.env.NODE_ENV || 'development'}`);
-  console.log(`🔗 Health check: http://localhost:${PORT}/api/health`);
-  console.log(`📋 API info: http://localhost:${PORT}/api`);
-});
+// Start server with database connection
+const startServer = async () => {
+  try {
+    // Connect to MongoDB
+    await database.connect();
+    
+    // Start Express server
+    app.listen(PORT, () => {
+      console.log(`🚀 DJ Nuff Jamz Backend API Server running on port ${PORT}`);
+      console.log(`📍 Environment: ${process.env.NODE_ENV || 'development'}`);
+      console.log(`🔗 Health check: http://localhost:${PORT}/api/health`);
+      console.log(`📋 API info: http://localhost:${PORT}/api`);
+    });
+  } catch (error) {
+    console.error('❌ Failed to start server:', error.message);
+    process.exit(1);
+  }
+};
+
+startServer();
 
 module.exports = app;

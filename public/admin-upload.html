@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DJ Nuff Jamz - Admin Upload</title>
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body class="bg-dark-900 text-gray-100">
+    <div class="min-h-screen py-8">
+        <div class="container-custom max-w-2xl">
+            <h1 class="text-3xl font-bold text-center mb-8">Audio Upload</h1>
+            
+            <div class="card">
+                <form id="uploadForm" enctype="multipart/form-data">
+                    <div class="space-y-6">
+                        <!-- File Upload -->
+                        <div>
+                            <label class="form-label">Audio File *</label>
+                            <input type="file" 
+                                   id="audioFile" 
+                                   name="audio" 
+                                   accept="audio/*" 
+                                   required
+                                   class="w-full p-3 border border-slate-600 rounded-lg bg-slate-800 text-gray-100 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-blue-600 file:text-white hover:file:bg-blue-700">
+                        </div>
+
+                        <!-- Track Info -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="form-label">Title *</label>
+                                <input type="text" 
+                                       name="title" 
+                                       required
+                                       class="form-input w-full">
+                            </div>
+                            <div>
+                                <label class="form-label">Artist</label>
+                                <input type="text" 
+                                       name="artist" 
+                                       value="DJ Nuff Jamz"
+                                       class="form-input w-full">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="form-label">Genre *</label>
+                                <select name="genre" required class="form-input w-full">
+                                    <option value="">Select Genre</option>
+                                    <option value="house">House</option>
+                                    <option value="techno">Techno</option>
+                                    <option value="trance">Trance</option>
+                                    <option value="deep-house">Deep House</option>
+                                    <option value="progressive">Progressive</option>
+                                    <option value="hip-hop">Hip-Hop</option>
+                                    <option value="r&b">R&B</option>
+                                    <option value="pop">Pop</option>
+                                    <option value="rock">Rock</option>
+                                    <option value="edm">EDM</option>
+                                    <option value="dubstep">Dubstep</option>
+                                    <option value="reggae">Reggae</option>
+                                    <option value="latin">Latin</option>
+                                    <option value="afrobeat">Afrobeat</option>
+                                    <option value="jazz">Jazz</option>
+                                    <option value="funk">Funk</option>
+                                    <option value="disco">Disco</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="form-label">Sub-Genre</label>
+                                <input type="text" 
+                                       name="subGenre" 
+                                       class="form-input w-full">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="form-label">BPM</label>
+                                <input type="number" 
+                                       name="bpm" 
+                                       min="60" 
+                                       max="200"
+                                       class="form-input w-full">
+                            </div>
+                            <div>
+                                <label class="form-label">Key</label>
+                                <input type="text" 
+                                       name="key" 
+                                       placeholder="e.g., Am, C#"
+                                       class="form-input w-full">
+                            </div>
+                            <div>
+                                <label class="form-label">Mix Type</label>
+                                <select name="mixType" class="form-input w-full">
+                                    <option value="original">Original</option>
+                                    <option value="remix">Remix</option>
+                                    <option value="mashup">Mashup</option>
+                                    <option value="live-mix">Live Mix</option>
+                                    <option value="radio-edit">Radio Edit</option>
+                                    <option value="extended">Extended</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="form-label">Description</label>
+                            <textarea name="description" 
+                                      rows="3" 
+                                      class="form-input w-full resize-none"></textarea>
+                        </div>
+
+                        <div>
+                            <label class="form-label">Tags (comma-separated)</label>
+                            <input type="text" 
+                                   name="tags" 
+                                   placeholder="e.g., summer, party, dance, club"
+                                   class="form-input w-full">
+                        </div>
+
+                        <div class="flex gap-6">
+                            <label class="flex items-center gap-2">
+                                <input type="checkbox" 
+                                       name="isPublic" 
+                                       checked
+                                       class="w-4 h-4 text-blue-600 bg-slate-800 border-slate-600 rounded focus:ring-blue-500">
+                                <span class="text-gray-300">Public</span>
+                            </label>
+                            <label class="flex items-center gap-2">
+                                <input type="checkbox" 
+                                       name="featured"
+                                       class="w-4 h-4 text-blue-600 bg-slate-800 border-slate-600 rounded focus:ring-blue-500">
+                                <span class="text-gray-300">Featured</span>
+                            </label>
+                        </div>
+
+                        <!-- Progress Bar -->
+                        <div id="progressContainer" class="hidden">
+                            <div class="flex justify-between text-sm text-gray-400 mb-2">
+                                <span>Uploading...</span>
+                                <span id="progressPercent">0%</span>
+                            </div>
+                            <div class="w-full bg-slate-700 rounded-full h-2">
+                                <div id="progressBar" class="bg-blue-600 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" 
+                                id="submitBtn"
+                                class="w-full btn-primary py-3">
+                            Upload Audio
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Result Message -->
+                <div id="resultMessage" class="mt-6 hidden"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const submitBtn = document.getElementById('submitBtn');
+            const progressContainer = document.getElementById('progressContainer');
+            const progressBar = document.getElementById('progressBar');
+            const progressPercent = document.getElementById('progressPercent');
+            const resultMessage = document.getElementById('resultMessage');
+            
+            // Reset UI
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Uploading...';
+            progressContainer.classList.remove('hidden');
+            resultMessage.classList.add('hidden');
+            
+            try {
+                const xhr = new XMLHttpRequest();
+                
+                // Track upload progress
+                xhr.upload.addEventListener('progress', function(e) {
+                    if (e.lengthComputable) {
+                        const percentComplete = (e.loaded / e.total) * 100;
+                        progressBar.style.width = percentComplete + '%';
+                        progressPercent.textContent = Math.round(percentComplete) + '%';
+                    }
+                });
+                
+                // Handle completion
+                xhr.addEventListener('load', function() {
+                    if (xhr.status === 201) {
+                        const response = JSON.parse(xhr.responseText);
+                        resultMessage.innerHTML = `
+                            <div class="p-4 bg-green-900/50 border border-green-600 rounded-lg">
+                                <h3 class="text-green-400 font-semibold mb-2">Upload Successful!</h3>
+                                <p class="text-gray-300">Track "${response.data.music.title}" has been uploaded.</p>
+                                <p class="text-sm text-gray-400 mt-2">File: ${response.data.file.originalName}</p>
+                            </div>
+                        `;
+                        resultMessage.classList.remove('hidden');
+                        document.getElementById('uploadForm').reset();
+                    } else {
+                        throw new Error('Upload failed');
+                    }
+                });
+                
+                // Handle errors
+                xhr.addEventListener('error', function() {
+                    throw new Error('Network error occurred');
+                });
+                
+                // Send request
+                xhr.open('POST', '/api/music/upload');
+                xhr.send(formData);
+                
+            } catch (error) {
+                console.error('Upload error:', error);
+                resultMessage.innerHTML = `
+                    <div class="p-4 bg-red-900/50 border border-red-600 rounded-lg">
+                        <h3 class="text-red-400 font-semibold mb-2">Upload Failed</h3>
+                        <p class="text-gray-300">${error.message}</p>
+                    </div>
+                `;
+                resultMessage.classList.remove('hidden');
+            } finally {
+                // Reset UI
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Upload Audio';
+                progressContainer.classList.add('hidden');
+                progressBar.style.width = '0%';
+                progressPercent.textContent = '0%';
+            }
+        });
+    </script>
+</body>
+</html>

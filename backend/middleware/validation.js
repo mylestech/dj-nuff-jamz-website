@@ -46,7 +46,7 @@ const validateBooking = [
     
   body('phone')
     .trim()
-    .isMobilePhone('any')
+    .matches(/^[\+]?[\d\s\-\(\)]{10,}$/)
     .withMessage('Please provide a valid phone number'),
     
   body('eventType')
@@ -74,13 +74,15 @@ const validateBooking = [
     .withMessage('Event location must be between 5 and 200 characters'),
     
   body('guestCount')
-    .isInt({ min: 1, max: 10000 })
-    .withMessage('Guest count must be between 1 and 10,000'),
+    .trim()
+    .isIn(['1-25', '26-50', '51-100', '101-200', '201-500', '500+'])
+    .withMessage('Please select a valid guest count range'),
     
   body('budget')
     .optional()
-    .isFloat({ min: 0 })
-    .withMessage('Budget must be a positive number'),
+    .trim()
+    .isIn(['under-1000', '1000-2500', '2500-5000', '5000-10000', '10000+', 'discuss'])
+    .withMessage('Please select a valid budget range'),
     
   body('musicPreferences')
     .optional()
