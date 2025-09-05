@@ -1,323 +1,201 @@
-/**
- * Gallery Controller
- * Handles CRUD operations for photo gallery
- */
+const fs = require('fs').promises;
+const path = require('path');
+const Gallery = require('../models/Gallery');
 
-const BaseController = require('./BaseController');
-const { Gallery } = require('../models');
+class GalleryController {
+    /**
+     * Get gallery items from database
+     */
+    async getGalleryItems(req, res) {
+        try {
+            const { limit = 50, category, featured } = req.query;
+            
+            let query = {};
+            if (category && category !== 'all') {
+                query.category = category;
+            }
+            if (featured === 'true') {
+                query.featured = true;
+            }
 
-class GalleryController extends BaseController {
-  
-  /**
-   * Get all gallery items with filtering and pagination
-   */
-  async getAllGallery(req, res) {
-    try {
-      const {
-        page = 1,
-        limit = 20,
-        eventType,
-        category,
-        featured,
-        isPortfolio,
-        isPublic = true,
-        search,
-        sortBy = 'eventDate',
-        sortOrder = 'desc'
-      } = req.query;
+            const items = await Gallery.find(query)
+                .limit(parseInt(limit))
+                .sort({ createdAt: -1 });
 
-      const filter = { isPublic: isPublic === 'true' };
-      
-      if (eventType) filter.eventType = eventType;
-      if (category) filter.category = category;
-      if (featured !== undefined) filter.featured = featured === 'true';
-      if (isPortfolio !== undefined) filter.isPortfolio = isPortfolio === 'true';
-      
-      if (search) {
-        filter.$text = { $search: search };
-      }
-
-      const sortOptions = {};
-      sortOptions[sortBy] = sortOrder === 'desc' ? -1 : 1;
-
-      const gallery = await Gallery.find(filter)
-        .sort(sortOptions)
-        .limit(limit * 1)
-        .skip((page - 1) * limit)
-        .exec();
-
-      const total = await Gallery.countDocuments(filter);
-
-      this.sendSuccess(res, {
-        gallery,
-        pagination: {
-          current: parseInt(page),
-          pages: Math.ceil(total / limit),
-          total,
-          limit: parseInt(limit)
+            res.json({
+                success: true,
+                data: items,
+                count: items.length
+            });
+        } catch (error) {
+            console.error('Error fetching gallery items:', error);
+            res.status(500).json({
+                success: false,
+                message: 'Failed to fetch gallery items'
+            });
         }
-      }, 'Gallery items retrieved successfully');
-
-    } catch (error) {
-      this.sendError(res, 'Failed to retrieve gallery items', 500, error);
     }
-  }
 
-  /**
-   * Get featured gallery items
-   */
-  async getFeaturedGallery(req, res) {
-    try {
-      const { limit = 12 } = req.query;
-      
-      const gallery = await Gallery.getFeatured(parseInt(limit));
-      
-      this.sendSuccess(res, { gallery }, 'Featured gallery items retrieved successfully');
-    } catch (error) {
-      this.sendError(res, 'Failed to retrieve featured gallery items', 500, error);
-    }
-  }
+    /**
+     * Scan local gallery folder and return available photos
+     */
+    async scanLocalGallery(req, res) {
+        try {
+            const galleryPath = path.join(__dirname, '../../public/images/gallery');
+            const supportedFormats = ['.jpg', '.jpeg', '.png', '.webp', '.gif'];
+            
+            // Check if gallery directory exists
+            try {
+                await fs.access(galleryPath);
+            } catch (error) {
+                return res.json({
+                    success: true,
+                    data: [],
+                    message: 'Gallery folder not found or empty'
+                });
+            }
 
-  /**
-   * Get portfolio gallery items
-   */
-  async getPortfolioGallery(req, res) {
-    try {
-      const { limit = 20 } = req.query;
-      
-      const gallery = await Gallery.getPortfolio(parseInt(limit));
-      
-      this.sendSuccess(res, { gallery }, 'Portfolio gallery items retrieved successfully');
-    } catch (error) {
-      this.sendError(res, 'Failed to retrieve portfolio gallery items', 500, error);
-    }
-  }
+            // Read directory contents
+            const files = await fs.readdir(galleryPath);
+            
+            // Filter for image files
+            const imageFiles = files.filter(file => {
+                const ext = path.extname(file).toLowerCase();
+                return supportedFormats.includes(ext);
+            });
 
-  /**
-   * Get recent gallery items
-   */
-  async getRecentGallery(req, res) {
-    try {
-      const { limit = 10 } = req.query;
-      
-      const gallery = await Gallery.getRecent(parseInt(limit));
-      
-      this.sendSuccess(res, { gallery }, 'Recent gallery items retrieved successfully');
-    } catch (error) {
-      this.sendError(res, 'Failed to retrieve recent gallery items', 500, error);
-    }
-  }
+            // Create gallery items from files
+            const galleryItems = await Promise.all(
+                imageFiles.map(async (filename, index) => {
+                    const filePath = path.join(galleryPath, filename);
+                    const stats = await fs.stat(filePath);
+                    
+                    // Extract info from filename (optional)
+                    const nameWithoutExt = path.parse(filename).name;
+                    const parts = nameWithoutExt.split('-');
+                    
+                    return {
+                        id: `local-${index + 1}`,
+                        title: this.formatTitle(nameWithoutExt),
+                        description: `DJ Nuff Jamz event photo`,
+                        filename: filename,
+                        imageUrl: `/images/gallery/${filename}`,
+                        thumbnailUrl: `/images/gallery/${filename}`, // Same for now, can add thumbnail generation later
+                        category: this.guessCategory(nameWithoutExt),
+                        eventType: this.guessEventType(nameWithoutExt),
+                        tags: this.extractTags(nameWithoutExt),
+                        featured: index < 3, // First 3 photos are featured
+                        fileSize: stats.size,
+                        dateAdded: stats.mtime,
+                        views: Math.floor(Math.random() * 100) + 10, // Random for demo
+                        likes: Math.floor(Math.random() * 20) + 1
+                    };
+                })
+            );
 
-  /**
-   * Get single gallery item by ID
-   */
-  async getGalleryItem(req, res) {
-    try {
-      const galleryItem = await Gallery.findById(req.params.id);
-      
-      if (!galleryItem) {
-        return this.sendNotFound(res, 'Gallery item not found');
-      }
+            res.json({
+                success: true,
+                data: galleryItems,
+                count: galleryItems.length,
+                source: 'local_files'
+            });
 
-      // Increment view count for public items
-      if (galleryItem.isPublic) {
-        await galleryItem.incrementViews();
-      }
-
-      this.sendSuccess(res, { galleryItem }, 'Gallery item retrieved successfully');
-    } catch (error) {
-      this.sendError(res, 'Failed to retrieve gallery item', 500, error);
-    }
-  }
-
-  /**
-   * Get gallery item by slug
-   */
-  async getGalleryBySlug(req, res) {
-    try {
-      const galleryItem = await Gallery.findOne({ 
-        slug: req.params.slug,
-        isPublic: true 
-      });
-      
-      if (!galleryItem) {
-        return this.sendNotFound(res, 'Gallery item not found');
-      }
-
-      await galleryItem.incrementViews();
-
-      this.sendSuccess(res, { galleryItem }, 'Gallery item retrieved successfully');
-    } catch (error) {
-      this.sendError(res, 'Failed to retrieve gallery item', 500, error);
-    }
-  }
-
-  /**
-   * Create new gallery item
-   */
-  async createGalleryItem(req, res) {
-    try {
-      const galleryItem = new Gallery(req.body);
-      await galleryItem.save();
-      
-      this.sendSuccess(res, { galleryItem }, 'Gallery item created successfully', 201);
-    } catch (error) {
-      if (error.name === 'ValidationError') {
-        return this.sendValidationError(res, 500, error);
-      }
-      this.sendError(res, 'Failed to create gallery item', 500, error);
-    }
-  }
-
-  /**
-   * Update gallery item
-   */
-  async updateGalleryItem(req, res) {
-    try {
-      const galleryItem = await Gallery.findByIdAndUpdate(
-        req.params.id,
-        req.body,
-        { new: true, runValidators: true }
-      );
-
-      if (!galleryItem) {
-        return this.sendNotFound(res, 'Gallery item not found');
-      }
-
-      this.sendSuccess(res, { galleryItem }, 'Gallery item updated successfully');
-    } catch (error) {
-      if (error.name === 'ValidationError') {
-        return this.sendValidationError(res, 500, error);
-      }
-      this.sendError(res, 'Failed to update gallery item', 500, error);
-    }
-  }
-
-  /**
-   * Delete gallery item
-   */
-  async deleteGalleryItem(req, res) {
-    try {
-      const galleryItem = await Gallery.findByIdAndDelete(req.params.id);
-
-      if (!galleryItem) {
-        return this.sendNotFound(res, 'Gallery item not found');
-      }
-
-      this.sendSuccess(res, null, 'Gallery item deleted successfully');
-    } catch (error) {
-      this.sendError(res, 'Failed to delete gallery item', 500, error);
-    }
-  }
-
-  /**
-   * Toggle featured status
-   */
-  async toggleFeatured(req, res) {
-    try {
-      const galleryItem = await Gallery.findById(req.params.id);
-
-      if (!galleryItem) {
-        return this.sendNotFound(res, 'Gallery item not found');
-      }
-
-      await galleryItem.toggleFeatured();
-
-      this.sendSuccess(res, { galleryItem }, `Gallery item ${galleryItem.featured ? 'featured' : 'unfeatured'} successfully`);
-    } catch (error) {
-      this.sendError(res, 'Failed to toggle featured status', 500, error);
-    }
-  }
-
-  /**
-   * Toggle portfolio status
-   */
-  async togglePortfolio(req, res) {
-    try {
-      const galleryItem = await Gallery.findById(req.params.id);
-
-      if (!galleryItem) {
-        return this.sendNotFound(res, 'Gallery item not found');
-      }
-
-      await galleryItem.togglePortfolio();
-
-      this.sendSuccess(res, { galleryItem }, `Gallery item ${galleryItem.isPortfolio ? 'added to' : 'removed from'} portfolio successfully`);
-    } catch (error) {
-      this.sendError(res, 'Failed to toggle portfolio status', 500, error);
-    }
-  }
-
-  /**
-   * Get gallery statistics
-   */
-  async getGalleryStats(req, res) {
-    try {
-      const stats = await Gallery.getStats();
-      
-      this.sendSuccess(res, { stats }, 'Gallery statistics retrieved successfully');
-    } catch (error) {
-      this.sendError(res, 'Failed to retrieve gallery statistics', 500, error);
-    }
-  }
-
-  /**
-   * Search gallery items
-   */
-  async searchGallery(req, res) {
-    try {
-      const { query, limit = 20 } = req.query;
-      
-      if (!query) {
-        return this.sendValidationError(res, { message: 'Search query is required' });
-      }
-
-      const gallery = await Gallery.find({
-        $text: { $search: query },
-        isPublic: true
-      })
-      .sort({ score: { $meta: 'textScore' } })
-      .limit(parseInt(limit));
-
-      this.sendSuccess(res, { gallery, query }, 'Gallery search completed successfully');
-    } catch (error) {
-      this.sendError(res, 'Failed to search gallery', 500, error);
-    }
-  }
-
-  /**
-   * Get gallery items by event type
-   */
-  async getGalleryByEventType(req, res) {
-    try {
-      const { eventType } = req.params;
-      const { limit = 20, page = 1 } = req.query;
-
-      const filter = { eventType, isPublic: true };
-
-      const gallery = await Gallery.find(filter)
-        .sort({ eventDate: -1, createdAt: -1 })
-        .limit(limit * 1)
-        .skip((page - 1) * limit)
-        .exec();
-
-      const total = await Gallery.countDocuments(filter);
-
-      this.sendSuccess(res, {
-        gallery,
-        eventType,
-        pagination: {
-          current: parseInt(page),
-          pages: Math.ceil(total / limit),
-          total,
-          limit: parseInt(limit)
+        } catch (error) {
+            console.error('Error scanning local gallery:', error);
+            res.status(500).json({
+                success: false,
+                message: 'Failed to scan gallery folder'
+            });
         }
-      }, `Gallery items for ${eventType} events retrieved successfully`);
-
-    } catch (error) {
-      this.sendError(res, 'Failed to retrieve gallery items by event type', 500, error);
     }
-  }
+
+    /**
+     * Format filename into a readable title
+     */
+    formatTitle(filename) {
+        return filename
+            .replace(/[-_]/g, ' ')
+            .replace(/\b\w/g, l => l.toUpperCase())
+            .trim();
+    }
+
+    /**
+     * Guess category from filename
+     */
+    guessCategory(filename) {
+        const lower = filename.toLowerCase();
+        if (lower.includes('dj') || lower.includes('mixing') || lower.includes('turntable')) return 'action';
+        if (lower.includes('crowd') || lower.includes('dance') || lower.includes('party')) return 'crowd';
+        if (lower.includes('venue') || lower.includes('setup') || lower.includes('stage')) return 'venue';
+        if (lower.includes('equipment') || lower.includes('gear') || lower.includes('booth')) return 'equipment';
+        return 'action'; // default
+    }
+
+    /**
+     * Guess event type from filename
+     */
+    guessEventType(filename) {
+        const lower = filename.toLowerCase();
+        if (lower.includes('wedding')) return 'wedding';
+        if (lower.includes('corporate') || lower.includes('business')) return 'corporate';
+        if (lower.includes('birthday') || lower.includes('party')) return 'private';
+        if (lower.includes('club') || lower.includes('nightclub')) return 'nightclub';
+        return 'event'; // default
+    }
+
+    /**
+     * Extract tags from filename
+     */
+    extractTags(filename) {
+        const lower = filename.toLowerCase();
+        const tags = [];
+        
+        // Common DJ/event tags
+        if (lower.includes('wedding')) tags.push('wedding');
+        if (lower.includes('party')) tags.push('party');
+        if (lower.includes('dj')) tags.push('dj');
+        if (lower.includes('dance')) tags.push('dance');
+        if (lower.includes('music')) tags.push('music');
+        if (lower.includes('crowd')) tags.push('crowd');
+        if (lower.includes('lights')) tags.push('lights');
+        if (lower.includes('night')) tags.push('night');
+        if (lower.includes('event')) tags.push('event');
+        
+        return tags.length > 0 ? tags : ['dj', 'event'];
+    }
+
+    /**
+     * Upload new gallery item
+     */
+    async uploadGalleryItem(req, res) {
+        try {
+            const galleryData = {
+                title: req.body.title,
+                description: req.body.description,
+                category: req.body.category || 'action',
+                eventType: req.body.eventType || 'event',
+                tags: req.body.tags ? req.body.tags.split(',').map(tag => tag.trim()) : [],
+                featured: req.body.featured === 'true',
+                imageUrl: req.file ? `/images/gallery/${req.file.filename}` : req.body.imageUrl,
+                thumbnailUrl: req.file ? `/images/gallery/${req.file.filename}` : req.body.thumbnailUrl
+            };
+
+            const newItem = new Gallery(galleryData);
+            await newItem.save();
+
+            res.json({
+                success: true,
+                data: newItem,
+                message: 'Gallery item uploaded successfully'
+            });
+        } catch (error) {
+            console.error('Error uploading gallery item:', error);
+            res.status(500).json({
+                success: false,
+                message: 'Failed to upload gallery item'
+            });
+        }
+    }
 }
 
 module.exports = new GalleryController();

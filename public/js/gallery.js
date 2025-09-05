@@ -290,22 +290,41 @@ class PhotoGallery {
         this.showLoading(true);
         
         try {
-            // Try to load from API first
-            const response = await fetch('/api/gallery?limit=50');
-            if (response.ok) {
-                const data = await response.json();
-                if (data.success && data.data.gallery) {
-                    this.galleryItems = data.data.gallery;
+            // Wait for API config to be available
+            if (typeof API === 'undefined') {
+                await new Promise(resolve => {
+                    const checkAPI = () => {
+                        if (typeof API !== 'undefined') {
+                            resolve();
+                        } else {
+                            setTimeout(checkAPI, 100);
+                        }
+                    };
+                    checkAPI();
+                });
+            }
+
+            // First try to load local photos from the gallery folder
+            const localData = await API.get(`${API_CONFIG.ENDPOINTS.GALLERY}/local`);
+            if (localData.success && localData.data && localData.data.length > 0) {
+                this.galleryItems = localData.data;
+                console.log(`✅ Loaded ${localData.data.length} photos from local gallery folder`);
+            } else {
+                // If no local photos, try database
+                const data = await API.get(API_CONFIG.ENDPOINTS.GALLERY, { limit: 50 });
+                if (data.success && data.data) {
+                    // Handle both array and object responses
+                    const items = Array.isArray(data.data) ? data.data : (data.data.gallery || []);
+                    this.galleryItems = items.length > 0 ? items : this.sampleItems;
+                    console.log('✅ Loaded gallery items from database:', items.length);
                 } else {
                     // Fallback to sample data
                     this.galleryItems = this.sampleItems;
+                    console.log('🔄 No photos found, using sample gallery data');
                 }
-            } else {
-                // Fallback to sample data
-                this.galleryItems = this.sampleItems;
             }
         } catch (error) {
-            console.log('Failed to load gallery from API, using sample data:', error);
+            console.error('❌ Failed to load gallery, using sample data:', error);
             this.galleryItems = this.sampleItems;
         }
         

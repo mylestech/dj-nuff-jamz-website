@@ -147,3 +147,4 @@ module.exports = {
   performanceLogger: logger.performanceLogger.bind(logger)
 };
 
+

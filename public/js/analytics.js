@@ -425,16 +425,13 @@ class DJAnalytics {
      */
     async sendToBackend(eventData) {
         try {
-            await fetch('/api/analytics/track', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(eventData)
-            });
+            // Wait for API config to be available
+            if (typeof API === 'undefined') return;
+
+            await API.post(`${API_CONFIG.ENDPOINTS.ANALYTICS}/track`, eventData);
         } catch (error) {
             // Fail silently - analytics shouldn't break the site
-            console.log('Analytics backend error:', error.message);
+            console.log('❌ Analytics backend error:', error.message);
         }
     }
 

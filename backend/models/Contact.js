@@ -178,3 +178,4 @@ contactSchema.methods.markAsResponded = function() {
 
 module.exports = mongoose.model('Contact', contactSchema);
 
+

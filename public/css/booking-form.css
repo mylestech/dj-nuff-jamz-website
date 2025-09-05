@@ -12,6 +12,10 @@
 /* Form Input Styling */
 .form-input {
     @apply w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all duration-300;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    letter-spacing: 0;
+    word-spacing: normal;
+    white-space: normal;
 }
 
 .form-input:focus {
@@ -278,4 +282,3 @@ textarea.form-input {
         @apply border border-gray-300 bg-white text-black;
     }
 }
-

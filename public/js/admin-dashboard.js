@@ -197,19 +197,25 @@ class AdminDashboard {
 
     async fetchDashboardStats() {
         try {
-            const token = localStorage.getItem('adminToken');
-            const response = await fetch('/api/admin/dashboard-stats', {
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'application/json'
-                }
-            });
-            if (response.ok) {
-                const data = await response.json();
-                return data.data;
+            // Wait for API config to be available
+            if (typeof API === 'undefined') {
+                await new Promise(resolve => {
+                    const checkAPI = () => {
+                        if (typeof API !== 'undefined') {
+                            resolve();
+                        } else {
+                            setTimeout(checkAPI, 100);
+                        }
+                    };
+                    checkAPI();
+                });
             }
+
+            const token = localStorage.getItem('adminToken');
+            const data = await API.get(`${API_CONFIG.ENDPOINTS.ADMIN}/dashboard-stats`, {}, API.withAuth(token));
+            return data.data;
         } catch (error) {
-            console.error('Failed to fetch dashboard stats:', error);
+            console.error('❌ Failed to fetch dashboard stats:', error);
         }
         
         // Return mock data

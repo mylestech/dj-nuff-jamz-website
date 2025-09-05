@@ -1,9 +1,9 @@
 // DJ Nuff Jamz Entertainment - Service Worker
 // Performance optimization and caching strategy
 
-const CACHE_NAME = 'djnuffjamz-v1.0.0';
-const STATIC_CACHE = 'djnuffjamz-static-v1';
-const DYNAMIC_CACHE = 'djnuffjamz-dynamic-v1';
+const CACHE_NAME = 'djnuffjamz-v1.0.1';
+const STATIC_CACHE = 'djnuffjamz-static-v2';
+const DYNAMIC_CACHE = 'djnuffjamz-dynamic-v2';
 
 // Files to cache immediately
 const STATIC_FILES = [
@@ -11,7 +11,7 @@ const STATIC_FILES = [
     '/css/style.css',
     '/css/calendar.css',
     '/js/analytics.js',
-    '/js/music-player.js',
+    // '/js/music-player.js', // Temporarily disabled
     '/js/gallery.js',
     '/js/calendar.js',
     '/assets/favicon.ico',

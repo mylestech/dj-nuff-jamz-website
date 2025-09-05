@@ -60,15 +60,25 @@ class TestimonialsComponent {
 
     async loadTestimonials() {
         try {
-            const response = await fetch('/api/testimonials/featured?limit=8');
-            if (response.ok) {
-                const data = await response.json();
-                this.testimonials = data.data || [];
-            } else {
-                throw new Error('Failed to fetch testimonials');
+            // Wait for API config to be available
+            if (typeof API === 'undefined') {
+                await new Promise(resolve => {
+                    const checkAPI = () => {
+                        if (typeof API !== 'undefined') {
+                            resolve();
+                        } else {
+                            setTimeout(checkAPI, 100);
+                        }
+                    };
+                    checkAPI();
+                });
             }
+
+            const data = await API.get(`${API_CONFIG.ENDPOINTS.TESTIMONIALS}/featured`, { limit: 8 });
+            this.testimonials = data.data || [];
+            console.log('✅ Loaded testimonials from API:', this.testimonials.length);
         } catch (error) {
-            console.error('Error loading testimonials:', error);
+            console.error('❌ Error loading testimonials:', error);
             this.loadFallbackTestimonials();
         }
 
