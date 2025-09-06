@@ -99,7 +99,7 @@ class TestimonialsComponent {
                 rating: 5,
                 eventType: 'corporate',
                 displayLocation: 'Lagos, Nigeria',
-                clientLogo: '/images/clients/adebayo-logo.png'
+                clientLogo: '/images/testimonials/adebayo-logo.png'
             },
             {
                 _id: '2',
@@ -119,7 +119,7 @@ class TestimonialsComponent {
                 rating: 5,
                 eventType: 'corporate',
                 displayLocation: 'Lagos, Nigeria',
-                clientLogo: '/images/clients/lbs-logo.png'
+                clientLogo: '/images/testimonials/lbs-logo.png'
             },
             {
                 _id: '4',

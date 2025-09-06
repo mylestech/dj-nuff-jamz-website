@@ -382,3 +382,4 @@ gallerySchema.methods.togglePortfolio = function() {
 
 module.exports = mongoose.model('Gallery', gallerySchema);
 
+

@@ -1,9 +1,9 @@
 // DJ Nuff Jamz Entertainment - Service Worker
 // Performance optimization and caching strategy
 
-const CACHE_NAME = 'djnuffjamz-v1.0.1';
-const STATIC_CACHE = 'djnuffjamz-static-v2';
-const DYNAMIC_CACHE = 'djnuffjamz-dynamic-v2';
+const CACHE_NAME = 'djnuffjamz-v1.0.2';
+const STATIC_CACHE = 'djnuffjamz-static-v3';
+const DYNAMIC_CACHE = 'djnuffjamz-dynamic-v3';
 
 // Files to cache immediately
 const STATIC_FILES = [
@@ -53,7 +53,7 @@ self.addEventListener('activate', (event) => {
     self.clients.claim();
 });
 
-// Fetch event - serve from cache with network fallback
+// Fetch event - network first strategy for development
 self.addEventListener('fetch', (event) => {
     const { request } = event;
     const url = new URL(request.url);
@@ -71,40 +71,45 @@ self.addEventListener('fetch', (event) => {
         return;
     }
 
+    // Network first strategy - always try to get fresh content
     event.respondWith(
-        caches.match(request)
-            .then((cachedResponse) => {
-                // Return cached version if available
-                if (cachedResponse) {
-                    return cachedResponse;
+        fetch(request)
+            .then((networkResponse) => {
+                // Don't cache if not successful
+                if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic') {
+                    return networkResponse;
                 }
 
-                // Otherwise fetch from network
-                return fetch(request)
-                    .then((networkResponse) => {
-                        // Don't cache if not successful
-                        if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic') {
-                            return networkResponse;
+                // For HTML and CSS files, always return fresh content without caching during development
+                if (url.pathname.endsWith('.html') || url.pathname.endsWith('.css') || url.pathname === '/') {
+                    return networkResponse;
+                }
+
+                // Cache other successful responses (images, fonts, etc.)
+                const responseToCache = networkResponse.clone();
+                
+                // Determine cache type
+                let cacheName = DYNAMIC_CACHE;
+                if (request.url.includes('fonts.googleapis.com') || 
+                    url.pathname.includes('/images/') ||
+                    url.pathname.includes('/assets/')) {
+                    cacheName = STATIC_CACHE;
+                }
+
+                caches.open(cacheName)
+                    .then((cache) => {
+                        cache.put(request, responseToCache);
+                    });
+
+                return networkResponse;
+            })
+            .catch(() => {
+                // Fallback to cache only when network fails
+                return caches.match(request)
+                    .then((cachedResponse) => {
+                        if (cachedResponse) {
+                            return cachedResponse;
                         }
-
-                        // Cache successful responses
-                        const responseToCache = networkResponse.clone();
-                        
-                        // Determine cache type
-                        let cacheName = DYNAMIC_CACHE;
-                        if (STATIC_FILES.includes(url.pathname) || 
-                            request.url.includes('fonts.googleapis.com')) {
-                            cacheName = STATIC_CACHE;
-                        }
-
-                        caches.open(cacheName)
-                            .then((cache) => {
-                                cache.put(request, responseToCache);
-                            });
-
-                        return networkResponse;
-                    })
-                    .catch(() => {
                         // Return offline fallback for HTML pages
                         if (request.headers.get('accept').includes('text/html')) {
                             return caches.match('/');

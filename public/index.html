@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <meta name="description" content="DJ Nuff Jamz Entertainment - Professional DJ services in NYC with 20+ years of experience. Specializing in Afrobeats, Hip-Hop, R&B, and corporate events. Book your event today!">
     <meta name="keywords" content="DJ NYC, Afrobeats DJ, Corporate Events, Wedding DJ, Private Party DJ, Nigerian DJ, Entertainment">
     <meta name="author" content="DJ Nuff Jamz Entertainment">
@@ -35,7 +38,8 @@
     <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- DJ-style bold fonts for headers and branding -->
+    <link href="https://fonts.googleapis.com/css2?family=Anton:wght@400&family=Oswald:wght@200;300;400;500;600;700&family=Bebas+Neue:wght@400&family=Barlow+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <title>DJ Nuff Jamz Entertainment - Professional DJ Services NYC</title>
 
@@ -218,20 +222,20 @@
             <div class="flex items-center justify-between">
                 <!-- Logo -->
                 <div class="flex items-center">
-                    <a href="/" class="text-2xl font-bold hero-gradient focus-visible" aria-label="DJ Nuff Jamz Entertainment Home">
+                    <a href="/" class="text-2xl font-bold hero-gradient focus-visible logo-text" aria-label="DJ Nuff Jamz Entertainment Home">
                         DJ Nuff Jamz
                     </a>
                 </div>
 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#about" class="nav-link focus-visible">About</a>
-                    <a href="#services" class="nav-link focus-visible">Services</a>
-                    <a href="#music" class="nav-link focus-visible">Music</a>
-                    <a href="#gallery" class="nav-link focus-visible">Gallery</a>
-                    <a href="#testimonials" class="nav-link focus-visible">Testimonials</a>
-                    <a href="#contact" class="nav-link focus-visible">Contact</a>
-                    <a href="#booking" class="bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-300 hover:to-blue-400 text-white px-6 py-3 rounded-full font-semibold transition-all duration-200 focus-visible" aria-label="Book your event">
+                    <a href="#about" class="nav-link nav-text focus-visible">About</a>
+                    <a href="#services" class="nav-link nav-text focus-visible">Services</a>
+                    <a href="#music" class="nav-link nav-text focus-visible">Music</a>
+                    <a href="#gallery" class="nav-link nav-text focus-visible">Gallery</a>
+                    <a href="#testimonials" class="nav-link nav-text focus-visible">Testimonials</a>
+                    <a href="#contact" class="nav-link nav-text focus-visible">Contact</a>
+                    <a href="#booking" class="bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-300 hover:to-blue-400 text-white px-6 py-3 rounded-full font-semibold transition-all duration-200 focus-visible btn-text" aria-label="Book your event">
                         Book Event
                     </a>
                 </div>
@@ -270,7 +274,7 @@
     <!-- Main Content -->
     <main id="main-content" role="main">
         <!-- Enhanced Hero Section - Blue Theme Applied -->
-        <section class="relative min-h-screen flex items-center justify-center overflow-hidden mt-16 md:mt-20" aria-labelledby="hero-heading">
+        <section class="relative min-h-screen overflow-hidden mt-16 md:mt-20" aria-labelledby="hero-heading">
             <!-- DJ Photo Background -->
             <div class="absolute inset-0">
                 <!-- Hero DJ Photo -->
@@ -284,41 +288,19 @@
             </div>
             
             
-            <!-- Animated Background Elements -->
-            <div class="absolute inset-0 overflow-hidden">
-                <div class="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-r from-blue-500/20 to-blue-500/20 rotate-12 animate-pulse-slow"></div>
-                <div class="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-l from-blue-500/20 to-blue-500/20 -rotate-12 animate-pulse-slow" style="animation-delay: 1s;"></div>
-            </div>
 
             <!-- Hero Content -->
-            <div class="relative z-10 container-custom text-center px-4 pt-20 pb-16">
-                <!-- Branding Badge -->
-                <div class="inline-block mb-8 animate-fade-in">
-                    <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-blue-500/20 text-blue-300 border border-blue-500/30">
-                        <span class="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-pulse"></span>
-                        20+ Years of Excellence
-                    </span>
-                </div>
+            <div class="absolute bottom-0 left-0 right-0 z-10 text-center px-4 pb-16 md:pb-24" style="top: 55%;">
+                <div class="container-custom mx-auto">
 
                 <!-- Main Headline -->
-                <h1 id="hero-heading" class="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 animate-fade-in text-shadow-lg">
-                    <span class="block text-white drop-shadow-2xl">DJ NUFF JAMZ</span>
-                    <span class="block text-3xl md:text-4xl lg:text-5xl text-blue-200 font-normal mt-2 drop-shadow-lg">
-                        Entertainment
+                <h1 id="hero-heading" class="font-bold mb-6 animate-fade-in text-shadow-lg" style="font-family: 'Anton', sans-serif; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.4 !important; text-shadow: 4px 4px 8px rgba(0,0,0,0.9);">
+                    <span class="block text-3xl md:text-4xl lg:text-5xl text-white drop-shadow-2xl mb-3" style="letter-spacing: 0.08em; line-height: 1.4 !important; display: block; margin-bottom: 0.75rem;">DJ NUFF JAMZ</span>
+                    <span class="block text-3xl md:text-4xl lg:text-5xl text-blue-200 font-normal drop-shadow-lg" style="line-height: 1.4 !important; display: block;">
+                        ENTERTAINMENT
                     </span>
                 </h1>
 
-                <!-- Tagline -->
-                <p class="text-xl md:text-2xl lg:text-3xl text-white mb-4 max-w-4xl mx-auto animate-slide-up leading-relaxed drop-shadow-lg">
-                    Authentic <span class="text-blue-300 font-semibold">Afrobeats</span> meets
-                    <span class="text-blue-300 font-semibold">NYC Energy</span>
-                </p>
-                
-                <!-- Sub-description -->
-                <p class="text-lg md:text-xl text-gray-200 mb-12 max-w-2xl mx-auto animate-slide-up drop-shadow" style="animation-delay: 0.2s;">
-                    From Nigerian corporate giants to NYC's hottest venues. 
-                    Elevating events with world-class sound and cultural authenticity.
-                </p>
 
                 <!-- Primary CTA Section -->
                 <div class="flex flex-col items-center space-y-6 animate-slide-up" style="animation-delay: 0.4s;">
@@ -335,42 +317,49 @@
                         </span>
                     </a>
 
-                    <!-- Secondary Actions -->
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                        <a href="#booking" class="group flex items-center px-8 py-3 text-lg font-semibold text-white bg-transparent border-2 border-white/30 rounded-full hover:border-white/60 hover:bg-white/10 transition-all duration-300 focus-visible">
-                            <span class="mr-2">📅</span>
-                            Book Your Event
-                        </a>
-                        <a href="#gallery" class="group flex items-center px-8 py-3 text-lg font-semibold text-white bg-transparent border-2 border-white/30 rounded-full hover:border-white/60 hover:bg-white/10 transition-all duration-300 focus-visible">
-                            <span class="mr-2">📸</span>
-                            View Events
-                        </a>
-                    </div>
                 </div>
 
-                <!-- Trust Indicators -->
-                <div class="mt-16 animate-fade-in" style="animation-delay: 0.6s;">
-                    <p class="text-sm text-gray-500 mb-4">Trusted by Major Brands</p>
-                    <div class="flex flex-wrap justify-center items-center gap-8 opacity-60">
-                        <span class="text-lg font-bold text-gray-400">Coca-Cola</span>
-                        <span class="text-lg font-bold text-gray-400">Guinness</span>
-                        <span class="text-lg font-bold text-gray-400">Etisalat</span>
-                        <span class="text-lg font-bold text-gray-400">+ More</span>
-                    </div>
                 </div>
             </div>
 
         </section>
 
-        <!-- Scroll Indicator -->
-        <div class="flex justify-center py-8 bg-dark-900">
-            <div class="animate-bounce">
-                <a href="#about" class="flex flex-col items-center text-gray-400 hover:text-white transition-colors duration-300 focus-visible" aria-label="Scroll to learn more">
-                    <span class="text-sm mb-2">Learn More</span>
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                    </svg>
-                </a>
+        <!-- Scroll Indicator with Trust Indicators -->
+        <div class="bg-dark-900" style="height: 600px; display: flex; align-items: center; justify-content: center;">
+            <div class="text-center">
+                <!-- Trust Indicators -->
+                <div class="mb-4 animate-fade-in" style="animation-delay: 0.6s;">
+                    <p class="text-sm text-gray-500 mb-4 text-center">Trusted by Major Brands</p>
+                    
+                    <!-- Infinite Scrolling Logos -->
+                    <div class="overflow-hidden relative w-full mb-4 cursor-grab active:cursor-grabbing" id="logo-container">
+                        <div class="flex animate-scroll-infinite" id="logo-slider">
+                            <!-- First set of logos -->
+                            <div class="flex items-center justify-around flex-shrink-0 logo-set">
+                                <img src="/images/clients/logos/coca-cola-logo.svg" alt="Coca-Cola" style="width: 150px; height: 150px; opacity: 0.7; margin-right: 11px;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
+                                <img src="/images/clients/logos/guinness-logo.svg" alt="Guinness" style="width: 150px; height: 150px; opacity: 0.7; margin-right: 11px;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
+                                <img src="/images/clients/logos/pepsi-logo.svg" alt="Pepsi" style="width: 150px; height: 150px; opacity: 0.7; margin-right: 11px;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
+                                <img src="/images/clients/logos/heineken-logo.svg" alt="Heineken" style="width: 150px; height: 150px; opacity: 0.7; margin-right: 11px;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
+                                <img src="/images/clients/logos/first-bank-logo.svg" alt="First Bank" style="width: 150px; height: 150px; opacity: 0.7; margin-right: 11px;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
+                                <img src="/images/clients/logos/ea-logo.svg" alt="EA Sports" style="width: 150px; height: 150px; opacity: 0.7; margin-right: 11px;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
+                                <img src="/images/clients/logos/nb-logo.svg" alt="NB" style="width: 150px; height: 150px; opacity: 0.7; margin-right: 11px;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
+                                <img src="/images/clients/logos/crown-fm-logo.svg" alt="Crown FM" style="width: 150px; height: 150px; opacity: 0.7; margin-right: 11px;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
+                                <img src="/images/clients/logos/groove-radio-logo.svg" alt="Groove Radio" style="width: 150px; height: 150px; opacity: 0.7; margin-right: 11px;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
+                                <img src="/images/clients/logos/kennis-music-logo.svg" alt="Kennis Music" style="width: 150px; height: 150px; opacity: 0.7; margin-right: 11px;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
+                                <img src="/images/clients/logos/ooni-of-ife-logo.svg" alt="Ooni of Ife" style="width: 150px; height: 150px; opacity: 0.7; margin-right: 11px;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="animate-bounce">
+                    <a href="#about" class="flex flex-col items-center text-gray-400 hover:text-white transition-colors duration-300 focus-visible" aria-label="Scroll to learn more">
+                        <span class="text-sm mb-2">Learn More</span>
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                        </svg>
+                    </a>
+                </div>
             </div>
         </div>
 
@@ -384,7 +373,7 @@
                             <span class="inline-block px-4 py-2 rounded-full text-sm font-medium bg-blue-500/20 text-blue-300 border border-blue-500/30 mb-4">
                                 20+ Years of Excellence
                             </span>
-                            <h2 id="about-heading" class="text-4xl md:text-5xl font-bold text-gray-100 mb-6">
+                            <h2 id="about-heading" class="text-4xl md:text-5xl font-bold text-gray-100 mb-6 section-title">
                                 From Nigerian <span class="hero-gradient">Corporate Giants</span> to NYC's Elite Events
                             </h2>
                         </div>
@@ -454,7 +443,7 @@
                     <span class="inline-block px-4 py-2 rounded-full text-sm font-medium bg-blue-500/20 text-blue-300 border border-blue-500/30 mb-4">
                         Professional DJ Services
                     </span>
-                    <h2 id="services-heading" class="text-4xl md:text-5xl font-bold text-gray-100 mb-6">
+                    <h2 id="services-heading" class="text-4xl md:text-5xl font-bold text-gray-100 mb-6 section-title">
                         Elevate Your <span class="hero-gradient">Event Experience</span>
                     </h2>
                     <p class="text-xl text-gray-300 max-w-3xl mx-auto">
@@ -699,14 +688,14 @@
         </section>
 
         <!-- Music Section -->
-        <section id="music" class="section-padding bg-dark-800/50" aria-labelledby="music-heading">
+        <section id="music" class="section-padding bg-dark-800/50 hidden" aria-labelledby="music-heading">
             <div class="container-custom">
                 <!-- Section Header -->
                 <div class="text-center mb-16">
                     <span class="inline-block px-4 py-2 rounded-full text-sm font-medium bg-blue-500/20 text-blue-300 border border-blue-500/30 mb-4">
                         🎵 Featured Mixes
                     </span>
-                    <h2 id="music-heading" class="text-4xl md:text-5xl font-bold text-gray-100 mb-6">
+                    <h2 id="music-heading" class="text-4xl md:text-5xl font-bold text-gray-100 mb-6 section-title">
                         Signature <span class="hero-gradient">Sound Collection</span>
                     </h2>
                     <p class="text-xl text-gray-300 max-w-3xl mx-auto">
@@ -846,7 +835,7 @@
                     <span class="inline-block px-4 py-2 rounded-full text-sm font-medium bg-blue-500/20 text-blue-300 border border-blue-500/30 mb-4">
                         📸 Professional Portfolio
                     </span>
-                    <h2 id="gallery-heading" class="text-4xl md:text-5xl font-bold text-gray-100 mb-6">
+                    <h2 id="gallery-heading" class="text-4xl md:text-5xl font-bold text-gray-100 mb-6 section-title">
                         Event <span class="hero-gradient">Gallery</span>
                     </h2>
                     <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
@@ -1063,7 +1052,7 @@
         <div class="container-custom">
             <div class="text-center">
                 <div class="mb-8">
-                    <h3 class="text-2xl font-bold hero-gradient mb-4">DJ Nuff Jamz Entertainment</h3>
+                    <h3 class="text-2xl font-bold hero-gradient mb-4 logo-text">DJ Nuff Jamz Entertainment</h3>
                     <p class="text-gray-400 max-w-2xl mx-auto">
                         Professional DJ services in NYC with 20+ years of experience. 
                         Bringing authentic African beats and international sounds to your events.
@@ -1072,7 +1061,7 @@
                 
                 <div class="border-t border-dark-700 pt-8">
                     <p class="text-gray-500 text-sm">
-                        &copy; 2024 DJ Nuff Jamz Entertainment. All rights reserved.
+                        &copy; 2025 DJ Nuff Jamz Entertainment. All rights reserved.
                     </p>
                 </div>
             </div>
@@ -1080,7 +1069,7 @@
     </footer>
 
     <!-- Booking Form JavaScript -->
-    <script src="/src/components/BookingForm.js"></script>
+    <script src="/js/BookingForm.js"></script>
     
     <!-- JavaScript for Mobile Menu and Basic Interactions -->
     <script>
@@ -1124,6 +1113,91 @@
             if (window.BookingForm) {
                 const bookingForm = new BookingForm();
                 bookingForm.init();
+            }
+
+            // Logo slider drag functionality
+            const logoContainer = document.getElementById('logo-container');
+            const logoSlider = document.getElementById('logo-slider');
+            
+            if (logoContainer && logoSlider) {
+                let isDragging = false;
+                let startX = 0;
+                let currentTransform = 0;
+                let animationId = null;
+                
+                // Pause animation when dragging
+                const pauseAnimation = () => {
+                    logoSlider.style.animationPlayState = 'paused';
+                };
+                
+                // Resume animation when not dragging
+                const resumeAnimation = () => {
+                    logoSlider.style.animationPlayState = 'running';
+                };
+                
+                // Mouse events
+                logoContainer.addEventListener('mousedown', (e) => {
+                    isDragging = true;
+                    startX = e.clientX;
+                    pauseAnimation();
+                    logoContainer.style.cursor = 'grabbing';
+                });
+                
+                document.addEventListener('mousemove', (e) => {
+                    if (!isDragging) return;
+                    
+                    const deltaX = e.clientX - startX;
+                    currentTransform += deltaX * 0.5; // Reduce sensitivity
+                    logoSlider.style.transform = `translateX(${currentTransform}px)`;
+                    startX = e.clientX;
+                });
+                
+                document.addEventListener('mouseup', () => {
+                    if (isDragging) {
+                        isDragging = false;
+                        logoContainer.style.cursor = 'grab';
+                        
+                        // Reset transform and resume animation after a delay
+                        setTimeout(() => {
+                            logoSlider.style.transform = '';
+                            currentTransform = 0;
+                            resumeAnimation();
+                        }, 500);
+                    }
+                });
+                
+                // Touch events for mobile
+                logoContainer.addEventListener('touchstart', (e) => {
+                    isDragging = true;
+                    startX = e.touches[0].clientX;
+                    pauseAnimation();
+                });
+                
+                document.addEventListener('touchmove', (e) => {
+                    if (!isDragging) return;
+                    e.preventDefault();
+                    
+                    const deltaX = e.touches[0].clientX - startX;
+                    currentTransform += deltaX * 0.5;
+                    logoSlider.style.transform = `translateX(${currentTransform}px)`;
+                    startX = e.touches[0].clientX;
+                });
+                
+                document.addEventListener('touchend', () => {
+                    if (isDragging) {
+                        isDragging = false;
+                        
+                        // Reset transform and resume animation after a delay
+                        setTimeout(() => {
+                            logoSlider.style.transform = '';
+                            currentTransform = 0;
+                            resumeAnimation();
+                        }, 500);
+                    }
+                });
+                
+                // Set initial cursor
+                logoContainer.style.cursor = 'grab';
             }
         });
 
