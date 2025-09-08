@@ -4,8 +4,7 @@
   "outputDirectory": "public",
   "env": {
     "NODE_ENV": "production",
-    "ENVIRONMENT": "production",
-    "SITE_PASSWORD": "@site-password"
+    "ENVIRONMENT": "production"
   },
   "build": {
     "env": {
