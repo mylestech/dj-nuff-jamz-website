@@ -8809,5 +8809,119 @@
     "ip_address": "::1",
     "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36",
     "id": "event_1757523388800_jrjjhw5oj"
+  },
+  {
+    "event_name": "time_on_page",
+    "timestamp": "2025-09-10T16:56:32.567Z",
+    "session_id": "session_1757522515895_fmmhsf6m8",
+    "duration": 873,
+    "page_path": "/",
+    "ip_address": "::1",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.61.584.290 Safari/537.36",
+    "id": "event_1757523392567_662rx2ad2"
+  },
+  {
+    "event_name": "time_on_page",
+    "timestamp": "2025-09-10T16:56:33.068Z",
+    "session_id": "session_1757522622306_szw9lwcwz",
+    "duration": 48,
+    "page_path": "/",
+    "ip_address": "::1",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36",
+    "id": "event_1757523393068_x21ms6c5b"
+  },
+  {
+    "event_name": "page_view",
+    "timestamp": "2025-09-10T16:56:37.157Z",
+    "session_id": "session_1757523397026_e90ngotwx",
+    "page_title": "DJ Nuff Jamz Entertainment - Professional DJ Services NYC",
+    "page_location": "http://127.0.0.1:3000/",
+    "page_path": "/",
+    "referrer": "http://127.0.0.1:3000/",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36",
+    "screen_resolution": "1512x982",
+    "viewport_size": "1502x815",
+    "ip_address": "::1",
+    "id": "event_1757523397157_6uwqp9zdk"
+  },
+  {
+    "event_name": "page_view",
+    "timestamp": "2025-09-10T16:56:37.613Z",
+    "session_id": "session_1757523396933_yr4nonqtk",
+    "page_title": "DJ Nuff Jamz Entertainment - Professional DJ Services NYC",
+    "page_location": "http://localhost:3000/",
+    "page_path": "/",
+    "referrer": "http://localhost:3000/",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.61.584.290 Safari/537.36",
+    "screen_resolution": "1512x982",
+    "viewport_size": "1447x837",
+    "ip_address": "::1",
+    "id": "event_1757523397613_hvptgv8d7"
+  },
+  {
+    "event_name": "page_performance",
+    "timestamp": "2025-09-10T16:56:37.970Z",
+    "session_id": "session_1757523397026_e90ngotwx",
+    "load_time": 9826,
+    "dom_content_loaded": 9097,
+    "first_byte": 1142,
+    "ip_address": "::1",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36",
+    "id": "event_1757523397970_66ijj93fa"
+  },
+  {
+    "event_name": "page_performance",
+    "timestamp": "2025-09-10T16:56:37.983Z",
+    "session_id": "session_1757523396933_yr4nonqtk",
+    "load_time": 9983,
+    "dom_content_loaded": 9178,
+    "first_byte": 1065,
+    "ip_address": "::1",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.61.584.290 Safari/537.36",
+    "id": "event_1757523397983_7n2550ihi"
+  },
+  {
+    "event_name": "time_on_page",
+    "timestamp": "2025-09-10T17:07:56.909Z",
+    "session_id": "session_1757523397026_e90ngotwx",
+    "duration": 679,
+    "page_path": "/",
+    "ip_address": "::1",
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1",
+    "id": "event_1757524076909_s9g5eeo6h"
+  },
+  {
+    "event_name": "time_on_page",
+    "timestamp": "2025-09-10T17:07:59.563Z",
+    "session_id": "session_1757523397026_e90ngotwx",
+    "duration": 679,
+    "page_path": "/",
+    "ip_address": "::1",
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1",
+    "id": "event_1757524079563_adte5tb3w"
+  },
+  {
+    "event_name": "time_on_page",
+    "timestamp": "2025-09-10T17:07:59.631Z",
+    "session_id": "session_1757523397026_e90ngotwx",
+    "duration": 680,
+    "page_path": "/",
+    "ip_address": "::1",
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1",
+    "id": "event_1757524079631_eqji39guu"
+  },
+  {
+    "event_name": "page_view",
+    "timestamp": "2025-09-10T17:08:03.755Z",
+    "session_id": "session_1757524083536_ky3vlp569",
+    "page_title": "DJ Nuff Jamz Entertainment - Professional DJ Services NYC",
+    "page_location": "http://127.0.0.1:3000/",
+    "page_path": "/",
+    "referrer": "http://127.0.0.1:3000/",
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1",
+    "screen_resolution": "390x844",
+    "viewport_size": "390x844",
+    "ip_address": "::1",
+    "id": "event_1757524083755_0lj63qki7"
   }
 ]
