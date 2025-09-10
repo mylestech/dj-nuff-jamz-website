@@ -42,6 +42,214 @@
 
     <title>DJ Nuff Jamz Entertainment - Professional DJ Services NYC</title>
 
+    <!-- Lockscreen Styles -->
+    <style>
+        #lockscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        #lockscreen.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .lockscreen-content {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 1rem;
+            border: 1px solid rgba(71, 85, 105, 0.3);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            max-width: 480px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .lockscreen-logo {
+            font-family: 'Anton', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #facc15, #eab308);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: none;
+            margin-bottom: 1rem;
+        }
+
+        .lockscreen-subtitle {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            color: #d1d5db;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            letter-spacing: 0.02em;
+        }
+
+        .lockscreen-input {
+            width: 100%;
+            padding: 0.875rem 1.25rem;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid #475569;
+            border-radius: 0.5rem;
+            color: #f1f5f9;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .lockscreen-input:focus {
+            outline: none;
+            border-color: #eab308;
+            box-shadow: 0 0 0 2px rgba(234, 179, 8, 0.2);
+        }
+
+        .lockscreen-input::placeholder {
+            color: #9ca3af;
+        }
+
+        .lockscreen-button {
+            width: 100%;
+            padding: 0.875rem 1.25rem;
+            background: linear-gradient(135deg, #facc15, #eab308);
+            color: #0f172a;
+            border: none;
+            border-radius: 0.5rem;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(234, 179, 8, 0.3);
+        }
+
+        .lockscreen-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(234, 179, 8, 0.4);
+        }
+
+        .lockscreen-button:active {
+            transform: translateY(0);
+        }
+
+        .error-message {
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            font-family: 'Inter', sans-serif;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .error-message.show {
+            opacity: 1;
+        }
+
+        .main-content {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .main-content.show {
+            opacity: 1;
+        }
+
+        /* Floating particles animation */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(234, 179, 8, 0.6);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.6; }
+            50% { transform: translateY(-20px) translateX(10px); opacity: 1; }
+        }
+
+        .particle:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
+        .particle:nth-child(2) { top: 20%; left: 80%; animation-delay: 1s; }
+        .particle:nth-child(3) { top: 80%; left: 30%; animation-delay: 2s; }
+        .particle:nth-child(4) { top: 70%; left: 70%; animation-delay: 3s; }
+
+        /* Lockscreen Logo Slider */
+        .lockscreen-trusted {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .lockscreen-trusted-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+
+        .lockscreen-logo-container {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            height: 60px;
+            cursor: grab;
+        }
+
+        .lockscreen-logo-container:active {
+            cursor: grabbing;
+        }
+
+        .lockscreen-logo-slider {
+            display: flex;
+            width: 200%;
+            will-change: transform;
+            animation: scroll-infinite 30s linear infinite;
+        }
+
+        .lockscreen-logo-set {
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            flex-shrink: 0;
+            padding: 0 1rem;
+        }
+
+        .lockscreen-logo-set img {
+            width: 50px;
+            height: 50px;
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+            user-select: none;
+        }
+
+        .lockscreen-logo-set img:hover {
+            opacity: 0.8;
+        }
+
+        @keyframes scroll-infinite {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+    </style>
+
     <!-- Enhanced SEO Meta Tags -->
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow">
@@ -210,6 +418,65 @@
     </script>
 </head>
 <body class="bg-dark-900 text-gray-100">
+    <!-- Password Lockscreen -->
+    <div id="lockscreen">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        
+        <div class="lockscreen-content">
+            <div class="lockscreen-logo">DJ NUFF JAMZ</div>
+            <div class="lockscreen-subtitle">Enter Password to Continue</div>
+            
+            <form id="lockscreen-form">
+                <input 
+                    type="password" 
+                    id="password-input" 
+                    class="lockscreen-input" 
+                    placeholder="Enter password..." 
+                    autocomplete="off"
+                    autofocus
+                >
+                <button type="submit" class="lockscreen-button">Enter</button>
+                <div id="error-message" class="error-message">Incorrect password. Please try again.</div>
+            </form>
+            
+            <!-- Trusted by Brands Section -->
+            <div class="lockscreen-trusted">
+                <p class="lockscreen-trusted-text">Trusted by Major Brands</p>
+                <div class="lockscreen-logo-container" id="lockscreen-logo-container">
+                    <div class="lockscreen-logo-slider" id="lockscreen-logo-slider">
+                        <!-- First set of logos -->
+                        <div class="lockscreen-logo-set">
+                            <img src="/images/clients/logos/guinness-logo.svg" alt="Guinness" draggable="false">
+                            <img src="/images/clients/logos/pepsi-logo.svg" alt="Pepsi" draggable="false">
+                            <img src="/images/clients/logos/heineken-logo.svg" alt="Heineken" draggable="false">
+                            <img src="/images/clients/logos/first-bank-logo.svg" alt="First Bank" draggable="false">
+                            <img src="/images/clients/logos/ea-logo.svg" alt="EA Sports" draggable="false">
+                            <img src="/images/clients/logos/nb-logo.svg" alt="NB" draggable="false">
+                            <img src="/images/clients/logos/crown-fm-logo.svg" alt="Crown FM" draggable="false">
+                        </div>
+
+                        <!-- Second set for seamless loop -->
+                        <div class="lockscreen-logo-set">
+                            <img src="/images/clients/logos/guinness-logo.svg" alt="Guinness" draggable="false">
+                            <img src="/images/clients/logos/pepsi-logo.svg" alt="Pepsi" draggable="false">
+                            <img src="/images/clients/logos/heineken-logo.svg" alt="Heineken" draggable="false">
+                            <img src="/images/clients/logos/first-bank-logo.svg" alt="First Bank" draggable="false">
+                            <img src="/images/clients/logos/ea-logo.svg" alt="EA Sports" draggable="false">
+                            <img src="/images/clients/logos/nb-logo.svg" alt="NB" draggable="false">
+                            <img src="/images/clients/logos/crown-fm-logo.svg" alt="Crown FM" draggable="false">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <div id="main-content" class="main-content">
+    
     <!-- Skip to main content for accessibility -->
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary-600 text-white px-4 py-2 rounded-lg z-50">
         Skip to main content
@@ -1347,5 +1614,201 @@
     <script src="js/gallery.js"></script>
     <script src="js/testimonials.js"></script>
     <script src="js/calendar.js"></script>
+    
+    </div> <!-- End Main Content -->
+
+    <!-- Lockscreen JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const lockscreen = document.getElementById('lockscreen');
+            const mainContent = document.getElementById('main-content');
+            const passwordInput = document.getElementById('password-input');
+            const lockscreenForm = document.getElementById('lockscreen-form');
+            const errorMessage = document.getElementById('error-message');
+            
+            const CORRECT_PASSWORD = 'nuffjamZ25';
+            const SESSION_KEY = 'djnuffjamz_authenticated';
+            
+            // Check if user is already authenticated in this session
+            function checkAuth() {
+                const isAuthenticated = sessionStorage.getItem(SESSION_KEY) === 'true';
+                if (isAuthenticated) {
+                    showMainContent();
+                } else {
+                    showLockscreen();
+                }
+            }
+            
+            // Show the main content
+            function showMainContent() {
+                lockscreen.classList.add('fade-out');
+                setTimeout(() => {
+                    lockscreen.style.display = 'none';
+                    mainContent.classList.add('show');
+                }, 500);
+            }
+            
+            // Show the lockscreen
+            function showLockscreen() {
+                lockscreen.style.display = 'flex';
+                lockscreen.classList.remove('fade-out');
+                mainContent.classList.remove('show');
+                passwordInput.focus();
+            }
+            
+            // Handle form submission
+            function handleSubmit(e) {
+                e.preventDefault();
+                const enteredPassword = passwordInput.value.trim();
+                
+                if (enteredPassword === CORRECT_PASSWORD) {
+                    // Correct password
+                    sessionStorage.setItem(SESSION_KEY, 'true');
+                    hideError();
+                    showMainContent();
+                } else {
+                    // Incorrect password
+                    showError();
+                    passwordInput.value = '';
+                    passwordInput.focus();
+                    
+                    // Add shake animation to the form
+                    const content = document.querySelector('.lockscreen-content');
+                    content.style.animation = 'shake 0.5s ease-in-out';
+                    setTimeout(() => {
+                        content.style.animation = '';
+                    }, 500);
+                }
+            }
+            
+            // Show error message
+            function showError() {
+                errorMessage.classList.add('show');
+                setTimeout(() => {
+                    hideError();
+                }, 3000);
+            }
+            
+            // Hide error message
+            function hideError() {
+                errorMessage.classList.remove('show');
+            }
+            
+            // Handle Enter key press on password input
+            function handleKeyPress(e) {
+                if (e.key === 'Enter') {
+                    handleSubmit(e);
+                }
+                hideError();
+            }
+            
+            // Add CSS for shake animation
+            const shakeCSS = `
+                @keyframes shake {
+                    0%, 100% { transform: translateX(0); }
+                    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+                    20%, 40%, 60%, 80% { transform: translateX(5px); }
+                }
+            `;
+            const style = document.createElement('style');
+            style.textContent = shakeCSS;
+            document.head.appendChild(style);
+            
+            // Event listeners
+            lockscreenForm.addEventListener('submit', handleSubmit);
+            passwordInput.addEventListener('keypress', handleKeyPress);
+            passwordInput.addEventListener('input', hideError);
+            
+            // Initialize
+            checkAuth();
+            
+            // Lockscreen logo slider drag functionality
+            const lockscreenLogoContainer = document.getElementById('lockscreen-logo-container');
+            const lockscreenLogoSlider = document.getElementById('lockscreen-logo-slider');
+            
+            if (lockscreenLogoContainer && lockscreenLogoSlider) {
+                let isDragging = false;
+                let startX = 0;
+                let currentTransform = 0;
+                
+                // Pause animation when dragging
+                const pauseAnimation = () => {
+                    lockscreenLogoSlider.style.animationPlayState = 'paused';
+                };
+                
+                // Resume animation when not dragging
+                const resumeAnimation = () => {
+                    lockscreenLogoSlider.style.animationPlayState = 'running';
+                };
+                
+                // Mouse events
+                lockscreenLogoContainer.addEventListener('mousedown', (e) => {
+                    isDragging = true;
+                    startX = e.clientX;
+                    pauseAnimation();
+                    lockscreenLogoContainer.style.cursor = 'grabbing';
+                });
+                
+                document.addEventListener('mousemove', (e) => {
+                    if (!isDragging) return;
+                    
+                    const deltaX = e.clientX - startX;
+                    currentTransform += deltaX * 0.3; // Reduce sensitivity for lockscreen
+                    lockscreenLogoSlider.style.transform = `translateX(${currentTransform}px)`;
+                    startX = e.clientX;
+                });
+                
+                document.addEventListener('mouseup', () => {
+                    if (isDragging) {
+                        isDragging = false;
+                        resumeAnimation();
+                        lockscreenLogoContainer.style.cursor = 'grab';
+                        
+                        // Reset transform after a delay to continue smooth animation
+                        setTimeout(() => {
+                            lockscreenLogoSlider.style.transform = '';
+                            currentTransform = 0;
+                        }, 1000);
+                    }
+                });
+                
+                // Touch events for mobile
+                lockscreenLogoContainer.addEventListener('touchstart', (e) => {
+                    isDragging = true;
+                    startX = e.touches[0].clientX;
+                    pauseAnimation();
+                });
+                
+                lockscreenLogoContainer.addEventListener('touchmove', (e) => {
+                    if (!isDragging) return;
+                    e.preventDefault();
+                    
+                    const deltaX = e.touches[0].clientX - startX;
+                    currentTransform += deltaX * 0.3;
+                    lockscreenLogoSlider.style.transform = `translateX(${currentTransform}px)`;
+                    startX = e.touches[0].clientX;
+                });
+                
+                lockscreenLogoContainer.addEventListener('touchend', () => {
+                    if (isDragging) {
+                        isDragging = false;
+                        resumeAnimation();
+                        
+                        // Reset transform after a delay to continue smooth animation
+                        setTimeout(() => {
+                            lockscreenLogoSlider.style.transform = '';
+                            currentTransform = 0;
+                        }, 1000);
+                    }
+                });
+            }
+            
+            // Optional: Clear authentication when tab/window is closed
+            window.addEventListener('beforeunload', function() {
+                // Uncomment the line below if you want to require password on every visit
+                // sessionStorage.removeItem(SESSION_KEY);
+            });
+        });
+    </script>
 </body>
 </html>
