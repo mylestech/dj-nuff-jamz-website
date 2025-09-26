@@ -13,7 +13,7 @@
 }
 
 .admin-content {
-    background: #0f172a;
+    background: #000000;
     min-height: calc(100vh - 80px);
     overflow-y: auto;
 }
@@ -47,7 +47,7 @@
 /* Stats Cards */
 .stat-card {
     @apply transition-transform duration-200 hover:scale-105;
-    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
 }
 
 .stat-card:hover {
@@ -403,7 +403,7 @@
 
 .admin-sidebar::-webkit-scrollbar-track,
 .admin-content::-webkit-scrollbar-track {
-    background: #1e293b;
+    background: #1a1a1a;
 }
 
 .admin-sidebar::-webkit-scrollbar-thumb,

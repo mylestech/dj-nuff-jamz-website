@@ -137,25 +137,25 @@ class TestimonialsComponent {
         if (!this.container) return;
 
         this.container.innerHTML = `
-            <div class="testimonials-wrapper">
+            <div class="testimonials-wrapper py-12">
                 <div class="testimonials-header text-center mb-12">
-                    <h2 class="text-4xl font-bold text-white mb-4">What Our Clients Say</h2>
-                    <p class="text-xl text-gray-300">Real experiences from real events across Nigeria</p>
+                    <h2 class="text-4xl font-bold text-black mb-4" style="color: #000000 !important;">What Our Clients Say</h2>
+                    <p class="text-xl text-black" style="color: #000000 !important;">Real experiences from real events across Nigeria</p>
                 </div>
                 
-                <div class="testimonials-carousel-container relative">
+                <div class="testimonials-carousel-container relative mb-12">
                     <div class="testimonials-carousel" id="testimonials-carousel">
                         ${this.testimonials.map((testimonial, index) => this.createTestimonialCard(testimonial, index)).join('')}
                     </div>
                     
-                    <div class="testimonials-controls flex justify-center items-center mt-8 space-x-4">
-                        <button id="testimonials-prev" class="control-btn bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full transition-colors duration-200">
+                    <div class="testimonials-controls flex justify-center items-center mt-12 space-x-4">
+                        <button id="testimonials-prev" class="control-btn bg-black hover:bg-gray-800 text-white p-3 rounded-full transition-colors duration-200">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                             </svg>
                         </button>
                         
-                        <button id="testimonials-play-pause" class="control-btn bg-green-600 hover:bg-green-700 text-white p-3 rounded-full transition-colors duration-200">
+                        <button id="testimonials-play-pause" class="control-btn bg-black hover:bg-gray-800 text-white p-3 rounded-full transition-colors duration-200">
                             <svg class="w-6 h-6 play-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6l5-3-5-3z"></path>
                             </svg>
@@ -164,14 +164,14 @@ class TestimonialsComponent {
                             </svg>
                         </button>
                         
-                        <button id="testimonials-next" class="control-btn bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full transition-colors duration-200">
+                        <button id="testimonials-next" class="control-btn bg-black hover:bg-gray-800 text-white p-3 rounded-full transition-colors duration-200">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                             </svg>
                         </button>
                     </div>
                     
-                    <div class="testimonials-indicators flex justify-center mt-6 space-x-2" id="testimonials-indicators">
+                    <div class="testimonials-indicators flex justify-center mt-8 space-x-2" id="testimonials-indicators">
                         ${this.testimonials.map((_, index) => `
                             <button class="indicator w-3 h-3 rounded-full transition-all duration-200 ${index === 0 ? 'bg-blue-600' : 'bg-gray-600'}" 
                                     data-index="${index}"></button>
@@ -181,16 +181,16 @@ class TestimonialsComponent {
                 
                 <div class="testimonials-stats mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                     <div class="stat-item">
-                        <div class="text-3xl font-bold text-blue-400 mb-2">${this.testimonials.length}+</div>
-                        <div class="text-gray-300">Happy Clients</div>
+                        <div class="text-3xl font-bold text-black mb-2">${this.testimonials.length}+</div>
+                        <div class="text-black">Happy Clients</div>
                     </div>
                     <div class="stat-item">
-                        <div class="text-3xl font-bold text-green-400 mb-2">5.0</div>
-                        <div class="text-gray-300">Average Rating</div>
+                        <div class="text-3xl font-bold text-black mb-2">5.0</div>
+                        <div class="text-black">Average Rating</div>
                     </div>
                     <div class="stat-item">
-                        <div class="text-3xl font-bold text-purple-400 mb-2">100%</div>
-                        <div class="text-gray-300">Satisfaction Rate</div>
+                        <div class="text-3xl font-bold text-black mb-2">100%</div>
+                        <div class="text-black">Satisfaction Rate</div>
                     </div>
                 </div>
             </div>
@@ -206,34 +206,34 @@ class TestimonialsComponent {
         
         return `
             <div class="testimonial-card ${isActive ? 'active' : ''}" data-index="${index}">
-                <div class="testimonial-content bg-slate-800 rounded-lg p-8 mx-4 shadow-xl border border-slate-700 hover:border-blue-500 transition-all duration-300">
-                    <div class="testimonial-header flex items-center mb-6">
+                <div class="testimonial-content bg-slate-800 rounded-lg p-8 mx-4 shadow-xl border border-slate-700 min-h-[300px]">
+                    <div class="testimonial-header flex items-center mb-8">
                         ${testimonial.clientLogo ? `
                             <img src="${testimonial.clientLogo}" alt="${testimonial.companyName || testimonial.clientName}" 
                                  class="client-logo w-12 h-12 rounded-full mr-4 object-cover"
                                  onerror="this.style.display='none'">
                         ` : ''}
                         <div class="client-info">
-                            <h4 class="client-name text-lg font-semibold text-white">${testimonial.clientName}</h4>
-                            <p class="client-title text-sm text-gray-400">
+                            <h4 class="client-name text-lg font-semibold text-black">${testimonial.clientName}</h4>
+                            <p class="client-title text-sm text-gray-700">
                                 ${testimonial.clientTitle}${testimonial.companyName ? ` • ${testimonial.companyName}` : ''}
                             </p>
-                            <p class="client-location text-xs text-gray-500">${testimonial.displayLocation}</p>
+                            <p class="client-location text-xs text-gray-600">${testimonial.displayLocation}</p>
                         </div>
                     </div>
                     
-                    <div class="testimonial-text mb-6">
-                        <p class="text-gray-300 text-lg leading-relaxed italic">
+                    <div class="testimonial-text mb-8">
+                        <p class="text-black text-lg leading-relaxed italic mb-4">
                             "${testimonial.testimonial}"
                         </p>
                     </div>
                     
-                    <div class="testimonial-footer flex justify-between items-center">
-                        <div class="rating text-yellow-400 text-xl">
+                    <div class="testimonial-footer flex justify-between items-center mt-6">
+                        <div class="rating text-yellow-600 text-xl">
                             ${stars}
                         </div>
                         <div class="event-type">
-                            <span class="px-3 py-1 bg-blue-600 text-white text-xs rounded-full">
+                            <span class="px-3 py-1 bg-black text-white text-xs rounded-full">
                                 ${this.formatEventType(testimonial.eventType)}
                             </span>
                         </div>
@@ -264,31 +264,31 @@ class TestimonialsComponent {
             .testimonials-carousel-container {
                 overflow: hidden;
                 position: relative;
+                min-height: 400px;
+                padding: 2rem 0;
             }
             
             .testimonials-carousel {
                 display: flex;
-                transition: transform 0.5s ease-in-out;
-                will-change: transform;
             }
             
             .testimonial-card {
                 min-width: 100%;
                 opacity: 0.7;
-                transform: scale(0.95);
-                transition: all 0.5s ease-in-out;
+                padding: 1rem 0;
             }
             
             .testimonial-card.active {
                 opacity: 1;
-                transform: scale(1);
             }
             
             .testimonial-content {
-                background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+                background: rgba(255, 255, 255, 0.9);
+                border: 2px solid rgba(0, 0, 0, 0.1);
                 backdrop-filter: blur(10px);
                 position: relative;
                 overflow: hidden;
+                margin: 1rem 0;
             }
             
             .testimonial-content::before {
@@ -298,7 +298,7 @@ class TestimonialsComponent {
                 left: 0;
                 right: 0;
                 height: 3px;
-                background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4);
+                background: linear-gradient(90deg, #000000, #333333, #666666);
                 opacity: 0;
                 transition: opacity 0.3s ease;
             }
@@ -308,12 +308,7 @@ class TestimonialsComponent {
             }
             
             .client-logo {
-                border: 2px solid #3b82f6;
-                transition: transform 0.3s ease;
-            }
-            
-            .testimonial-card.active .client-logo {
-                transform: scale(1.1);
+                border: 2px solid #ffffff;
             }
             
             .control-btn {
@@ -336,32 +331,9 @@ class TestimonialsComponent {
             }
             
             .stat-item {
-                animation: fadeInUp 0.6s ease-out;
             }
             
-            @keyframes fadeInUp {
-                from {
-                    opacity: 0;
-                    transform: translateY(30px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
             
-            @keyframes pulse {
-                0%, 100% {
-                    transform: scale(1);
-                }
-                50% {
-                    transform: scale(1.05);
-                }
-            }
-            
-            .testimonial-card.active .testimonial-content {
-                animation: pulse 2s ease-in-out infinite;
-            }
             
             /* Mobile responsiveness */
             @media (max-width: 768px) {
@@ -393,9 +365,6 @@ class TestimonialsComponent {
                     transition: none;
                 }
                 
-                .testimonial-card.active .testimonial-content {
-                    animation: none;
-                }
             }
         `;
         

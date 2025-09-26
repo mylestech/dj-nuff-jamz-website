@@ -50,7 +50,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
             z-index: 9999;
             display: flex;
             align-items: center;
@@ -84,10 +84,10 @@
             font-weight: 400;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            background: linear-gradient(135deg, #facc15, #eab308);
+            background: #ffffff;
             -webkit-background-clip: text;
             background-clip: text;
-            color: transparent;
+            color: #ffffff;
             text-shadow: none;
             margin-bottom: 1rem;
         }
@@ -115,8 +115,8 @@
 
         .lockscreen-input:focus {
             outline: none;
-            border-color: #eab308;
-            box-shadow: 0 0 0 2px rgba(234, 179, 8, 0.2);
+            border-color: #ffffff;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
         }
 
         .lockscreen-input::placeholder {
@@ -126,8 +126,8 @@
         .lockscreen-button {
             width: 100%;
             padding: 0.875rem 1.25rem;
-            background: linear-gradient(135deg, #facc15, #eab308);
-            color: #0f172a;
+            background: #ffffff;
+            color: #000000;
             border: none;
             border-radius: 0.5rem;
             font-family: 'Barlow Condensed', sans-serif;
@@ -137,12 +137,12 @@
             text-transform: uppercase;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(234, 179, 8, 0.3);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
         }
 
         .lockscreen-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(234, 179, 8, 0.4);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.4);
         }
 
         .lockscreen-button:active {
@@ -176,7 +176,7 @@
             position: absolute;
             width: 4px;
             height: 4px;
-            background: rgba(234, 179, 8, 0.6);
+            background: rgba(255, 255, 255, 0.6);
             border-radius: 50%;
             animation: float 6s ease-in-out infinite;
         }
@@ -445,7 +445,7 @@
     }
     </script>
 </head>
-<body class="bg-dark-900 text-gray-100">
+<body class="bg-black text-gray-100">
     <!-- Password Lockscreen -->
     <div id="lockscreen">
         <div class="particle"></div>
@@ -529,7 +529,7 @@
                     <a href="#gallery" class="nav-link nav-text focus-visible">Gallery</a>
                     <a href="#testimonials" class="nav-link nav-text focus-visible">Testimonials</a>
                     <a href="#contact" class="nav-link nav-text focus-visible">Contact</a>
-                    <a href="#booking" class="bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-300 hover:to-blue-400 text-white px-6 py-3 rounded-full font-semibold transition-all duration-200 focus-visible btn-text" aria-label="Book your event">
+                    <a href="#booking" class="bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-500 hover:to-gray-600 text-white px-6 py-3 rounded-full font-semibold transition-all duration-200 focus-visible btn-text border-2 border-white hover:border-gray-300" aria-label="Book your event">
                         Book Event
                     </a>
                 </div>
@@ -557,7 +557,7 @@
                     <a href="#gallery" class="nav-link py-2 border-b border-dark-700 focus-visible">Gallery</a>
                     <a href="#testimonials" class="nav-link py-2 border-b border-dark-700 focus-visible">Testimonials</a>
                     <a href="#contact" class="nav-link py-2 border-b border-dark-700 focus-visible">Contact</a>
-                    <a href="#booking" class="bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-300 hover:to-blue-400 text-white px-6 py-3 rounded-full font-semibold transition-all duration-200 mt-4 text-center focus-visible">
+                    <a href="#booking" class="bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-500 hover:to-gray-600 text-white px-6 py-3 rounded-full font-semibold transition-all duration-200 mt-4 text-center focus-visible border-2 border-white hover:border-gray-300">
                         Book Your Event
                     </a>
                 </div>
@@ -590,7 +590,7 @@
                 <!-- Main Headline -->
                 <h1 id="hero-heading" class="font-bold mb-6 animate-fade-in text-shadow-lg" style="font-family: 'Anton', sans-serif; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.4 !important; text-shadow: 4px 4px 8px rgba(0,0,0,0.9);">
                     <span class="block text-3xl md:text-4xl lg:text-5xl text-white drop-shadow-2xl mb-3" style="letter-spacing: 0.08em; line-height: 1.4 !important; display: block; margin-bottom: 0.75rem;">DJ NUFF JAMZ</span>
-                    <span class="block text-3xl md:text-4xl lg:text-5xl text-blue-200 font-normal drop-shadow-lg" style="line-height: 1.4 !important; display: block;">
+                    <span class="block text-3xl md:text-4xl lg:text-5xl text-gray-200 font-normal drop-shadow-lg" style="line-height: 1.4 !important; display: block;">
                         ENTERTAINMENT
                     </span>
                 </h1>
@@ -600,7 +600,7 @@
                 <div class="flex flex-col items-center space-y-6 animate-slide-up" style="animation-delay: 0.4s;">
                     <!-- Main Booking Button -->
                     <a href="#booking" 
-                       class="group relative inline-flex items-center justify-center px-12 py-5 text-xl font-bold text-white bg-gradient-to-r from-blue-500 to-blue-600 rounded-full shadow-2xl hover:from-blue-400 hover:to-blue-500 transition-all duration-300 transform hover:scale-105 focus-visible min-w-[280px]"
+                       class="group relative inline-flex items-center justify-center px-12 py-5 text-xl font-bold text-white bg-gradient-to-r from-gray-700 to-gray-800 rounded-full shadow-2xl hover:from-gray-600 hover:to-gray-700 transition-all duration-300 transform hover:scale-105 focus-visible min-w-[280px]"
                        aria-label="Book your event with DJ Nuff Jamz">
                         <span class="absolute inset-0 bg-white/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                         <span class="relative flex items-center">
@@ -619,7 +619,7 @@
         </section>
 
         <!-- Scroll Indicator with Trust Indicators -->
-        <div class="bg-dark-900" style="height: 500px; display: flex; align-items: center; justify-content: center;">
+        <div class="bg-black" style="height: 500px; display: flex; align-items: center; justify-content: center;">
             <div class="text-center">
                 <!-- Trust Indicators -->
                 <div class="mb-4 animate-fade-in" style="animation-delay: 0.6s;">
@@ -671,35 +671,35 @@
         </div>
 
         <!-- Content Sections Placeholders -->
-        <section id="about" class="section-padding bg-dark-800/50" aria-labelledby="about-heading">
+        <section id="about" class="section-padding bg-white text-black" aria-labelledby="about-heading">
             <div class="container-custom">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
                     <!-- About Content -->
                     <div class="space-y-6">
                         <div>
-                            <span class="inline-block px-4 py-2 rounded-full text-sm font-medium bg-blue-500/20 text-blue-300 border border-blue-500/30 mb-4">
+                            <span class="inline-block px-4 py-2 rounded-full text-sm font-medium bg-gray-300 text-black border border-gray-400 mb-4" style="color: #000000 !important;">
                                 20+ Years of Excellence
                             </span>
-                            <h2 id="about-heading" class="text-4xl md:text-5xl font-bold text-gray-100 mb-6 section-title">
-                                From Nigerian <span class="hero-gradient">Corporate Giants</span> to NYC's Elite Events
+                            <h2 id="about-heading" class="text-4xl md:text-5xl font-bold text-black mb-6 section-title" style="color: #000000 !important;">
+                                From Nigerian <span class="text-black font-bold">Corporate Giants</span> to NYC's Elite Events
                             </h2>
                         </div>
                         
-                        <div class="space-y-4 text-lg text-gray-300 leading-relaxed">
-                            <p>
+                        <div class="space-y-4 text-lg text-black leading-relaxed" style="color: #000000 !important;">
+                            <p style="color: #000000 !important;">
                                 With over two decades of experience electrifying audiences across Nigeria and now NYC, 
-                                DJ Nuff Jamz brings an unmatched blend of <strong class="text-blue-400">authentic Afrobeats mastery</strong> 
+                                DJ Nuff Jamz brings an unmatched blend of <strong class="text-black" style="color: #000000 !important;">authentic Afrobeats mastery</strong> 
                                 and international sound expertise to every event.
                             </p>
                             
-                            <p>
+                            <p style="color: #000000 !important;">
                                 From commanding the stages at major corporate events for 
-                                <strong class="text-blue-400">Coca-Cola, Guinness, and Etisalat</strong> to collaborating with 
-                                top-tier artists like <strong class="text-blue-400">Fireboy DML and Asake</strong>, 
+                                <strong class="text-black" style="color: #000000 !important;">Coca-Cola, Guinness, and Etisalat</strong> to collaborating with 
+                                top-tier artists like <strong class="text-black" style="color: #000000 !important;">Fireboy DML and Asake</strong>, 
                                 Dennis has proven his ability to read any room and deliver unforgettable experiences.
                             </p>
                             
-                            <p>
+                            <p style="color: #000000 !important;">
                                 Now bringing that same energy and cultural authenticity to New York City's diverse event scene, 
                                 DJ Nuff Jamz specializes in creating the perfect soundtrack for corporate galas, intimate weddings, 
                                 high-energy private parties, and exclusive club nights.
@@ -709,23 +709,23 @@
                         <!-- Key Stats -->
                         <div class="grid grid-cols-2 gap-6 pt-6">
                             <div class="text-center">
-                                <div class="text-3xl font-bold text-blue-400">20+</div>
-                                <div class="text-sm text-gray-400">Years Experience</div>
+                                <div class="text-3xl font-bold text-black" style="color: #000000 !important;">20+</div>
+                                <div class="text-sm text-black" style="color: #000000 !important;">Years Experience</div>
                             </div>
                             <div class="text-center">
-                                <div class="text-3xl font-bold text-blue-400">500+</div>
-                                <div class="text-sm text-gray-400">Events Performed</div>
+                                <div class="text-3xl font-bold text-black" style="color: #000000 !important;">500+</div>
+                                <div class="text-sm text-black" style="color: #000000 !important;">Events Performed</div>
                             </div>
                         </div>
                     </div>
                     
                     <!-- About Image Placeholder -->
                     <div class="relative">
-                        <div class="aspect-square rounded-2xl bg-gradient-to-br from-blue-900 to-slate-800 flex items-center justify-center">
+                        <div class="aspect-square rounded-2xl bg-gray-200 border-2 border-gray-300 flex items-center justify-center">
                             <!-- Placeholder for DJ photo -->
-                            <div class="text-center text-gray-400">
+                            <div class="text-center text-black" style="color: #000000 !important;">
                                 <div class="text-6xl mb-4">🎧</div>
-                                <p class="text-lg">Professional DJ Photo<br/>Coming Soon</p>
+                                <p class="text-lg" style="color: #000000 !important;">Professional DJ Photo<br/>Coming Soon</p>
                             </div>
                             <!-- When adding DJ photo, replace with:
                             <img src="/images/about/dj-nuff-jamz-professional.jpg" 
@@ -735,19 +735,19 @@
                         </div>
                         
                         <!-- Decorative Elements -->
-                        <div class="absolute -top-4 -right-4 w-24 h-24 bg-blue-500/20 rounded-full blur-xl"></div>
-                        <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-blue-500/20 rounded-full blur-xl"></div>
+                        <div class="absolute -top-4 -right-4 w-24 h-24 bg-black/20 rounded-full blur-xl"></div>
+                        <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-black/20 rounded-full blur-xl"></div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Enhanced Service Showcase with Dropdowns -->
-        <section id="services" class="section-padding bg-slate-800/30" aria-labelledby="services-heading">
+        <section id="services" class="section-padding bg-black" aria-labelledby="services-heading">
             <div class="container-custom">
                 <!-- Section Header -->
                 <div class="text-center mb-16">
-                    <span class="inline-block px-4 py-2 rounded-full text-sm font-medium bg-blue-500/20 text-blue-300 border border-blue-500/30 mb-4">
+                    <span class="inline-block px-4 py-2 rounded-full text-sm font-medium bg-gray-700/20 text-gray-300 border border-gray-600/30 mb-4">
                         Professional DJ Services
                     </span>
                     <h2 id="services-heading" class="text-4xl md:text-5xl font-bold text-gray-100 mb-6 section-title">
@@ -764,16 +764,16 @@
                     <div class="service-card group relative" data-service="corporate">
                         <div class="card hover:bg-slate-700/50 transition-all duration-300 cursor-pointer h-full">
                             <div class="text-center">
-                                <div class="w-16 h-16 mx-auto mb-6 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-2xl">
+                                <div class="w-16 h-16 mx-auto mb-6 bg-gradient-to-r from-gray-700 to-gray-800 rounded-full flex items-center justify-center text-2xl">
                                     🏢
                                 </div>
-                                <h3 class="text-2xl font-bold text-gray-100 mb-4 group-hover:text-blue-400 transition-colors">
+                                <h3 class="text-2xl font-bold text-gray-100 mb-4 group-hover:text-white transition-colors">
                                     Corporate Events
                                 </h3>
                                 <p class="text-gray-400 mb-4 text-sm">
                                     Professional entertainment for product launches, company parties, and corporate celebrations.
                                 </p>
-                                <div class="flex items-center justify-center text-gray-500 group-hover:text-blue-400 transition-colors">
+                                <div class="flex items-center justify-center text-gray-500 group-hover:text-white transition-colors">
                                     <span class="text-sm mr-2">Learn More</span>
                                     <svg class="w-4 h-4 transform group-hover:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -785,22 +785,22 @@
                         <!-- Corporate Events Dropdown Content -->
                         <div class="dropdown-content">
                             <div class="space-y-4">
-                                <h4 class="text-lg font-semibold text-blue-400">What We Offer:</h4>
+                                <h4 class="text-lg font-semibold text-white">What We Offer:</h4>
                                 <ul class="space-y-2 text-gray-300">
                                     <li class="flex items-start">
-                                        <span class="text-blue-500 mr-2">•</span>
+                                        <span class="text-gray-300 mr-2">•</span>
                                         Product launch events with curated playlists
                                     </li>
                                     <li class="flex items-start">
-                                        <span class="text-blue-500 mr-2">•</span>
+                                        <span class="text-gray-300 mr-2">•</span>
                                         Executive-level corporate parties
                                     </li>
                                     <li class="flex items-start">
-                                        <span class="text-blue-500 mr-2">•</span>
+                                        <span class="text-gray-300 mr-2">•</span>
                                         Team building events and company celebrations
                                     </li>
                                     <li class="flex items-start">
-                                        <span class="text-blue-500 mr-2">•</span>
+                                        <span class="text-gray-300 mr-2">•</span>
                                         Award ceremonies and recognition events
                                     </li>
                                 </ul>
@@ -814,7 +814,7 @@
                                         <span>Etisalat</span>
                                     </div>
                                 </div>
-                                <a href="#booking" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-300">
+                                <a href="#booking" class="inline-block bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-300">
                                     Book Corporate Event
                                 </a>
                             </div>
@@ -848,15 +848,15 @@
                                 <h4 class="text-lg font-semibold text-purple-400">Perfect For:</h4>
                                 <ul class="space-y-2 text-gray-300">
                                     <li class="flex items-start">
-                                        <span class="text-blue-500 mr-2">•</span>
+                                        <span class="text-gray-300 mr-2">•</span>
                                         Birthday celebrations and milestone parties
                                     </li>
                                     <li class="flex items-start">
-                                        <span class="text-blue-500 mr-2">•</span>
+                                        <span class="text-gray-300 mr-2">•</span>
                                         Anniversary and graduation celebrations
                                     </li>
                                     <li class="flex items-start">
-                                        <span class="text-blue-500 mr-2">•</span>
+                                        <span class="text-gray-300 mr-2">•</span>
                                         House parties and intimate gatherings
                                     </li>
                                 </ul>
@@ -898,15 +898,15 @@
                                 <h4 class="text-lg font-semibold text-pink-400">Wedding Services:</h4>
                                 <ul class="space-y-2 text-gray-300">
                                     <li class="flex items-start">
-                                        <span class="text-blue-500 mr-2">•</span>
+                                        <span class="text-gray-300 mr-2">•</span>
                                         Ceremony and reception entertainment
                                     </li>
                                     <li class="flex items-start">
-                                        <span class="text-blue-500 mr-2">•</span>
+                                        <span class="text-gray-300 mr-2">•</span>
                                         Cultural and traditional music integration
                                     </li>
                                     <li class="flex items-start">
-                                        <span class="text-blue-500 mr-2">•</span>
+                                        <span class="text-gray-300 mr-2">•</span>
                                         First dance and special moment coordination
                                     </li>
                                 </ul>
@@ -925,16 +925,16 @@
                     <div class="service-card group relative" data-service="club">
                         <div class="card hover:bg-slate-700/50 transition-all duration-300 cursor-pointer h-full">
                             <div class="text-center">
-                                <div class="w-16 h-16 mx-auto mb-6 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-2xl">
+                                <div class="w-16 h-16 mx-auto mb-6 bg-gradient-to-r from-gray-700 to-gray-800 rounded-full flex items-center justify-center text-2xl">
                                     🎵
                                 </div>
-                                <h3 class="text-2xl font-bold text-gray-100 mb-4 group-hover:text-blue-400 transition-colors">
+                                <h3 class="text-2xl font-bold text-gray-100 mb-4 group-hover:text-white transition-colors">
                                     Club & Lounge
                                 </h3>
                                 <p class="text-gray-400 mb-4 text-sm">
                                     High-energy sets for nightlife venues and upscale entertainment spaces.
                                 </p>
-                                <div class="flex items-center justify-center text-gray-500 group-hover:text-blue-400 transition-colors">
+                                <div class="flex items-center justify-center text-gray-500 group-hover:text-white transition-colors">
                                     <span class="text-sm mr-2">Learn More</span>
                                     <svg class="w-4 h-4 transform group-hover:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -945,18 +945,18 @@
                         
                         <div class="dropdown-content">
                             <div class="space-y-4">
-                                <h4 class="text-lg font-semibold text-blue-400">Venue Experience:</h4>
+                                <h4 class="text-lg font-semibold text-white">Venue Experience:</h4>
                                 <ul class="space-y-2 text-gray-300">
                                     <li class="flex items-start">
-                                        <span class="text-blue-500 mr-2">•</span>
+                                        <span class="text-gray-300 mr-2">•</span>
                                         Nightclub residencies and guest sets
                                     </li>
                                     <li class="flex items-start">
-                                        <span class="text-blue-500 mr-2">•</span>
+                                        <span class="text-gray-300 mr-2">•</span>
                                         Upscale lounge and rooftop events
                                     </li>
                                     <li class="flex items-start">
-                                        <span class="text-blue-500 mr-2">•</span>
+                                        <span class="text-gray-300 mr-2">•</span>
                                         Festival and outdoor venue performances
                                     </li>
                                 </ul>
@@ -964,7 +964,7 @@
                                     <p class="text-sm text-gray-400">Signature Sound:</p>
                                     <p class="text-xs text-gray-500 mt-1">Afrobeats • Amapiano • Global Dance • Hip-Hop</p>
                                 </div>
-                                <a href="#booking" class="inline-block bg-blue-600 hover:bg-blue-700 text-slate-900 px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-300">
+                                <a href="#booking" class="inline-block bg-gray-800 hover:bg-gray-900 text-slate-900 px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-300">
                                     Book Venue Gig
                                 </a>
                             </div>
@@ -974,7 +974,7 @@
 
                 <!-- Call to Action -->
                 <div class="text-center mt-16">
-                    <div class="bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-2xl p-8 border border-blue-500/30">
+                    <div class="bg-gradient-to-r from-gray-800/20 to-gray-700/20 rounded-2xl p-8 border border-gray-600/30">
                         <h3 class="text-2xl font-bold text-gray-100 mb-4">
                             Ready to Elevate Your Event?
                         </h3>
@@ -982,10 +982,10 @@
                             Let's discuss your vision and create an unforgettable musical experience that perfectly matches your event's energy and audience.
                         </p>
                         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                            <a href="#booking" class="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-400 hover:to-blue-500 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 focus-visible">
+                            <a href="#booking" class="bg-gradient-to-r from-gray-700 to-gray-800 hover:from-gray-600 hover:to-gray-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 focus-visible">
                                 📅 Get Free Quote
                             </a>
-                            <a href="#booking" class="border border-blue-500 bg-blue-500/10 hover:bg-blue-500/20 text-blue-300 px-6 py-3 rounded-lg font-semibold transition-all duration-200 focus-visible">
+                            <a href="#booking" class="border border-gray-600 bg-gray-700/10 hover:bg-gray-700/20 text-gray-300 px-6 py-3 rounded-lg font-semibold transition-all duration-200 focus-visible">
                                 📅 Book Your Event
                             </a>
                         </div>
@@ -995,17 +995,17 @@
         </section>
 
         <!-- Music Section -->
-        <section id="music" class="section-padding bg-dark-800/50 hidden" aria-labelledby="music-heading">
+        <section id="music" class="section-padding bg-white text-black hidden" aria-labelledby="music-heading">
             <div class="container-custom">
                 <!-- Section Header -->
                 <div class="text-center mb-16">
-                    <span class="inline-block px-4 py-2 rounded-full text-sm font-medium bg-blue-500/20 text-blue-300 border border-blue-500/30 mb-4">
+                    <span class="inline-block px-4 py-2 rounded-full text-sm font-medium bg-gray-300 text-black border border-gray-400 mb-4">
                         🎵 Featured Mixes
                     </span>
-                    <h2 id="music-heading" class="text-4xl md:text-5xl font-bold text-gray-100 mb-6 section-title">
-                        Signature <span class="hero-gradient">Sound Collection</span>
+                    <h2 id="music-heading" class="text-4xl md:text-5xl font-bold text-black mb-6 section-title">
+                        Signature <span class="text-black font-bold">Sound Collection</span>
                     </h2>
-                    <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    <p class="text-xl text-gray-700 max-w-3xl mx-auto">
                         Experience the authentic Afrobeats energy and diverse musical expertise that has captivated audiences from Lagos to NYC.
                     </p>
                 </div>
@@ -1014,19 +1014,19 @@
                 <div class="max-w-4xl mx-auto">
                     <!-- Genre Filter Tabs -->
                     <div class="flex flex-wrap justify-center gap-2 mb-8">
-                        <button class="genre-filter active px-6 py-2 rounded-full text-sm font-medium bg-blue-500 text-slate-900 transition-all duration-300">
+                        <button class="genre-filter active px-6 py-2 rounded-full text-sm font-medium bg-black text-white transition-all duration-300">
                             All Genres
                         </button>
-                        <button class="genre-filter px-6 py-2 rounded-full text-sm font-medium bg-slate-700 text-gray-300 hover:bg-slate-600 transition-all duration-300">
+                        <button class="genre-filter px-6 py-2 rounded-full text-sm font-medium bg-gray-300 text-black hover:bg-gray-400 transition-all duration-300">
                             Afrobeats
                         </button>
-                        <button class="genre-filter px-6 py-2 rounded-full text-sm font-medium bg-slate-700 text-gray-300 hover:bg-slate-600 transition-all duration-300">
+                        <button class="genre-filter px-6 py-2 rounded-full text-sm font-medium bg-gray-300 text-black hover:bg-gray-400 transition-all duration-300">
                             Hip-Hop
                         </button>
-                        <button class="genre-filter px-6 py-2 rounded-full text-sm font-medium bg-slate-700 text-gray-300 hover:bg-slate-600 transition-all duration-300">
+                        <button class="genre-filter px-6 py-2 rounded-full text-sm font-medium bg-gray-300 text-black hover:bg-gray-400 transition-all duration-300">
                             R&B
                         </button>
-                        <button class="genre-filter px-6 py-2 rounded-full text-sm font-medium bg-slate-700 text-gray-300 hover:bg-slate-600 transition-all duration-300">
+                        <button class="genre-filter px-6 py-2 rounded-full text-sm font-medium bg-gray-300 text-black hover:bg-gray-400 transition-all duration-300">
                             Old School
                         </button>
                     </div>
@@ -1048,8 +1048,8 @@
                         <div class="space-y-4">
                             <!-- Progress Bar -->
                             <div class="relative">
-                                <div class="h-2 bg-slate-700 rounded-full">
-                                    <div class="h-2 bg-gradient-to-r from-blue-400 to-blue-500 rounded-full w-0" style="width: 0%"></div>
+                                <div class="h-2 bg-gray-300 rounded-full">
+                                    <div class="h-2 bg-gradient-to-r from-gray-600 to-gray-700 rounded-full w-0" style="width: 0%"></div>
                                 </div>
                                 <div class="flex justify-between text-xs text-gray-400 mt-1">
                                     <span>0:00</span>
@@ -1065,7 +1065,7 @@
                                     </svg>
                                 </button>
                                 
-                                <button class="p-4 rounded-full bg-gradient-to-r from-blue-400 to-blue-500 text-slate-900 hover:from-blue-300 hover:to-blue-400 transition-all duration-300 transform hover:scale-105">
+                                <button class="p-4 rounded-full bg-gradient-to-r from-gray-600 to-gray-700 text-slate-900 hover:from-gray-500 hover:to-gray-600 transition-all duration-300 transform hover:scale-105">
                                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path>
                                     </svg>
@@ -1086,7 +1086,7 @@
                         <div class="space-y-3">
                             <div class="flex items-center justify-between p-3 rounded-lg bg-slate-700/50 hover:bg-slate-700 transition-all duration-300 cursor-pointer">
                                 <div class="flex items-center space-x-4">
-                                    <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-500 rounded-lg flex items-center justify-center">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-gray-600 to-gray-700 rounded-lg flex items-center justify-center">
                                         <span class="text-slate-900 font-bold">🎵</span>
                                     </div>
                                     <div>
@@ -1099,7 +1099,7 @@
                             
                             <div class="flex items-center justify-between p-3 rounded-lg hover:bg-slate-700/50 transition-all duration-300 cursor-pointer">
                                 <div class="flex items-center space-x-4">
-                                    <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-500 rounded-lg flex items-center justify-center">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-gray-600 to-gray-700 rounded-lg flex items-center justify-center">
                                         <span class="text-white font-bold">🎧</span>
                                     </div>
                                     <div>
@@ -1125,8 +1125,8 @@
                         </div>
                         
                         <!-- Upload Note -->
-                        <div class="mt-6 p-4 bg-blue-500/10 border border-blue-500/20 rounded-lg">
-                            <p class="text-blue-300 text-sm text-center">
+                        <div class="mt-6 p-4 bg-gray-700/10 border border-gray-600/20 rounded-lg">
+                            <p class="text-gray-300 text-sm text-center">
                                 <strong>Coming Soon:</strong> Audio files will be uploaded and integrated with the player functionality.
                             </p>
                         </div>
@@ -1135,11 +1135,11 @@
             </div>
         </section>
 
-        <section id="gallery" class="section-padding" aria-labelledby="gallery-heading">
+        <section id="gallery" class="section-padding bg-black" aria-labelledby="gallery-heading">
             <div class="container-custom">
                 <!-- Section Header -->
                 <div class="text-center mb-16">
-                    <span class="inline-block px-4 py-2 rounded-full text-sm font-medium bg-blue-500/20 text-blue-300 border border-blue-500/30 mb-4">
+                    <span class="inline-block px-4 py-2 rounded-full text-sm font-medium bg-gray-700/20 text-gray-300 border border-gray-600/30 mb-4">
                         📸 Professional Portfolio
                     </span>
                     <h2 id="gallery-heading" class="text-4xl md:text-5xl font-bold text-gray-100 mb-6 section-title">
@@ -1150,11 +1150,11 @@
                     </p>
                     
                     <!-- Ready to Elevate Section -->
-                    <div class="bg-gradient-to-r from-blue-900/50 to-purple-900/50 rounded-2xl p-8 mb-12">
+                    <div class="bg-gradient-to-r from-black/50 to-gray-900/50 rounded-2xl p-8 mb-12">
                         <h3 class="text-2xl font-bold text-gray-100 mb-4">Ready to Elevate Your Event?</h3>
                         <p class="text-gray-300 mb-6">Let's discuss your vision and create an unforgettable musical experience that perfectly matches your event's energy and audience.</p>
                         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                            <a href="#booking" class="inline-flex items-center px-8 py-3 text-lg font-semibold text-slate-900 bg-gradient-to-r from-blue-400 to-blue-500 rounded-full hover:from-blue-300 hover:to-blue-400 transition-all duration-300 transform hover:scale-105">
+                            <a href="#booking" class="inline-flex items-center px-8 py-3 text-lg font-semibold text-slate-900 bg-gradient-to-r from-gray-600 to-gray-700 rounded-full hover:from-gray-500 hover:to-gray-600 transition-all duration-300 transform hover:scale-105">
                                 <span class="mr-2">📝</span>
                                 Get Free Quote
                             </a>
@@ -1168,7 +1168,7 @@
 
                 <!-- Gallery Filter Tabs -->
                 <div class="flex flex-wrap justify-center gap-2 mb-8">
-                    <button class="gallery-filter active px-6 py-2 rounded-full text-sm font-medium bg-blue-500 text-white transition-all duration-300">
+                    <button class="gallery-filter active px-6 py-2 rounded-full text-sm font-medium bg-gray-700 text-white transition-all duration-300">
                         All Events
                     </button>
                     <button class="gallery-filter px-6 py-2 rounded-full text-sm font-medium bg-slate-700 text-gray-300 hover:bg-slate-600 transition-all duration-300">
@@ -1221,7 +1221,7 @@
                     </div>
 
                     <!-- Gallery Item 2 -->
-                    <div class="group relative aspect-square overflow-hidden rounded-xl bg-gradient-to-br from-blue-900 to-slate-900 cursor-pointer">
+                    <div class="group relative aspect-square overflow-hidden rounded-xl bg-gradient-to-br from-black to-gray-900 cursor-pointer">
                         <div class="absolute inset-0 flex items-center justify-center text-gray-400">
                             <div class="text-center">
                                 <div class="text-4xl mb-2">🎉</div>
@@ -1253,7 +1253,7 @@
                     </div>
 
                     <!-- Gallery Item 4 -->
-                    <div class="group relative aspect-square overflow-hidden rounded-xl bg-gradient-to-br from-blue-900 to-slate-900 cursor-pointer">
+                    <div class="group relative aspect-square overflow-hidden rounded-xl bg-gradient-to-br from-black to-gray-900 cursor-pointer">
                         <div class="absolute inset-0 flex items-center justify-center text-gray-400">
                             <div class="text-center">
                                 <div class="text-4xl mb-2">🎂</div>
@@ -1302,9 +1302,9 @@
                 </div>
 
                 <!-- Upload Note -->
-                <div class="mt-12 p-6 bg-blue-500/10 border border-blue-500/20 rounded-xl text-center">
-                    <h4 class="text-lg font-semibold text-blue-300 mb-2">📷 Professional Photos Coming Soon</h4>
-                    <p class="text-blue-200 text-sm">
+                <div class="mt-12 p-6 bg-gray-700/10 border border-gray-600/20 rounded-xl text-center">
+                    <h4 class="text-lg font-semibold text-gray-300 mb-2">📷 Professional Photos Coming Soon</h4>
+                    <p class="text-gray-200 text-sm">
                         High-quality event photography from Dennis's extensive portfolio will be uploaded to showcase the authentic energy and professionalism of DJ Nuff Jamz performances.
                     </p>
                 </div>
@@ -1312,18 +1312,18 @@
         </section>
 
         <!-- Testimonials Section -->
-        <section id="testimonials" class="section-padding bg-gradient-to-b from-dark-800 to-dark-900" aria-labelledby="testimonials-heading">
+        <section id="testimonials" class="section-padding bg-white text-black" aria-labelledby="testimonials-heading">
             <div class="container-custom">
                 <div id="testimonials-container">
                     <!-- Testimonials will be loaded here by JavaScript -->
                     <div class="text-center">
                         <div class="animate-pulse">
-                            <div class="h-8 bg-slate-700 rounded w-64 mx-auto mb-4"></div>
-                            <div class="h-4 bg-slate-700 rounded w-96 mx-auto mb-8"></div>
-                            <div class="bg-slate-800 rounded-lg p-8 max-w-2xl mx-auto">
-                                <div class="h-4 bg-slate-700 rounded mb-4"></div>
-                                <div class="h-4 bg-slate-700 rounded mb-4"></div>
-                                <div class="h-4 bg-slate-700 rounded w-3/4"></div>
+                            <div class="h-8 bg-gray-300 rounded w-64 mx-auto mb-4"></div>
+                            <div class="h-4 bg-gray-300 rounded w-96 mx-auto mb-8"></div>
+                            <div class="bg-gray-200 rounded-lg p-8 max-w-2xl mx-auto">
+                                <div class="h-4 bg-gray-300 rounded mb-4"></div>
+                                <div class="h-4 bg-gray-300 rounded mb-4"></div>
+                                <div class="h-4 bg-gray-300 rounded w-3/4"></div>
                             </div>
                         </div>
                     </div>
@@ -1331,7 +1331,7 @@
             </div>
         </section>
 
-        <section id="contact" class="section-padding" aria-labelledby="contact-heading">
+        <section id="contact" class="section-padding bg-black" aria-labelledby="contact-heading">
             <div class="container-custom">
                 <h2 id="contact-heading" class="text-center mb-12 text-gray-100">Get In Touch</h2>
                 <div class="max-w-2xl mx-auto">
@@ -1349,13 +1349,13 @@
             </div>
         </section>
 
-        <section id="booking" class="section-padding bg-primary-900/20" aria-labelledby="booking-heading">
+        <section id="booking" class="section-padding bg-white text-black" aria-labelledby="booking-heading">
             <!-- Booking form will be rendered here by JavaScript -->
         </section>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-dark-950 border-t border-dark-700 section-padding" role="contentinfo">
+    <footer class="bg-black border-t border-gray-800 section-padding" role="contentinfo">
         <div class="container-custom">
             <div class="text-center">
                 <div class="mb-8">

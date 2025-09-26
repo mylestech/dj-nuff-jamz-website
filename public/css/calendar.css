@@ -11,7 +11,7 @@
 
 .calendar-day {
     @apply relative p-3 text-center cursor-pointer transition-colors duration-200 rounded-lg min-h-[60px] flex flex-col items-center justify-center;
-    background: #1e293b;
+    background: #1a1a1a;
     border: 1px solid #334155;
 }
 
@@ -26,12 +26,12 @@
 }
 
 .calendar-day.today {
-    @apply bg-blue-900 border-blue-500;
+    @apply bg-gray-900 border-gray-500;
 }
 
 .calendar-day.past {
     @apply text-gray-500;
-    background: #0f172a;
+    background: #000000;
 }
 
 .calendar-day.available {
@@ -43,15 +43,15 @@
 }
 
 .calendar-day.booked {
-    @apply bg-blue-900 border-blue-500 text-blue-100;
+    @apply bg-gray-900 border-gray-500 text-gray-100;
 }
 
 .calendar-day.booked:hover {
-    @apply bg-blue-800;
+    @apply bg-gray-800;
 }
 
 .calendar-day.pending {
-    @apply bg-yellow-900 border-yellow-500 text-yellow-100;
+    @apply bg-gray-900 border-gray-500 text-gray-100;
 }
 
 .calendar-day.pending:hover {
