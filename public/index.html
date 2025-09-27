@@ -41,6 +41,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton:wght@400&family=Oswald:wght@200;300;400;500;600;700&family=Bebas+Neue:wght@400&family=Barlow+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <title>DJ Nuff Jamz Entertainment - Professional DJ Services NYC</title>
+    
 
     <!-- Lockscreen Styles -->
     <style>
@@ -600,12 +601,30 @@
                 <div class="flex flex-col items-center space-y-6 animate-slide-up" style="animation-delay: 0.4s;">
                     <!-- Main Booking Button -->
                     <a href="#booking" 
-                       class="group relative inline-flex items-center justify-center px-12 py-5 text-xl font-bold text-white bg-gradient-to-r from-gray-700 to-gray-800 rounded-full shadow-2xl hover:from-gray-600 hover:to-gray-700 transition-all duration-300 transform hover:scale-105 focus-visible min-w-[280px]"
-                       aria-label="Book your event with DJ Nuff Jamz">
-                        <span class="absolute inset-0 bg-white/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                        <span class="relative flex items-center">
+                       class="group relative inline-flex items-center justify-center focus-visible"
+                       aria-label="Book your event with DJ Nuff Jamz"
+                       style="
+                           background: rgba(0,0,0,0.9) !important;
+                           padding: 20px 48px !important;
+                           border-radius: 50px !important;
+                           color: white !important;
+                           font-size: 1.25rem !important;
+                           font-weight: bold !important;
+                           text-decoration: none !important;
+                           border: 2px solid white !important;
+                           box-shadow: 0 25px 50px rgba(0,0,0,0.5) !important;
+                           transition: all 0.3s ease !important;
+                           text-shadow: 2px 2px 4px rgba(0,0,0,1) !important;
+                           min-width: 280px !important;
+                           display: inline-flex !important;
+                           align-items: center !important;
+                           justify-content: center !important;
+                       "
+                       onmouseover="this.style.background='rgba(0,0,0,0.95)'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 30px 60px rgba(0,0,0,0.6)'"
+                       onmouseout="this.style.background='rgba(0,0,0,0.9)'; this.style.transform='scale(1)'; this.style.boxShadow='0 25px 50px rgba(0,0,0,0.5)'">
+                        <span style="display: flex; align-items: center; position: relative; z-index: 2;">
                             📅 Book Your Event
-                            <svg class="ml-3 w-6 h-6 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg style="margin-left: 12px; width: 24px; height: 24px; transition: transform 0.2s ease;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                             </svg>
                         </span>
@@ -619,41 +638,41 @@
         </section>
 
         <!-- Scroll Indicator with Trust Indicators -->
-        <div class="bg-black" style="height: 500px; display: flex; align-items: center; justify-content: center;">
-            <div class="text-center">
+        <div class="bg-black" style="height: 500px; display: flex; align-items: center; justify-content: center; overflow-x: hidden;">
+            <div class="text-center" style="max-width: 100%; overflow-x: hidden;">
                 <!-- Trust Indicators -->
                 <div class="mb-4 animate-fade-in" style="animation-delay: 0.6s;">
                     <p class="text-sm text-gray-500 mb-4 text-center">Trusted by Major Brands</p>
                     
                     <!-- Infinite Scrolling Logos -->
-                    <div class="overflow-hidden relative w-full mb-4 cursor-grab active:cursor-grabbing" id="logo-container">
-                        <div class="flex animate-scroll-infinite" id="logo-slider">
+                    <div class="overflow-hidden relative w-full mb-4 cursor-grab active:cursor-grabbing" id="logo-container" style="max-width: 100vw;">
+                        <div class="flex animate-scroll-infinite" id="logo-slider" style="width: 4000px; gap: 40px; transform: translateX(0);">
                             <!-- First set of logos -->
-                            <div class="flex items-center flex-shrink-0 logo-set">
-                                <img src="/images/clients/logos/guinness-logo.svg" alt="Guinness" style="width: 150px; height: 150px; opacity: 0.7;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
-                                <img src="/images/clients/logos/pepsi-logo.svg" alt="Pepsi" style="width: 150px; height: 150px; opacity: 0.7;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
-                                <img src="/images/clients/logos/heineken-logo.svg" alt="Heineken" style="width: 150px; height: 150px; opacity: 0.7;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
-                                <img src="/images/clients/logos/first-bank-logo.svg" alt="First Bank" style="width: 150px; height: 150px; opacity: 0.7;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
-                                <img src="/images/clients/logos/ea-logo.svg" alt="EA Sports" style="width: 150px; height: 150px; opacity: 0.7;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
-                                <img src="/images/clients/logos/nb-logo.svg" alt="NB" style="width: 150px; height: 150px; opacity: 0.7;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
-                                <img src="/images/clients/logos/crown-fm-logo.svg" alt="Crown FM" style="width: 150px; height: 150px; opacity: 0.7;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
-                                <img src="/images/clients/logos/groove-radio-logo.svg" alt="Groove Radio" style="width: 150px; height: 150px; opacity: 0.7;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
-                                <img src="/images/clients/logos/kennis-music-logo.svg" alt="Kennis Music" style="width: 150px; height: 150px; opacity: 0.7;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
-                                <img src="/images/clients/logos/ooni-of-ife-logo.svg" alt="Ooni of Ife" style="width: 150px; height: 150px; opacity: 0.7;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
+                            <div class="flex items-center flex-shrink-0" style="gap: 40px; min-width: 1960px; justify-content: space-between;">
+                                <img src="/images/clients/logos/guinness-logo.svg" alt="Guinness" style="width: 150px; height: 150px; opacity: 0.7; flex-shrink: 0;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
+                                <img src="/images/clients/logos/pepsi-logo.svg" alt="Pepsi" style="width: 150px; height: 150px; opacity: 0.7; flex-shrink: 0;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
+                                <img src="/images/clients/logos/heineken-logo.svg" alt="Heineken" style="width: 150px; height: 150px; opacity: 0.7; flex-shrink: 0;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
+                                <img src="/images/clients/logos/first-bank-logo.svg" alt="First Bank" style="width: 150px; height: 150px; opacity: 0.7; flex-shrink: 0;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
+                                <img src="/images/clients/logos/ea-logo.svg" alt="EA Sports" style="width: 150px; height: 150px; opacity: 0.7; flex-shrink: 0;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
+                                <img src="/images/clients/logos/nb-logo.svg" alt="NB" style="width: 150px; height: 150px; opacity: 0.7; flex-shrink: 0;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
+                                <img src="/images/clients/logos/crown-fm-logo.svg" alt="Crown FM" style="width: 150px; height: 150px; opacity: 0.7; flex-shrink: 0;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
+                                <img src="/images/clients/logos/groove-radio-logo.svg" alt="Groove Radio" style="width: 150px; height: 150px; opacity: 0.7; flex-shrink: 0;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
+                                <img src="/images/clients/logos/kennis-music-logo.svg" alt="Kennis Music" style="width: 150px; height: 150px; opacity: 0.7; flex-shrink: 0;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
+                                <img src="/images/clients/logos/ooni-of-ife-logo.svg" alt="Ooni of Ife" style="width: 150px; height: 150px; opacity: 0.7; flex-shrink: 0;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
                             </div>
 
                             <!-- Second set for seamless loop -->
-                            <div class="flex items-center flex-shrink-0 logo-set">
-                                <img src="/images/clients/logos/guinness-logo.svg" alt="Guinness" style="width: 150px; height: 150px; opacity: 0.7;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
-                                <img src="/images/clients/logos/pepsi-logo.svg" alt="Pepsi" style="width: 150px; height: 150px; opacity: 0.7;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
-                                <img src="/images/clients/logos/heineken-logo.svg" alt="Heineken" style="width: 150px; height: 150px; opacity: 0.7;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
-                                <img src="/images/clients/logos/first-bank-logo.svg" alt="First Bank" style="width: 150px; height: 150px; opacity: 0.7;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
-                                <img src="/images/clients/logos/ea-logo.svg" alt="EA Sports" style="width: 150px; height: 150px; opacity: 0.7;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
-                                <img src="/images/clients/logos/nb-logo.svg" alt="NB" style="width: 150px; height: 150px; opacity: 0.7;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
-                                <img src="/images/clients/logos/crown-fm-logo.svg" alt="Crown FM" style="width: 150px; height: 150px; opacity: 0.7;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
-                                <img src="/images/clients/logos/groove-radio-logo.svg" alt="Groove Radio" style="width: 150px; height: 150px; opacity: 0.7;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
-                                <img src="/images/clients/logos/kennis-music-logo.svg" alt="Kennis Music" style="width: 150px; height: 150px; opacity: 0.7;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
-                                <img src="/images/clients/logos/ooni-of-ife-logo.svg" alt="Ooni of Ife" style="width: 150px; height: 150px; opacity: 0.7;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
+                            <div class="flex items-center flex-shrink-0" style="gap: 40px; min-width: 1960px; justify-content: space-between;">
+                                <img src="/images/clients/logos/guinness-logo.svg" alt="Guinness" style="width: 150px; height: 150px; opacity: 0.7; flex-shrink: 0;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
+                                <img src="/images/clients/logos/pepsi-logo.svg" alt="Pepsi" style="width: 150px; height: 150px; opacity: 0.7; flex-shrink: 0;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
+                                <img src="/images/clients/logos/heineken-logo.svg" alt="Heineken" style="width: 150px; height: 150px; opacity: 0.7; flex-shrink: 0;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
+                                <img src="/images/clients/logos/first-bank-logo.svg" alt="First Bank" style="width: 150px; height: 150px; opacity: 0.7; flex-shrink: 0;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
+                                <img src="/images/clients/logos/ea-logo.svg" alt="EA Sports" style="width: 150px; height: 150px; opacity: 0.7; flex-shrink: 0;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
+                                <img src="/images/clients/logos/nb-logo.svg" alt="NB" style="width: 150px; height: 150px; opacity: 0.7; flex-shrink: 0;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
+                                <img src="/images/clients/logos/crown-fm-logo.svg" alt="Crown FM" style="width: 150px; height: 150px; opacity: 0.7; flex-shrink: 0;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
+                                <img src="/images/clients/logos/groove-radio-logo.svg" alt="Groove Radio" style="width: 150px; height: 150px; opacity: 0.7; flex-shrink: 0;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
+                                <img src="/images/clients/logos/kennis-music-logo.svg" alt="Kennis Music" style="width: 150px; height: 150px; opacity: 0.7; flex-shrink: 0;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
+                                <img src="/images/clients/logos/ooni-of-ife-logo.svg" alt="Ooni of Ife" style="width: 150px; height: 150px; opacity: 0.7; flex-shrink: 0;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" draggable="false">
                             </div>
                         </div>
                     </div>
