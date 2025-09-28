@@ -83,8 +83,8 @@ class BookingForm {
     renderProgressIndicator() {
         const steps = [
             { number: 1, title: 'Event Details', icon: '📅' },
-            { number: 2, title: 'Your Information', icon: '👤' },
-            { number: 3, title: 'Preferences', icon: '🎵' },
+            { number: 2, title: 'Your Information', icon: 'ℹ️' },
+            { number: 3, title: 'Preferences', icon: '⚙️' },
             { number: 4, title: 'Review & Submit', icon: '✅' }
         ];
 
@@ -420,7 +420,7 @@ class BookingForm {
                     <!-- Contact Info Review -->
                     <div class="bg-slate-700/30 rounded-lg p-6 border border-slate-600">
                         <h4 class="text-lg font-semibold text-gray-100 mb-4 flex items-center">
-                            👤 Contact Information
+                            ℹ️ Contact Information
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                             <div>
@@ -445,7 +445,7 @@ class BookingForm {
                     <!-- Preferences Review -->
                     <div class="bg-slate-700/30 rounded-lg p-6 border border-slate-600">
                         <h4 class="text-lg font-semibold text-gray-100 mb-4 flex items-center">
-                            🎵 Music & Preferences
+                            ⚙️ Music & Preferences
                         </h4>
                         <div class="space-y-3 text-sm">
                             ${this.formData.musicPreferences ? `
