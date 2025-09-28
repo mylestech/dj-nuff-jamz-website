@@ -94,17 +94,21 @@ class BookingForm {
                     ${steps.map((step, index) => `
                         <div class="flex items-center ${index < steps.length - 1 ? 'flex-1' : ''}">
                             <div class="flex flex-col items-center">
-                                <div class="w-12 h-12 rounded-full flex items-center justify-center text-sm font-bold mb-2 transition-all duration-300 ${
+                                <div class="w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mb-2 transition-all duration-300 ${
                                     step.number === this.currentStep 
-                                        ? 'bg-gradient-to-r from-yellow-400 to-yellow-500 text-slate-900' 
+                                        ? 'text-white shadow-[0_0_20px_rgba(255,255,255,0.8)] transform scale-110' 
                                         : step.number < this.currentStep 
-                                            ? 'bg-green-600 text-white' 
-                                            : 'bg-slate-700 text-gray-400'
+                                            ? 'text-green-400 shadow-[0_4px_12px_rgba(34,197,94,0.3)]' 
+                                            : 'text-gray-500 opacity-60 shadow-[0_2px_8px_rgba(0,0,0,0.3)]'
                                 }">
-                                    ${step.number < this.currentStep ? '✓' : step.number === this.currentStep ? step.icon : step.number}
+                                    ${step.number < this.currentStep ? '✓' : step.icon}
                                 </div>
                                 <span class="text-xs text-center max-w-20 ${
-                                    step.number === this.currentStep ? 'text-yellow-400 font-semibold' : 'text-gray-400'
+                                    step.number === this.currentStep 
+                                        ? 'text-white font-semibold drop-shadow-lg' 
+                                        : step.number < this.currentStep 
+                                            ? 'text-green-400 font-medium' 
+                                            : 'text-gray-500 opacity-60'
                                 }">${step.title}</span>
                             </div>
                             ${index < steps.length - 1 ? `
@@ -493,7 +497,7 @@ class BookingForm {
         return `
             <div class="flex justify-between items-center pt-8 border-t border-slate-700">
                 <button type="button" id="prev-step" 
-                        class="btn-secondary ${isFirstStep ? 'opacity-50 cursor-not-allowed' : ''}"
+                        class="btn-secondary"
                         ${isFirstStep ? 'disabled' : ''}>
                     ← Previous
                 </button>
