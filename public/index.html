@@ -28,6 +28,8 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/android-chrome-512x512.png">
 
     <!-- Styles -->
     <link rel="stylesheet" href="/css/style.css?v=1735158567">
@@ -709,14 +711,36 @@
         <!-- Content Sections Placeholders -->
         <section id="about" class="section-padding bg-white text-black" aria-labelledby="about-heading">
             <div class="container-custom">
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <!-- About Content -->
-                    <div class="space-y-6">
+                
+
+                <!-- CLEAN DESKTOP AND MOBILE LAYOUT -->
+                <div style="display: flex; gap: 2rem; align-items: center; width: 100%;" class="about-layout">
+                    <style>
+                    @media (max-width: 768px) {
+                        .about-layout { flex-direction: column-reverse !important; }
+                        .image-container { width: 100% !important; max-width: 550px !important; margin: 0 auto !important; display: block !important; }
+                        .text-container { width: 100% !important; }
+                    }
+                    </style>
+                    
+                    <!-- Image for Desktop (left side) -->
+                    <div class="image-container" style="width: 46%; flex-shrink: 0; display: flex; justify-content: center; align-items: center;">
+                        <div style="width: 100%; max-width: 550px;">
+                            <div style="aspect-ratio: 1; border-radius: 1rem; background-color: #e5e7eb; border: 2px solid #d1d5db; overflow: hidden;">
+                                <img src="/images/about/dj-photo-1.jpeg" 
+                                     alt="DJ Nuff Jamz professional photo" 
+                                     style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Text Content for Desktop (right side) -->
+                    <div class="text-container" style="width: 52%; display: flex; flex-direction: column; gap: 1.5rem;">
                         <div>
                             <span class="inline-block px-4 py-2 rounded-full text-sm font-medium bg-gray-300 text-black border border-gray-400 mb-4" style="color: #000000 !important;">
                                 20+ Years of Excellence
                             </span>
-                            <h2 id="about-heading" class="text-4xl md:text-5xl font-bold text-black mb-6 section-title" style="color: #000000 !important;">
+                            <h2 id="about-heading" class="text-4xl lg:text-5xl font-bold text-black mb-6 section-title" style="color: #000000 !important;">
                                 From Nigerian <span class="text-black font-bold">Corporate Giants</span> to NYC's Elite Events
                             </h2>
                         </div>
@@ -743,7 +767,7 @@
                         </div>
                         
                         <!-- Key Stats -->
-                        <div class="grid grid-cols-2 gap-6 pt-6">
+                        <div class="grid grid-cols-2 gap-6 pt-6" style="display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 1.5rem !important;">
                             <div class="text-center">
                                 <div class="text-3xl font-bold text-black" style="color: #000000 !important;">20+</div>
                                 <div class="text-sm text-black" style="color: #000000 !important;">Years Experience</div>
@@ -754,27 +778,8 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- About Image Placeholder -->
-                    <div class="relative">
-                        <div class="aspect-square rounded-2xl bg-gray-200 border-2 border-gray-300 flex items-center justify-center">
-                            <!-- Placeholder for DJ photo -->
-                            <div class="text-center text-black" style="color: #000000 !important;">
-                                <div class="text-6xl mb-4">🎧</div>
-                                <p class="text-lg" style="color: #000000 !important;">Professional DJ Photo<br/>Coming Soon</p>
-                            </div>
-                            <!-- When adding DJ photo, replace with:
-                            <img src="/images/about/dj-nuff-jamz-professional.jpg" 
-                                 alt="DJ Nuff Jamz in professional setting" 
-                                 class="w-full h-full object-cover rounded-2xl" />
-                            -->
-                        </div>
-                        
-                        <!-- Decorative Elements -->
-                        <div class="absolute -top-4 -right-4 w-24 h-24 bg-black/20 rounded-full blur-xl"></div>
-                        <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-black/20 rounded-full blur-xl"></div>
-                    </div>
                 </div>
+                
             </div>
         </section>
 
@@ -1669,6 +1674,7 @@
             });
         }
     </script>
+    
     
     <!-- Scripts -->
     <script src="js/config.js"></script>
