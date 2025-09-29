@@ -759,18 +759,9 @@ html {
 body {
   --tw-bg-opacity: 1;
   background-color: rgb(15 23 42 / var(--tw-bg-opacity, 1));
-  font-family: Inter, system-ui, sans-serif;
+  font-family: Oswald, system-ui, sans-serif;
   --tw-text-opacity: 1;
   color: rgb(243 244 246 / var(--tw-text-opacity, 1));
-}
-
-h3body.text-2xl.font-bold {
-  font-family: 'Oswald', sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -778,12 +769,7 @@ body {
 /* Typography */
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: Inter, system-ui, sans-serif;
-  font-weight: 700;
-}
-
-h3h1.text-2xl.text-gray-100,h3 h2.text-2xl.text-gray-100,h3 h3.text-2xl.text-gray-100,h3 h4.text-2xl.text-gray-100,h3 h5.text-2xl.text-gray-100,h3 h6.text-2xl.text-gray-100 {
-  font-family: 'Oswald', sans-serif;
+  font-family: Oswald, system-ui, sans-serif;
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -831,12 +817,6 @@ h3 {
   line-height: 2rem;
 }
 
-h3h3.font-bold.text-gray-100 {
-  font-family: 'Oswald', sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
 @media (min-width: 768px) {
   h3 {
     font-size: 1.875rem;
@@ -868,12 +848,6 @@ input, textarea, select {
   background-color: rgb(30 41 59 / var(--tw-bg-opacity, 1));
   --tw-text-opacity: 1;
   color: rgb(243 244 246 / var(--tw-text-opacity, 1));
-}
-
-h3input.text-2xl.font-bold,h3 textarea.text-2xl.font-bold,h3 select.text-2xl.font-bold {
-  font-family: 'Oswald', sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
 }
 
 input:focus, textarea:focus, select:focus {
@@ -1004,12 +978,6 @@ button {
   color: rgb(243 244 246 / var(--tw-text-opacity, 1));
 }
 
-h3.text-2xl.font-bold.btn-secondary {
-  font-family: 'Oswald', sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
 .btn-secondary:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(71 85 105 / var(--tw-bg-opacity, 1));
@@ -1094,6 +1062,125 @@ h3.text-2xl.font-bold.btn-secondary {
   backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
 }
 
+/* ==============================================
+       GLASSMORPHISM EFFECTS FOR SERVICE CARDS
+       ============================================== */
+
+.service-card .card {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4) !important;
+}
+
+.service-card .dropdown-content {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* ==============================================
+       MOBILE RESPONSIVE STYLES (768px and below)
+       ============================================== */
+
+@media (max-width: 768px) {
+  /* Make service cards stack properly */
+
+  .services-section .grid.gap-8 {
+    gap: 2.5rem !important;
+  }
+
+  .service-card {
+    position: static;
+    margin-bottom: 2.5rem !important;
+  }
+
+  /* Always show dropdowns on mobile */
+
+  .service-card .dropdown-content {
+    position: static !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+    margin-top: 0.75rem !important;
+    margin-bottom: 0.75rem !important;
+    padding: 0.75rem !important;
+    /* Glassmorphism for mobile dropdowns */
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4) !important;
+  }
+
+  /* Make service cards compact on mobile */
+
+  .service-card .card {
+    margin-bottom: 0;
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    padding: 1rem !important;
+    /* Glassmorphism for mobile cards */
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4) !important;
+  }
+
+  /* Hide Learn More buttons on mobile but keep emojis visible */
+
+  .service-card .card .btn-outline {
+    display: none !important;
+  }
+
+  .service-card .card .btn-primary {
+    display: none !important;
+  }
+
+  .service-card .card .text-blue-400 {
+    display: none !important;
+  }
+
+  .service-card .card .text-purple-400 {
+    display: none !important;
+  }
+
+  /* Ensure emojis are ALWAYS visible on mobile */
+
+  .service-card .w-16.h-16 {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  /* Compact text spacing on mobile */
+
+  .service-card .card h3 {
+    font-size: 1.25rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .service-card .card p {
+    font-size: 0.875rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .service-card .dropdown-content h4 {
+    font-size: 1rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .service-card .dropdown-content p {
+    font-size: 0.8125rem !important;
+    line-height: 1.4 !important;
+  }
+}
+
 /* Container */
 
 .container-custom {
@@ -1158,6 +1245,24 @@ h3.text-2xl.font-bold.btn-secondary {
   font-weight: 500;
 }
 
+@media (max-width: 768px) {
+  /* Make service cards stack properly */
+
+  /* Always show dropdowns on mobile */
+
+  /* Make service cards compact on mobile */
+
+  /* Hide Learn More buttons on mobile but keep emojis visible */
+
+  .service-card .card .nav-link-active {
+    display: none;
+  }
+
+  /* Ensure emojis are ALWAYS visible on mobile */
+
+  /* Compact text spacing on mobile */
+}
+
 .nav-link-active {
   --tw-text-opacity: 1;
   color: rgb(96 165 250 / var(--tw-text-opacity, 1));
@@ -1173,17 +1278,6 @@ h3.text-2xl.font-bold.btn-secondary {
   --tw-gradient-to: rgb(234 179 8 / 0)  var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), #eab308 var(--tw-gradient-via-position), var(--tw-gradient-to);
   --tw-gradient-to: #2563eb var(--tw-gradient-to-position);
-}
-
-.service-card[data-service="private"] .hero-gradient {
-  background: linear-gradient(to right, #a855f7, #ec4899);
-}
-
-.service-card[data-service="wedding"] .hero-gradient {
-  background: linear-gradient(to right, #ec4899, #f43f5e);
-}
-
-.hero-gradient {
   -webkit-background-clip: text;
           background-clip: text;
   color: transparent;
@@ -1214,12 +1308,6 @@ h3.text-2xl.font-bold.btn-secondary {
 .form-input::placeholder {
   --tw-placeholder-opacity: 1;
   color: rgb(156 163 175 / var(--tw-placeholder-opacity, 1));
-}
-
-h3.text-2xl.font-bold.form-input {
-  font-family: 'Oswald', sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
 }
 
 .form-input:focus {
@@ -2463,7 +2551,7 @@ h3.text-2xl.font-bold.form-input {
 }
 
 .font-display {
-  font-family: Inter, system-ui, sans-serif;
+  font-family: Oswald, system-ui, sans-serif;
 }
 
 .text-2xl {
@@ -2823,6 +2911,24 @@ h3.text-2xl.font-bold.form-input {
 
 /* Mobile-first responsive utilities */
 
+@media (max-width: 768px) {
+  /* Make service cards stack properly */
+
+  .services-section .responsive-grid.gap-8 {
+    gap: 2.5rem;
+  }
+
+  /* Always show dropdowns on mobile */
+
+  /* Make service cards compact on mobile */
+
+  /* Hide Learn More buttons on mobile but keep emojis visible */
+
+  /* Ensure emojis are ALWAYS visible on mobile */
+
+  /* Compact text spacing on mobile */
+}
+
 .responsive-grid {
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -2884,153 +2990,30 @@ h3.text-2xl.font-bold.form-input {
 
 /* Mobile touch support */
 
-/* ==============================================
-     GLASSMORPHISM EFFECTS FOR SERVICE CARDS
-     ============================================== */
+@media (max-width: 768px) {
+  .service-card {
+    position: static;
+  }
 
-.service-card .card {
-  background: rgba(255, 255, 255, 0.1) !important;
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4) !important;
-}
+  .service-card .dropdown-content {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    margin-top: 1rem;
+    background: #334155;
+    border: 1px solid #64748b;
+  }
 
-.service-card .dropdown-content {
-  background: rgba(255, 255, 255, 0.1) !important;
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4) !important;
+  .service-card .card {
+    margin-bottom: 0;
+  }
 }
 
 /* Service card hover effects */
+
 .service-card .card:hover {
   transform: translateY(-5px);
-}
-
-/* ==============================================
-     MOBILE RESPONSIVE STYLES (768px and below)
-     ============================================== */
-
-@media (max-width: 768px) {
-  /* Make service cards stack properly */
-  .services-section .grid.gap-8 {
-    gap: 2.5rem !important;
-  }
-  
-  .service-card {
-    position: static;
-    margin-bottom: 2.5rem !important;
-  }
-
-  /* Always show dropdowns on mobile */
-  .service-card .dropdown-content {
-    position: static !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: translateY(0) !important;
-    margin-top: 0.75rem !important;
-    margin-bottom: 0.75rem !important;
-    padding: 0.75rem !important;
-    /* Glassmorphism for mobile dropdowns */
-    background: rgba(255, 255, 255, 0.1) !important;
-    backdrop-filter: blur(10px) !important;
-    -webkit-backdrop-filter: blur(10px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4) !important;
-  }
-
-  /* Make service cards compact on mobile */
-  .service-card .card {
-    margin-bottom: 0;
-    height: auto !important;
-    min-height: auto !important;
-    max-height: none !important;
-    padding: 1rem !important;
-    /* Glassmorphism for mobile cards */
-    background: rgba(255, 255, 255, 0.1) !important;
-    backdrop-filter: blur(10px) !important;
-    -webkit-backdrop-filter: blur(10px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4) !important;
-  }
-
-  /* Hide Learn More buttons on mobile but keep emojis visible */
-  .service-card .card .btn-outline {
-    display: none !important;
-  }
-  
-  .service-card .card .btn-primary {
-    display: none !important;
-  }
-  
-  .service-card .card .text-blue-400 {
-    display: none !important;
-  }
-  
-  .service-card .card .text-purple-400 {
-    display: none !important;
-  }
-  
-  /* Ensure emojis are ALWAYS visible on mobile */
-  .service-card .w-16.h-16 {
-    display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-  }
-  
-  /* Compact text spacing on mobile */
-  .service-card .card h3 {
-    font-size: 1.25rem !important;
-    margin-bottom: 0.5rem !important;
-  }
-  
-  .service-card .card p {
-    font-size: 0.875rem !important;
-    margin-bottom: 0.75rem !important;
-  }
-  
-  .service-card .dropdown-content h4 {
-    font-size: 1rem !important;
-    margin-bottom: 0.5rem !important;
-  }
-  
-  .service-card .dropdown-content p {
-    font-size: 0.8125rem !important;
-    line-height: 1.4 !important;
-  }
-}
-
-/* ==============================================
-     SERVICES SECTION OVERRIDES - FORCE STYLING
-     Override all Tailwind with highest priority
-     ============================================== */
-
-/* Service titles MUST use Oswald font */
-
-.service-card h3 {
-  font-family: 'Oswald', sans-serif !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-}
-
-/* Restore colorful service circle gradients */
-
-.service-card[data-service="private"] .bg-gradient-to-r {
-  background: linear-gradient(to right, #a855f7, #ec4899) !important;
-}
-
-.service-card[data-service="wedding"] .bg-gradient-to-r {
-  background: linear-gradient(to right, #ec4899, #f43f5e) !important;
-}
-
-/* Ready to Elevate headings use Oswald */
-
-h3.text-2xl.font-bold.text-gray-100 {
-  font-family: 'Oswald', sans-serif !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
 }
 
 /* DJ Nuff Jamz Custom Styles */
@@ -3060,6 +3043,40 @@ h3.text-2xl.font-bold.text-gray-100 {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+@media (max-width: 768px) {
+  /* Make service cards stack properly */
+
+  /* Always show dropdowns on mobile */
+
+  /* Make service cards compact on mobile */
+
+  /* Hide Learn More buttons on mobile but keep emojis visible */
+
+  .service-card .card .group:hover .group-hover\:text-blue-400 {
+    display: none !important;
+  }
+
+  /* Ensure emojis are ALWAYS visible on mobile */
+
+  /* Compact text spacing on mobile */
+
+  /* Make service cards stack properly */
+
+  /* Always show dropdowns on mobile */
+
+  /* Make service cards compact on mobile */
+
+  /* Hide Learn More buttons on mobile but keep emojis visible */
+
+  .service-card .card .group:hover .group-hover\:text-purple-400 {
+    display: none !important;
+  }
+
+  /* Ensure emojis are ALWAYS visible on mobile */
+
+  /* Compact text spacing on mobile */
 }
 
 .file\:mr-4::file-selector-button {
@@ -3455,4 +3472,37 @@ h3.text-2xl.font-bold.text-gray-100 {
   .lg\:grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
+}
+
+/* ==============================================
+     TYPOGRAPHY OVERRIDES - OSWALD HEADINGS  
+     HIGHEST PRIORITY - APPLIED LAST
+     ============================================== */
+
+/* ALL headings MUST use Oswald font with uppercase */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Oswald', system-ui, sans-serif !important;
+  text-transform: uppercase !important;
+}
+
+.font-display {
+  font-family: 'Oswald', system-ui, sans-serif !important;
+}
+
+/* Service titles specifically */
+.service-card h3 {
+  font-family: 'Oswald', sans-serif !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+}
+
+/* Any other headings that might use font-display class */
+.text-4xl, .text-3xl, .text-2xl, .text-xl, .text-lg {
+  font-family: 'Oswald', system-ui, sans-serif !important;
+}
+
+/* Hero section title */
+.hero h1, .hero h2 {
+  font-family: 'Oswald', system-ui, sans-serif !important;
+  text-transform: uppercase !important;
 }
