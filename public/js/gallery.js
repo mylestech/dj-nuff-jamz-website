@@ -24,8 +24,8 @@ class PhotoGallery {
                 venue: 'Malibu Beach Resort',
                 fullLocation: 'Malibu, CA',
                 eventDate: '2024-06-15',
-                imageUrl: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&h=600&fit=crop',
-                thumbnailUrl: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=400&h=300&fit=crop',
+                imageUrl: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&h=800&fit=crop',
+                thumbnailUrl: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=400&h=400&fit=crop',
                 category: 'action',
                 tags: ['beach', 'wedding', 'sunset', 'romantic'],
                 featured: true,
@@ -40,8 +40,8 @@ class PhotoGallery {
                 venue: 'Downtown Convention Center',
                 fullLocation: 'Los Angeles, CA',
                 eventDate: '2024-08-20',
-                imageUrl: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&h=600&fit=crop',
-                thumbnailUrl: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=400&h=300&fit=crop',
+                imageUrl: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&h=800&fit=crop',
+                thumbnailUrl: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=400&h=400&fit=crop',
                 category: 'venue',
                 tags: ['corporate', 'gala', 'professional', 'networking'],
                 featured: false,
@@ -56,8 +56,8 @@ class PhotoGallery {
                 venue: 'Private Residence',
                 fullLocation: 'Beverly Hills, CA',
                 eventDate: '2024-07-10',
-                imageUrl: 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800&h=600&fit=crop',
-                thumbnailUrl: 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=400&h=300&fit=crop',
+                imageUrl: 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800&h=800&fit=crop',
+                thumbnailUrl: 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=400&h=400&fit=crop',
                 category: 'crowd',
                 tags: ['birthday', 'party', 'dancing', 'celebration'],
                 featured: true,
@@ -72,8 +72,8 @@ class PhotoGallery {
                 venue: 'The Underground',
                 fullLocation: 'Hollywood, CA',
                 eventDate: '2024-09-05',
-                imageUrl: 'https://images.unsplash.com/photo-1571266028243-d220c9c3b2d2?w=800&h=600&fit=crop',
-                thumbnailUrl: 'https://images.unsplash.com/photo-1571266028243-d220c9c3b2d2?w=400&h=300&fit=crop',
+                imageUrl: 'https://images.unsplash.com/photo-1571266028243-d220c9c3b2d2?w=800&h=800&fit=crop',
+                thumbnailUrl: 'https://images.unsplash.com/photo-1571266028243-d220c9c3b2d2?w=400&h=400&fit=crop',
                 category: 'dj-booth',
                 tags: ['club', 'nightlife', 'electronic', 'energy'],
                 featured: false,
@@ -88,8 +88,8 @@ class PhotoGallery {
                 venue: 'SoundWave Studios',
                 fullLocation: 'Burbank, CA',
                 eventDate: '2024-06-01',
-                imageUrl: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=600&fit=crop',
-                thumbnailUrl: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=300&fit=crop',
+                imageUrl: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=800&fit=crop',
+                thumbnailUrl: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=400&fit=crop',
                 category: 'behind-scenes',
                 tags: ['studio', 'recording', 'production', 'mixing'],
                 featured: false,
@@ -104,8 +104,8 @@ class PhotoGallery {
                 venue: 'Grand Ballroom Hotel',
                 fullLocation: 'Santa Monica, CA',
                 eventDate: '2024-05-20',
-                imageUrl: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&h=600&fit=crop',
-                thumbnailUrl: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=400&h=300&fit=crop',
+                imageUrl: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&h=800&fit=crop',
+                thumbnailUrl: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=400&h=400&fit=crop',
                 category: 'setup',
                 tags: ['wedding', 'reception', 'elegant', 'ballroom'],
                 featured: true,
@@ -163,7 +163,7 @@ class PhotoGallery {
                 </div>
 
                 <!-- Gallery Grid -->
-                <div id="gallery-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <div id="gallery-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
                     <!-- Gallery items will be populated here -->
                 </div>
 
@@ -289,47 +289,144 @@ class PhotoGallery {
     async loadGalleryItems() {
         this.showLoading(true);
         
+        console.log('📸 Loading gallery - checking for uploaded photos...');
+        
         try {
-            // Wait for API config to be available
-            if (typeof API === 'undefined') {
-                await new Promise(resolve => {
-                    const checkAPI = () => {
-                        if (typeof API !== 'undefined') {
-                            resolve();
-                        } else {
-                            setTimeout(checkAPI, 100);
-                        }
-                    };
-                    checkAPI();
-                });
-            }
-
-            // First try to load local photos from the gallery folder
-            const localData = await API.get(`${API_CONFIG.ENDPOINTS.GALLERY}/local`);
-            if (localData.success && localData.data && localData.data.length > 0) {
-                this.galleryItems = localData.data;
-                console.log(`✅ Loaded ${localData.data.length} photos from local gallery folder`);
+            // Try to load actual uploaded photos first
+            const uploadedPhotos = await this.scanUploadedPhotos();
+            
+            if (uploadedPhotos && uploadedPhotos.length > 0) {
+                this.galleryItems = uploadedPhotos;
+                console.log(`✅ Gallery loaded with ${uploadedPhotos.length} uploaded photos`);
             } else {
-                // If no local photos, try database
-                const data = await API.get(API_CONFIG.ENDPOINTS.GALLERY, { limit: 50 });
-                if (data.success && data.data) {
-                    // Handle both array and object responses
-                    const items = Array.isArray(data.data) ? data.data : (data.data.gallery || []);
-                    this.galleryItems = items.length > 0 ? items : this.sampleItems;
-                    console.log('✅ Loaded gallery items from database:', items.length);
-                } else {
-                    // Fallback to sample data
-                    this.galleryItems = this.sampleItems;
-                    console.log('🔄 No photos found, using sample gallery data');
-                }
+                // Fallback to sample data if no uploaded photos
+                this.galleryItems = this.sampleItems;
+                console.log('📷 No uploaded photos found, using sample data');
             }
+            
         } catch (error) {
-            console.error('❌ Failed to load gallery, using sample data:', error);
+            console.log('⚠️ Error loading uploaded photos, using sample data:', error);
             this.galleryItems = this.sampleItems;
         }
         
         this.filterGallery(this.currentFilter);
         this.showLoading(false);
+        
+        console.log(`✅ Gallery loaded with ${this.galleryItems.length} items`);
+    }
+
+    async scanUploadedPhotos() {
+        // Check if we have a photo index file with uploaded photos
+        if (window.uploadedPhotosList && window.uploadedPhotosList.length > 0) {
+            console.log(`📋 Found ${window.uploadedPhotosList.length} photos in photo index`);
+            return this.convertFilesToGalleryItems(window.uploadedPhotosList);
+        } else {
+            console.log('📭 No photos found in photo index (window.uploadedPhotosList is empty)');
+            return [];
+        }
+    }
+
+    convertFilesToGalleryItems(files) {
+        if (!files || files.length === 0) return [];
+        
+        return files.map((filename, index) => {
+            const id = `upload_${index + 1}`;
+            
+            // Generate defaults from filename
+            const autoTitle = this.generateTitleFromFilename(filename);
+            const autoEventType = this.detectEventTypeFromFilename(filename);
+            const autoCategory = this.detectCategoryFromFilename(filename);
+            const autoTags = this.generateTagsFromFilename(filename);
+            
+            // Check for manual overrides
+            const override = window.photoOverrides?.[filename] || {};
+            
+            return {
+                id,
+                title: override.title || '', // No generic titles unless specifically provided
+                description: override.description || `DJ Nuff Jamz ${(override.eventType || autoEventType).replace('-', ' ')} event`,
+                eventType: override.eventType || autoEventType,
+                venue: override.venue || '', // No generic venue unless specifically provided
+                fullLocation: override.fullLocation || '', // No generic location unless specifically provided
+                eventDate: override.eventDate || '', // No date unless specifically provided
+                imageUrl: `/images/gallery/uploads/${filename}`,
+                thumbnailUrl: `/images/gallery/uploads/${filename}`, // Same for now, can be optimized later
+                category: override.category || autoCategory,
+                tags: override.tags || autoTags,
+                featured: override.featured !== undefined ? override.featured : index < 3, // First 3 photos are featured by default
+                views: override.views || Math.floor(Math.random() * 100) + 20,
+                likes: override.likes || Math.floor(Math.random() * 20) + 5,
+                isUploaded: true,
+                filename
+            };
+        });
+    }
+
+    generateTitleFromFilename(filename) {
+        // Don't generate generic titles - return empty string
+        // This will be handled in the display logic
+        return '';
+    }
+
+    detectEventTypeFromFilename(filename) {
+        const name = filename.toLowerCase();
+        
+        if (name.includes('wedding')) return 'wedding';
+        if (name.includes('corporate') || name.includes('business')) return 'corporate';
+        if (name.includes('birthday') || name.includes('bday')) return 'birthday';
+        if (name.includes('club') || name.includes('nightclub')) return 'club-night';
+        if (name.includes('studio') || name.includes('recording')) return 'studio-session';
+        if (name.includes('private') || name.includes('house')) return 'private-party';
+        if (name.includes('anniversary')) return 'anniversary';
+        
+        return 'private-party'; // Default fallback
+    }
+
+    detectCategoryFromFilename(filename) {
+        const name = filename.toLowerCase();
+        
+        if (name.includes('dj') || name.includes('mixing') || name.includes('performing') || name.includes('turntable')) return 'action';
+        if (name.includes('crowd') || name.includes('dance') || name.includes('party') || name.includes('audience')) return 'crowd';
+        if (name.includes('venue') || name.includes('setup') || name.includes('stage') || name.includes('location')) return 'venue';
+        if (name.includes('equipment') || name.includes('gear') || name.includes('booth') || name.includes('speaker')) return 'dj-booth';
+        if (name.includes('behind') || name.includes('backstage') || name.includes('studio')) return 'behind-scenes';
+        
+        return 'action'; // Default fallback
+    }
+
+    generateTagsFromFilename(filename) {
+        const name = filename.toLowerCase();
+        const tags = [];
+        
+        // Event type tags
+        if (name.includes('wedding')) tags.push('wedding', 'ceremony', 'reception');
+        if (name.includes('corporate')) tags.push('corporate', 'business', 'professional');
+        if (name.includes('birthday')) tags.push('birthday', 'celebration', 'party');
+        if (name.includes('club')) tags.push('club', 'nightlife', 'electronic');
+        
+        // Activity tags
+        if (name.includes('dance') || name.includes('dancing')) tags.push('dancing');
+        if (name.includes('mix') || name.includes('mixing')) tags.push('mixing');
+        if (name.includes('crowd')) tags.push('crowd', 'audience');
+        if (name.includes('light') || name.includes('laser')) tags.push('lighting');
+        
+        // Venue tags
+        if (name.includes('beach')) tags.push('beach', 'outdoor');
+        if (name.includes('hotel')) tags.push('hotel', 'ballroom');
+        if (name.includes('outdoor')) tags.push('outdoor');
+        if (name.includes('indoor')) tags.push('indoor');
+        
+        // Equipment tags
+        if (name.includes('turntable')) tags.push('turntables', 'equipment');
+        if (name.includes('speaker')) tags.push('sound-system', 'speakers');
+        if (name.includes('booth')) tags.push('dj-booth', 'setup');
+        
+        // Ensure we have at least some tags
+        if (tags.length === 0) {
+            tags.push('dj-event', 'entertainment', 'music');
+        }
+        
+        return tags;
     }
 
     filterGallery(filter) {
@@ -363,7 +460,7 @@ class PhotoGallery {
 
         grid.innerHTML = itemsToShow.map((item, index) => `
             <div class="gallery-item group cursor-pointer">
-                <div class="relative overflow-hidden rounded-lg bg-slate-800 aspect-[4/3]">
+                <div class="relative overflow-hidden rounded-lg bg-slate-800 aspect-square">
                     <img src="${item.thumbnailUrl || item.imageUrl}" 
                          alt="${item.altText || item.title}"
                          class="gallery-item-image w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
@@ -373,8 +470,9 @@ class PhotoGallery {
                     <!-- Overlay -->
                     <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-60 transition-all duration-300 flex items-center justify-center">
                         <div class="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
-                            <h3 class="text-lg font-semibold mb-2">${item.title}</h3>
-                            <p class="text-sm text-gray-300 mb-2">${item.venue}</p>
+                            ${item.title ? `<h3 class="text-lg font-semibold mb-2">${item.title}</h3>` : ''}
+                            <p class="text-sm text-gray-300 mb-2 capitalize">${item.eventType.replace('-', ' ')} Event</p>
+                            ${item.venue ? `<p class="text-xs text-gray-400 mb-2">${item.venue}</p>` : ''}
                             <div class="flex items-center justify-center gap-4 text-xs text-gray-400">
                                 <span class="flex items-center gap-1">
                                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -435,10 +533,10 @@ class PhotoGallery {
 
         // Update lightbox content
         document.getElementById('lightbox-image').src = item.imageUrl;
-        document.getElementById('lightbox-title').textContent = item.title;
+        document.getElementById('lightbox-title').textContent = item.title || `${item.eventType.replace('-', ' ')} Event`;
         document.getElementById('lightbox-description').textContent = item.description || '';
-        document.getElementById('lightbox-venue').textContent = item.venue;
-        document.getElementById('lightbox-date').textContent = new Date(item.eventDate).toLocaleDateString();
+        document.getElementById('lightbox-venue').textContent = item.venue || '';
+        document.getElementById('lightbox-date').textContent = item.eventDate ? new Date(item.eventDate).toLocaleDateString() : '';
         document.getElementById('lightbox-views').textContent = `${item.views || 0} views`;
         
         // Update tags

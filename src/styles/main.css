@@ -82,6 +82,119 @@
     @apply shadow-lg backdrop-blur-sm;
   }
 
+  /* ==============================================
+       GLASSMORPHISM EFFECTS FOR SERVICE CARDS
+       ============================================== */
+
+  .service-card .card {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4) !important;
+  }
+
+  .service-card .dropdown-content {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4) !important;
+  }
+
+  /* ==============================================
+       MOBILE RESPONSIVE STYLES (768px and below)
+       ============================================== */
+
+  @media (max-width: 768px) {
+    /* Make service cards stack properly */
+    .services-section .grid.gap-8 {
+      gap: 2.5rem !important;
+    }
+    
+    .service-card {
+      position: static;
+      margin-bottom: 2.5rem !important;
+    }
+
+    /* Always show dropdowns on mobile */
+    .service-card .dropdown-content {
+      position: static !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: translateY(0) !important;
+      margin-top: 0.75rem !important;
+      margin-bottom: 0.75rem !important;
+      padding: 0.75rem !important;
+      /* Glassmorphism for mobile dropdowns */
+      background: rgba(255, 255, 255, 0.1) !important;
+      backdrop-filter: blur(10px) !important;
+      -webkit-backdrop-filter: blur(10px) !important;
+      border: 1px solid rgba(255, 255, 255, 0.2) !important;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4) !important;
+    }
+
+    /* Make service cards compact on mobile */
+    .service-card .card {
+      margin-bottom: 0;
+      height: auto !important;
+      min-height: auto !important;
+      max-height: none !important;
+      padding: 1rem !important;
+      /* Glassmorphism for mobile cards */
+      background: rgba(255, 255, 255, 0.1) !important;
+      backdrop-filter: blur(10px) !important;
+      -webkit-backdrop-filter: blur(10px) !important;
+      border: 1px solid rgba(255, 255, 255, 0.2) !important;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4) !important;
+    }
+
+    /* Hide Learn More buttons on mobile but keep emojis visible */
+    .service-card .card .btn-outline {
+      display: none !important;
+    }
+    
+    .service-card .card .btn-primary {
+      display: none !important;
+    }
+    
+    .service-card .card .text-blue-400 {
+      display: none !important;
+    }
+    
+    .service-card .card .text-purple-400 {
+      display: none !important;
+    }
+    
+    /* Ensure emojis are ALWAYS visible on mobile */
+    .service-card .w-16.h-16 {
+      display: flex !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+    
+    /* Compact text spacing on mobile */
+    .service-card .card h3 {
+      font-size: 1.25rem !important;
+      margin-bottom: 0.5rem !important;
+    }
+    
+    .service-card .card p {
+      font-size: 0.875rem !important;
+      margin-bottom: 0.75rem !important;
+    }
+    
+    .service-card .dropdown-content h4 {
+      font-size: 1rem !important;
+      margin-bottom: 0.5rem !important;
+    }
+    
+    .service-card .dropdown-content p {
+      font-size: 0.8125rem !important;
+      line-height: 1.4 !important;
+    }
+  }
+
   /* Container */
   .container-custom {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
