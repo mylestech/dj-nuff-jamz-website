@@ -759,7 +759,7 @@ html {
 body {
   --tw-bg-opacity: 1;
   background-color: rgb(15 23 42 / var(--tw-bg-opacity, 1));
-  font-family: Oswald, system-ui, sans-serif;
+  font-family: Inter, system-ui, sans-serif;
   --tw-text-opacity: 1;
   color: rgb(243 244 246 / var(--tw-text-opacity, 1));
   -webkit-font-smoothing: antialiased;
@@ -3472,37 +3472,4 @@ button {
   .lg\:grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
-}
-
-/* ==============================================
-     TYPOGRAPHY OVERRIDES - OSWALD HEADINGS  
-     HIGHEST PRIORITY - APPLIED LAST
-     ============================================== */
-
-/* ALL headings MUST use Oswald font with uppercase */
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Oswald', system-ui, sans-serif !important;
-  text-transform: uppercase !important;
-}
-
-.font-display {
-  font-family: 'Oswald', system-ui, sans-serif !important;
-}
-
-/* Service titles specifically */
-.service-card h3 {
-  font-family: 'Oswald', sans-serif !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-}
-
-/* Any other headings that might use font-display class */
-.text-4xl, .text-3xl, .text-2xl, .text-xl, .text-lg {
-  font-family: 'Oswald', system-ui, sans-serif !important;
-}
-
-/* Hero section title */
-.hero h1, .hero h2 {
-  font-family: 'Oswald', system-ui, sans-serif !important;
-  text-transform: uppercase !important;
 }
