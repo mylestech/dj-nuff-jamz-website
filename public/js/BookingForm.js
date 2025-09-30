@@ -54,7 +54,7 @@ class BookingForm {
         bookingSection.innerHTML = `
             <div class="container-custom">
                 <div class="text-center mb-12">
-                    <h2 class="text-4xl md:text-5xl font-bold text-gray-100 mb-6">
+                    <h2 class="text-4xl md:text-5xl font-display font-bold uppercase text-gray-100 mb-6">
                         Book Your <span class="hero-gradient">Event</span>
                     </h2>
                     <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
@@ -143,7 +143,7 @@ class BookingForm {
         return `
             <div class="space-y-6" data-step="1">
                 <div class="text-center mb-8">
-                    <h3 class="text-2xl font-bold text-gray-100 mb-2">Tell us about your event</h3>
+                    <h3 class="text-2xl font-display font-bold uppercase text-gray-100 mb-2">Tell us about your event</h3>
                     <p class="text-gray-400">We'll use this information to provide the best entertainment experience</p>
                 </div>
 
@@ -243,7 +243,7 @@ class BookingForm {
         return `
             <div class="space-y-6" data-step="2">
                 <div class="text-center mb-8">
-                    <h3 class="text-2xl font-bold text-gray-100 mb-2">Your contact information</h3>
+                    <h3 class="text-2xl font-display font-bold uppercase text-gray-100 mb-2">Your contact information</h3>
                     <p class="text-gray-400">So we can get back to you with a personalized quote</p>
                 </div>
 
@@ -310,7 +310,7 @@ class BookingForm {
         return `
             <div class="space-y-6" data-step="3">
                 <div class="text-center mb-8">
-                    <h3 class="text-2xl font-bold text-gray-100 mb-2">Tell us about your music style</h3>
+                    <h3 class="text-2xl font-display font-bold uppercase text-gray-100 mb-2">Tell us about your music style</h3>
                     <p class="text-gray-400">This helps us create the perfect playlist for your event</p>
                 </div>
 
@@ -340,7 +340,7 @@ class BookingForm {
 
                 <!-- Music Style Suggestions -->
                 <div class="bg-slate-700/30 rounded-lg p-6 border border-slate-600">
-                    <h4 class="text-lg font-semibold text-gray-100 mb-4">Our Specialties</h4>
+                    <h4 class="text-lg font-display font-semibold uppercase text-gray-100 mb-4">Our Specialties</h4>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                         <div class="text-center">
                             <div class="text-2xl mb-2">🎵</div>
@@ -387,14 +387,14 @@ class BookingForm {
         return `
             <div class="space-y-8" data-step="4">
                 <div class="text-center mb-8">
-                    <h3 class="text-2xl font-bold text-gray-100 mb-2">Review your booking request</h3>
+                    <h3 class="text-2xl font-display font-bold uppercase text-gray-100 mb-2">Review your booking request</h3>
                     <p class="text-gray-400">Please review all details before submitting</p>
                 </div>
 
                 <div class="space-y-6">
                     <!-- Event Details Review -->
                     <div class="bg-slate-700/30 rounded-lg p-6 border border-slate-600">
-                        <h4 class="text-lg font-semibold text-gray-100 mb-4 flex items-center">
+                        <h4 class="text-lg font-display font-semibold uppercase text-gray-100 mb-4 flex items-center">
                             📅 Event Details
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
@@ -423,7 +423,7 @@ class BookingForm {
 
                     <!-- Contact Info Review -->
                     <div class="bg-slate-700/30 rounded-lg p-6 border border-slate-600">
-                        <h4 class="text-lg font-semibold text-gray-100 mb-4 flex items-center">
+                        <h4 class="text-lg font-display font-semibold uppercase text-gray-100 mb-4 flex items-center">
                             ℹ️ Contact Information
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
@@ -448,7 +448,7 @@ class BookingForm {
 
                     <!-- Preferences Review -->
                     <div class="bg-slate-700/30 rounded-lg p-6 border border-slate-600">
-                        <h4 class="text-lg font-semibold text-gray-100 mb-4 flex items-center">
+                        <h4 class="text-lg font-display font-semibold uppercase text-gray-100 mb-4 flex items-center">
                             ⚙️ Music & Preferences
                         </h4>
                         <div class="space-y-3 text-sm">
@@ -1032,12 +1032,12 @@ class BookingForm {
                     <div class="max-w-2xl mx-auto text-center">
                         <div class="bg-green-600/20 border border-green-500/30 rounded-lg p-8">
                             <div class="text-6xl mb-4">✅</div>
-                            <h2 class="text-3xl font-bold text-green-400 mb-4">Booking Request Submitted!</h2>
+                            <h2 class="text-3xl font-display font-bold uppercase text-green-400 mb-4">Booking Request Submitted!</h2>
                             <p class="text-lg text-gray-300 mb-6">
                                 Thank you ${this.formData.name}! We've received your booking request for ${this.formatDate(this.formData.eventDate)}.
                             </p>
                             <div class="bg-slate-700/30 rounded-lg p-6 mb-6">
-                                <h3 class="text-lg font-semibold text-gray-100 mb-3">What happens next:</h3>
+                                <h3 class="text-lg font-display font-semibold uppercase text-gray-100 mb-3">What happens next:</h3>
                                 <ul class="text-left text-gray-300 space-y-2">
                                     <li>• We'll review your request within 24 hours</li>
                                     <li>• You'll receive a personalized quote via ${this.formData.contactMethod}</li>
