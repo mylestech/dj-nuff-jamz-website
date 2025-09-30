@@ -53,6 +53,7 @@
   }
 }
 
+@layer components {
   /* Primary Button */
   .btn-primary {
     @apply bg-blue-600 hover:bg-blue-700 text-white;
