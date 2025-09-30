@@ -439,8 +439,11 @@ class PhotoGallery {
             btn.classList.add('text-gray-300', 'border-slate-600');
         });
         
-        document.querySelector(`[data-filter="${filter}"]`).classList.add('bg-blue-600', 'text-white', 'border-blue-600');
-        document.querySelector(`[data-filter="${filter}"]`).classList.remove('text-gray-300', 'border-slate-600');
+        const filterButton = document.querySelector(`[data-filter="${filter}"]`);
+        if (filterButton) {
+            filterButton.classList.add('bg-blue-600', 'text-white', 'border-blue-600');
+            filterButton.classList.remove('text-gray-300', 'border-slate-600');
+        }
         
         // Filter items
         this.filteredItems = filter === 'all' 
@@ -458,14 +461,15 @@ class PhotoGallery {
         const endIndex = this.currentPage * this.itemsPerPage;
         const itemsToShow = this.filteredItems.slice(startIndex, endIndex);
 
-        grid.innerHTML = itemsToShow.map((item, index) => `
-            <div class="gallery-item group cursor-pointer">
-                <div class="relative overflow-hidden rounded-lg bg-slate-800 aspect-square">
+        const htmlContent = itemsToShow.map((item, index) => `
+            <div class="gallery-item group cursor-pointer" style="overflow: visible !important; position: relative !important;">
+                <div class="relative rounded-lg bg-slate-800 aspect-square" style="width: 100%; height: 200px; min-height: 200px; aspect-ratio: 1/1; display: block; overflow: visible !important; position: relative !important; z-index: 1 !important;">
                     <img src="${item.thumbnailUrl || item.imageUrl}" 
                          alt="${item.altText || item.title}"
                          class="gallery-item-image w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                         style="width: 100%; height: 100%; min-height: 200px; object-fit: cover; display: block;"
                          data-index="${index}"
-                         loading="lazy">
+                         onload="this.style.cssText='width: 100% !important; height: 100% !important; display: block !important; opacity: 1 !important; position: relative !important; object-fit: cover !important; z-index: 999 !important;';"
                     
                     <!-- Overlay -->
                     <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-60 transition-all duration-300 flex items-center justify-center">
@@ -491,20 +495,49 @@ class PhotoGallery {
                         </div>
                     </div>
 
-                    <!-- Featured Badge -->
-                    ${item.featured ? `
-                        <div class="absolute top-2 left-2 bg-yellow-500 text-black px-2 py-1 rounded text-xs font-semibold">
-                            Featured
-                        </div>
-                    ` : ''}
-
-                    <!-- Event Type Badge -->
-                    <div class="absolute top-2 right-2 bg-blue-600 text-white px-2 py-1 rounded text-xs capitalize">
-                        ${item.eventType.replace('-', ' ')}
-                    </div>
                 </div>
             </div>
-        `).join('');
+        `);
+        
+        grid.innerHTML = htmlContent.join('');
+        
+        // AGGRESSIVE FIX: Force centering with inline styles (highest priority)
+        const screenWidth = window.innerWidth;
+        let gridCols = 'repeat(2, 1fr)';
+        if (screenWidth >= 1280) gridCols = 'repeat(6, 1fr)';
+        else if (screenWidth >= 1024) gridCols = 'repeat(5, 1fr)';
+        else if (screenWidth >= 768) gridCols = 'repeat(4, 1fr)';
+        else if (screenWidth >= 640) gridCols = 'repeat(3, 1fr)';
+        
+        grid.style.cssText = `display: grid !important; grid-template-columns: ${gridCols} !important; max-width: fit-content !important; margin: 0 auto !important; gap: 1rem !important;`;
+        
+        // DEBUG: Check actual gallery positioning
+        setTimeout(() => {
+            const gallery = document.getElementById('gallery-grid');
+            const container = gallery?.parentElement;
+            
+            console.log('🔍 GALLERY DEBUG:');
+            const galleryStyles = window.getComputedStyle(gallery);
+            const containerStyles = window.getComputedStyle(container);
+            const galleryRect = gallery.getBoundingClientRect();
+            const containerRect = container.getBoundingClientRect();
+            
+            console.log('Gallery width:', galleryStyles.width);
+            console.log('Gallery maxWidth:', galleryStyles.maxWidth);
+            console.log('Gallery margin:', galleryStyles.margin);
+            console.log('Gallery marginLeft:', galleryStyles.marginLeft);
+            console.log('Gallery marginRight:', galleryStyles.marginRight);
+            
+            console.log('Container width:', containerStyles.width);
+            console.log('Container paddingLeft:', containerStyles.paddingLeft);
+            console.log('Container paddingRight:', containerStyles.paddingRight);
+            
+            console.log('Gallery rect - x:', galleryRect.x, 'width:', galleryRect.width);
+            console.log('Container rect - x:', containerRect.x, 'width:', containerRect.width);
+            
+            console.log('Gallery classes:', gallery.className);
+            console.log('Container classes:', container.className);
+        }, 100);
 
         // Show/hide load more button
         const loadMoreBtn = document.getElementById('load-more-btn');

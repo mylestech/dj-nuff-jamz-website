@@ -184,6 +184,59 @@ function checkCompiledCSS() {
     return true; // Not a hard error
 }
 
+function checkHTMLIntegrity() {
+    console.log('🔍 Checking HTML integrity...');
+    
+    const HTML_FILE = path.join(__dirname, '../public/index.html');
+    if (!fs.existsSync(HTML_FILE)) {
+        console.error('❌ ERROR: index.html not found!');
+        return false;
+    }
+    
+    const html = fs.readFileSync(HTML_FILE, 'utf8');
+    
+    // Check for specific corrupted CSS classes (like text-opdsx0c=-bghv2xl)
+    const corruptedClassPatterns = [
+        /text-opdsx0c=-bghv2xl/g,
+        /class="[^"]*=[^"]*"/g  // Classes with = signs (corrupted)
+    ];
+    
+    let foundCorruption = false;
+    corruptedClassPatterns.forEach(pattern => {
+        const matches = html.match(pattern);
+        if (matches) {
+            console.error('❌ ERROR: Found corrupted CSS classes in HTML:');
+            matches.forEach(match => {
+                console.error(`   ${match}`);
+            });
+            foundCorruption = true;
+        }
+    });
+    
+    if (foundCorruption) {
+        return false;
+    }
+    
+    // Check for glassmorphism on "Ready to Elevate" sections
+    const readyElevatePattern = /Ready to Elevate Your Event\?/g;
+    const readyElevateMatches = html.match(readyElevatePattern);
+    if (readyElevateMatches) {
+        const glassmorphismPattern = /backdrop-filter:\s*blur\(10px\)/g;
+        const glassmorphismMatches = html.match(glassmorphismPattern);
+        
+        if (!glassmorphismMatches || glassmorphismMatches.length < readyElevateMatches.length) {
+            console.error('❌ ERROR: "Ready to Elevate" sections missing glassmorphism effects!');
+            console.error(`   Found ${readyElevateMatches.length} sections but only ${glassmorphismMatches ? glassmorphismMatches.length : 0} with glassmorphism`);
+            return false;
+        }
+        
+        console.log('✅ "Ready to Elevate" sections have glassmorphism effects');
+    }
+    
+    console.log('✅ HTML integrity verified');
+    return true;
+}
+
 function main() {
     console.log('🎨 DJ Nuff Jamz COMPLETE STYLING Verification');
     console.log('==============================================\n');
@@ -199,6 +252,9 @@ function main() {
     allGood &= checkMobileResponsive();
     allGood &= checkServiceCardStyles();
     
+    // HTML Integrity (NEW)
+    allGood &= checkHTMLIntegrity();
+    
     // Compiled Output (warning only)
     checkCompiledCSS();
     
@@ -210,12 +266,13 @@ function main() {
         console.log('✅ Glassmorphism: Service card effects present');
         console.log('✅ Mobile: Responsive layout protection active');
         console.log('✅ Service Cards: Component styling intact');
+        console.log('✅ HTML: No corrupted classes, glassmorphism intact');
         console.log('📝 Remember to run "npm run build" to compile changes');
         process.exit(0);
     } else {
         console.error('💥 CRITICAL STYLING ISSUES DETECTED!');
         console.error('🚨 DO NOT DEPLOY - Fix all issues above first');
-        console.error('🔧 Check src/styles/main.css and tailwind.config.js');
+        console.error('🔧 Check src/styles/main.css, tailwind.config.js, and public/index.html');
         process.exit(1);
     }
 }

@@ -14,7 +14,8 @@ const BACKUP_DIR = path.join(__dirname, '../backups/css');
 const SOURCE_FILES = {
     tailwind: path.join(__dirname, '../tailwind.config.js'),
     sourceCSS: path.join(__dirname, '../src/styles/main.css'),
-    compiledCSS: path.join(__dirname, '../public/css/style.css')
+    compiledCSS: path.join(__dirname, '../public/css/style.css'),
+    indexHTML: path.join(__dirname, '../public/index.html')
 };
 
 function ensureBackupDir() {
@@ -45,18 +46,23 @@ function createBackup() {
     
     // Create a restore script
     const restoreScript = `#!/bin/bash
-# Restore CSS backup from ${timestamp}
+# Restore CSS and HTML backup from ${timestamp}
 
-echo "🔄 Restoring DJ Nuff Jamz CSS from backup ${timestamp}..."
+echo "🔄 Restoring DJ Nuff Jamz styling from backup ${timestamp}..."
 
 cp "${backupSubDir}/tailwind.backup" "tailwind.config.js"
 cp "${backupSubDir}/sourceCSS.backup" "src/styles/main.css"
+cp "${backupSubDir}/indexHTML.backup" "public/index.html"
 
 echo "✅ Files restored! Now run:"
 echo "  npm run build:css:dev"
 echo "  npm run verify-styling"
 
 echo "🎉 Backup restoration complete!"
+echo "📋 Restored files:"
+echo "  - tailwind.config.js"
+echo "  - src/styles/main.css"  
+echo "  - public/index.html"
 `;
     
     const restoreScriptPath = path.join(backupSubDir, 'restore.sh');
