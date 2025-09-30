@@ -501,15 +501,7 @@ class PhotoGallery {
         
         grid.innerHTML = htmlContent.join('');
         
-        // AGGRESSIVE FIX: Force centering with inline styles (highest priority)
-        const screenWidth = window.innerWidth;
-        let gridCols = 'repeat(2, 1fr)';
-        if (screenWidth >= 1280) gridCols = 'repeat(6, 1fr)';
-        else if (screenWidth >= 1024) gridCols = 'repeat(5, 1fr)';
-        else if (screenWidth >= 768) gridCols = 'repeat(4, 1fr)';
-        else if (screenWidth >= 640) gridCols = 'repeat(3, 1fr)';
-        
-        grid.style.cssText = `display: grid !important; grid-template-columns: ${gridCols} !important; max-width: fit-content !important; margin: 0 auto !important; gap: 1rem !important;`;
+        console.log('🎯 Gallery rendered - flexbox centering applied via HTML');
         
         // DEBUG: Check actual gallery positioning
         setTimeout(() => {

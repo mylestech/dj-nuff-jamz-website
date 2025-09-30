@@ -237,6 +237,35 @@ function checkHTMLIntegrity() {
     return true;
 }
 
+function checkGalleryCentering() {
+    console.log('🎯 Checking gallery centering styles...');
+    
+    const css = fs.readFileSync(SOURCE_CSS, 'utf8');
+    
+    const requiredStyles = [
+        '#gallery {',
+        'align-items: center !important',
+        '#gallery .container-custom',
+        'flex-direction: column !important',
+        '#gallery-grid'
+    ];
+    
+    let allPresent = true;
+    requiredStyles.forEach(style => {
+        if (!css.includes(style)) {
+            console.error(`❌ ERROR: Missing gallery centering style: ${style}`);
+            allPresent = false;
+        }
+    });
+    
+    if (allPresent) {
+        console.log('✅ Gallery centering styles present in source CSS');
+        return true;
+    }
+    
+    return false;
+}
+
 function main() {
     console.log('🎨 DJ Nuff Jamz COMPLETE STYLING Verification');
     console.log('==============================================\n');
@@ -251,6 +280,7 @@ function main() {
     allGood &= checkGlassmorphismEffects();
     allGood &= checkMobileResponsive();
     allGood &= checkServiceCardStyles();
+    allGood &= checkGalleryCentering();
     
     // HTML Integrity (NEW)
     allGood &= checkHTMLIntegrity();
@@ -266,6 +296,7 @@ function main() {
         console.log('✅ Glassmorphism: Service card effects present');
         console.log('✅ Mobile: Responsive layout protection active');
         console.log('✅ Service Cards: Component styling intact');
+        console.log('✅ Gallery: Centering styles properly configured');
         console.log('✅ HTML: No corrupted classes, glassmorphism intact');
         console.log('📝 Remember to run "npm run build" to compile changes');
         process.exit(0);
