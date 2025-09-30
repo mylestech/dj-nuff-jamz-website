@@ -266,6 +266,33 @@ function checkGalleryCentering() {
     return false;
 }
 
+function checkButtonStyling() {
+    console.log('🔘 Checking button styling...');
+    
+    const css = fs.readFileSync(SOURCE_CSS, 'utf8');
+    
+    const requiredStyles = [
+        '.btn-secondary {',
+        'background: linear-gradient(to right, #4b5563, #374151)',
+        'color: white !important'
+    ];
+    
+    let allPresent = true;
+    requiredStyles.forEach(style => {
+        if (!css.includes(style)) {
+            console.error(`❌ ERROR: Missing button style: ${style}`);
+            allPresent = false;
+        }
+    });
+    
+    if (allPresent) {
+        console.log('✅ Button styling (gradient + white text) present in source CSS');
+        return true;
+    }
+    
+    return false;
+}
+
 function main() {
     console.log('🎨 DJ Nuff Jamz COMPLETE STYLING Verification');
     console.log('==============================================\n');
@@ -281,6 +308,7 @@ function main() {
     allGood &= checkMobileResponsive();
     allGood &= checkServiceCardStyles();
     allGood &= checkGalleryCentering();
+    allGood &= checkButtonStyling();
     
     // HTML Integrity (NEW)
     allGood &= checkHTMLIntegrity();
@@ -297,6 +325,7 @@ function main() {
         console.log('✅ Mobile: Responsive layout protection active');
         console.log('✅ Service Cards: Component styling intact');
         console.log('✅ Gallery: Centering styles properly configured');
+        console.log('✅ Buttons: Gradient styling with white text');
         console.log('✅ HTML: No corrupted classes, glassmorphism intact');
         console.log('📝 Remember to run "npm run build" to compile changes');
         process.exit(0);

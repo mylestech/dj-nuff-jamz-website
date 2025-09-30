@@ -181,7 +181,7 @@ class TestimonialsComponent {
                 
                 <div class="testimonials-stats mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                     <div class="stat-item">
-                        <div class="text-3xl font-bold text-black mb-2">${this.testimonials.length}+</div>
+                        <div class="text-3xl font-bold text-black mb-2">80+</div>
                         <div class="text-black">Happy Clients</div>
                     </div>
                     <div class="stat-item">

@@ -972,15 +972,13 @@ button {
   border-width: 1px;
   --tw-border-opacity: 1;
   border-color: rgb(71 85 105 / var(--tw-border-opacity, 1));
-  --tw-bg-opacity: 1;
-  background-color: rgb(51 65 85 / var(--tw-bg-opacity, 1));
-  --tw-text-opacity: 1;
-  color: rgb(243 244 246 / var(--tw-text-opacity, 1));
+  background: linear-gradient(to right, #4b5563, #374151) !important;
+  color: white !important;
 }
 
 .btn-secondary:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(71 85 105 / var(--tw-bg-opacity, 1));
+  background: linear-gradient(to right, #374151, #4b5563) !important;
+  color: white !important;
 }
 
 .btn-secondary {

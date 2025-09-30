@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import booking form styles to compile together */
+@import './booking-form.css';
+
 /* DJ Nuff Jamz Custom Styles */
 
 @layer base {
@@ -50,7 +53,6 @@
   }
 }
 
-@layer components {
   /* Primary Button */
   .btn-primary {
     @apply bg-blue-600 hover:bg-blue-700 text-white;
@@ -61,12 +63,6 @@
   }
 
   /* Secondary Button */
-  .btn-secondary {
-    @apply bg-slate-700 hover:bg-slate-600 text-gray-100 border border-slate-600;
-    @apply px-6 py-3 rounded-lg font-semibold;
-    @apply transition-all duration-200;
-    @apply focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 focus:ring-offset-slate-900;
-  }
 
   /* Accent Button (Gold) */
   .btn-accent {
@@ -439,4 +435,17 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* FINAL OVERRIDE - Load More Button White Text Fix */
+.btn-secondary {
+  background: linear-gradient(to right, #4b5563, #374151) !important;
+  color: white !important;
+  border: none !important;
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(to right, #374151, #4b5563) !important;
+  color: white !important;
+  border: none !important;
 }
