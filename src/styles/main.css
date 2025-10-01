@@ -450,3 +450,43 @@
   color: white !important;
   border: none !important;
 }
+
+/* BOOKING FORM HEADING FIXES - MATCH SITE SECTION TITLES */
+.section-title {
+  font-family: 'Oswald', system-ui, sans-serif !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  font-size: 2.25rem !important; /* text-4xl equivalent */
+  line-height: 1.2 !important;
+  letter-spacing: 0.025em !important;
+}
+
+#booking h2,
+#booking h3, 
+#booking h4,
+#booking .font-display {
+  font-family: 'Oswald', system-ui, sans-serif !important;
+  text-transform: uppercase !important;
+  font-weight: 700 !important;
+  font-size: 2.25rem !important; /* Make them prominent like section titles */
+  line-height: 1.2 !important;
+  letter-spacing: 0.025em !important;
+  color: #000000 !important; /* Black text for visibility */
+}
+
+/* Main booking title should be extra prominent */
+#booking h2.text-4xl,
+#booking h2.text-5xl {
+  font-size: 3rem !important; /* Even bigger for main title */
+}
+
+/* Step headings should be prominent but slightly smaller */
+#booking [data-step] h3,
+#booking .text-2xl {
+  font-family: 'Oswald', system-ui, sans-serif !important;
+  text-transform: uppercase !important;
+  font-weight: 700 !important;
+  font-size: 1.875rem !important; /* text-3xl equivalent */
+  line-height: 1.2 !important;
+  letter-spacing: 0.025em !important;
+}

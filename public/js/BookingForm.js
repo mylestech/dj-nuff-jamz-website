@@ -55,17 +55,44 @@ class BookingForm {
             <div class="container-custom">
                 <div class="text-center mb-12">
                     <h2 class="text-4xl md:text-5xl font-display font-bold uppercase text-gray-100 mb-6">
-                        Book Your <span class="hero-gradient">Event</span>
+                        Book Your Event
                     </h2>
-                    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+                    <p class="text-xl text-black max-w-3xl mx-auto mb-8">
                         Tell us about your event and we'll create the perfect musical experience for you.
                     </p>
                     ${this.renderProgressIndicator()}
                 </div>
 
                 <div class="max-w-4xl mx-auto">
-                    <div class="card bg-slate-800/50 border border-slate-700">
-                        <form id="booking-form" class="space-y-8">
+                    <div style="
+                        background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.98)) !important; 
+                        backdrop-filter: blur(20px) !important; 
+                        -webkit-backdrop-filter: blur(20px) !important;
+                        border: 1px solid rgba(255, 255, 255, 0.3) !important; 
+                        border-radius: 12px; 
+                        box-shadow: 
+                            0 25px 50px -12px rgba(0, 0, 0, 0.25),
+                            inset 0 1px 0 rgba(255, 255, 255, 0.6),
+                            inset 0 -1px 0 rgba(255, 255, 255, 0.2) !important;
+                        padding: 0 !important; 
+                        margin: 0 !important;
+                        position: relative;
+                        overflow: hidden;
+                    ">
+                        <div style="
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            right: 0;
+                            bottom: 0;
+                            background: linear-gradient(135deg, 
+                                rgba(255, 255, 255, 0.3) 0%, 
+                                rgba(255, 255, 255, 0.1) 50%, 
+                                rgba(255, 255, 255, 0.3) 100%);
+                            pointer-events: none;
+                            border-radius: 12px;
+                        "></div>
+                        <form id="booking-form" class="space-y-8" style="background: rgba(255, 255, 255, 0.9) !important; padding: 3rem !important; border-radius: 12px; border: none !important; position: relative; z-index: 10;">
                             ${this.renderCurrentStep()}
                             ${this.renderFormNavigation()}
                         </form>
@@ -96,26 +123,21 @@ class BookingForm {
                             <div class="flex flex-col items-center">
                                 <div class="w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mb-2 transition-all duration-300 ${
                                     step.number === this.currentStep 
-                                        ? 'text-white shadow-[0_0_20px_rgba(255,255,255,0.8)] transform scale-110' 
+                                        ? 'text-black shadow-[0_0_20px_rgba(0,0,0,0.3)] transform scale-110' 
                                         : step.number < this.currentStep 
                                             ? 'text-green-400 shadow-[0_4px_12px_rgba(34,197,94,0.3)]' 
                                             : 'text-gray-500 opacity-60 shadow-[0_2px_8px_rgba(0,0,0,0.3)]'
                                 }">
-                                    ${step.number < this.currentStep ? '✓' : step.icon}
+                                    <span style="${step.icon === '⚙️' ? 'transform: translateY(-4px);' : ''}">${step.number < this.currentStep ? '✓' : step.icon}</span>
                                 </div>
                                 <span class="text-xs text-center max-w-20 ${
                                     step.number === this.currentStep 
-                                        ? 'text-white font-semibold drop-shadow-lg' 
+                                        ? 'text-black font-semibold drop-shadow-lg' 
                                         : step.number < this.currentStep 
                                             ? 'text-green-400 font-medium' 
                                             : 'text-gray-500 opacity-60'
                                 }">${step.title}</span>
                             </div>
-                            ${index < steps.length - 1 ? `
-                                <div class="hidden md:block flex-1 h-0.5 mx-4 ${
-                                    step.number < this.currentStep ? 'bg-green-600' : 'bg-slate-700'
-                                }"></div>
-                            ` : ''}
                         </div>
                     `).join('')}
                 </div>
@@ -150,11 +172,11 @@ class BookingForm {
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Event Type -->
                     <div class="space-y-2">
-                        <label for="eventType" class="block text-sm font-medium text-gray-300">
+                        <label for="eventType" class="block text-sm font-medium text-black">
                             Event Type <span class="text-red-400">*</span>
                         </label>
                         <select id="eventType" name="eventType" required 
-                                class="form-input ${this.getValidationClass('eventType')}"
+                                style="background-color: white !important; color: #111827 !important; border: 1px solid #d1d5db !important; padding: 12px 16px; border-radius: 12px; width: 100%;"
                                 value="${this.formData.eventType}">
                             <option value="">Select event type</option>
                             <option value="wedding">Wedding</option>
@@ -169,11 +191,11 @@ class BookingForm {
 
                     <!-- Event Date -->
                     <div class="space-y-2">
-                        <label for="eventDate" class="block text-sm font-medium text-gray-300">
+                        <label for="eventDate" class="block text-sm font-medium text-black">
                             Event Date <span class="text-red-400">*</span>
                         </label>
                         <input type="date" id="eventDate" name="eventDate" required
-                               class="form-input ${this.getValidationClass('eventDate')}"
+                               style="background-color: white !important; color: #111827 !important; border: 1px solid #d1d5db !important; padding: 12px 16px; border-radius: 12px; width: 100%;"
                                value="${this.formData.eventDate}"
                                min="${this.getTomorrowDate()}">
                         ${this.renderFieldError('eventDate')}
@@ -181,11 +203,11 @@ class BookingForm {
 
                     <!-- Guest Count -->
                     <div class="space-y-2">
-                        <label for="guestCount" class="block text-sm font-medium text-gray-300">
+                        <label for="guestCount" class="block text-sm font-medium text-black">
                             Number of Guests <span class="text-red-400">*</span>
                         </label>
                         <select id="guestCount" name="guestCount" required
-                                class="form-input ${this.getValidationClass('guestCount')}"
+                                style="background-color: white !important; color: #111827 !important; border: 1px solid #d1d5db !important; padding: 12px 16px; border-radius: 12px; width: 100%;"
                                 value="${this.formData.guestCount}">
                             <option value="">Select guest count</option>
                             <option value="1-25">1-25 people</option>
@@ -200,11 +222,11 @@ class BookingForm {
 
                     <!-- Budget Range -->
                     <div class="space-y-2">
-                        <label for="budget" class="block text-sm font-medium text-gray-300">
+                        <label for="budget" class="block text-sm font-medium text-black">
                             Budget Range
                         </label>
                         <select id="budget" name="budget"
-                                class="form-input ${this.getValidationClass('budget')}"
+                                style="background-color: white !important; color: #111827 !important; border: 1px solid #d1d5db !important; padding: 12px 16px; border-radius: 12px; width: 100%;"
                                 value="${this.formData.budget}">
                             <option value="">Select budget range</option>
                             <option value="under-1000">Under $1,000</option>
@@ -220,16 +242,14 @@ class BookingForm {
 
                 <!-- Event Location -->
                 <div class="space-y-2">
-                    <label for="eventLocation" class="block text-sm font-medium text-gray-300">
+                    <label for="eventLocation" class="block text-sm font-medium text-black">
                         Event Location <span class="text-red-400">*</span>
                     </label>
                     <input type="text" id="eventLocation" name="eventLocation" required
                            placeholder="e.g., The Plaza Hotel, 768 5th Ave, New York, NY"
-                           class="form-input ${this.getValidationClass('eventLocation')}"
-                           value="${this.formData.eventLocation}"
-                           autocomplete="off"
-                           spellcheck="false">
-                    <p class="text-sm text-gray-500 mt-1">Include venue name and full address</p>
+                           style="background-color: white !important; color: #111827 !important; border: 1px solid #d1d5db !important; padding: 12px 16px; border-radius: 12px; width: 100%;"
+                           value="${this.formData.eventLocation}">
+                    <p class="text-sm text-white mt-1">Include venue name and full address</p>
                     ${this.renderFieldError('eventLocation')}
                 </div>
             </div>
@@ -250,47 +270,47 @@ class BookingForm {
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Full Name -->
                     <div class="space-y-2">
-                        <label for="name" class="block text-sm font-medium text-gray-300">
+                        <label for="name" class="block text-sm font-medium text-black">
                             Full Name <span class="text-red-400">*</span>
                         </label>
                         <input type="text" id="name" name="name" required
                                placeholder="Your full name"
-                               class="form-input ${this.getValidationClass('name')}"
+                               style="background-color: white !important; color: #111827 !important; border: 1px solid #d1d5db !important; padding: 12px 16px; border-radius: 12px; width: 100%;"
                                value="${this.formData.name}">
                         ${this.renderFieldError('name')}
                     </div>
 
                     <!-- Email -->
                     <div class="space-y-2">
-                        <label for="email" class="block text-sm font-medium text-gray-300">
+                        <label for="email" class="block text-sm font-medium text-black">
                             Email Address <span class="text-red-400">*</span>
                         </label>
                         <input type="email" id="email" name="email" required
                                placeholder="your.email@example.com"
-                               class="form-input ${this.getValidationClass('email')}"
+                               style="background-color: white !important; color: #111827 !important; border: 1px solid #d1d5db !important; padding: 12px 16px; border-radius: 12px; width: 100%;"
                                value="${this.formData.email}">
                         ${this.renderFieldError('email')}
                     </div>
 
                     <!-- Phone -->
                     <div class="space-y-2">
-                        <label for="phone" class="block text-sm font-medium text-gray-300">
+                        <label for="phone" class="block text-sm font-medium text-black">
                             Phone Number <span class="text-red-400">*</span>
                         </label>
                         <input type="tel" id="phone" name="phone" required
                                placeholder="(555) 123-4567"
-                               class="form-input ${this.getValidationClass('phone')}"
+                               style="background-color: white !important; color: #111827 !important; border: 1px solid #d1d5db !important; padding: 12px 16px; border-radius: 12px; width: 100%;"
                                value="${this.formData.phone}">
                         ${this.renderFieldError('phone')}
                     </div>
 
                     <!-- Preferred Contact Method -->
                     <div class="space-y-2">
-                        <label for="contactMethod" class="block text-sm font-medium text-gray-300">
+                        <label for="contactMethod" class="block text-sm font-medium text-black">
                             Preferred Contact Method
                         </label>
                         <select id="contactMethod" name="contactMethod"
-                                class="form-input ${this.getValidationClass('contactMethod')}"
+                                style="background-color: white !important; color: #111827 !important; border: 1px solid #d1d5db !important; padding: 12px 16px; border-radius: 12px; width: 100%;"
                                 value="${this.formData.contactMethod}">
                             <option value="email">Email</option>
                             <option value="phone">Phone</option>
@@ -316,63 +336,63 @@ class BookingForm {
 
                 <!-- Music Preferences -->
                 <div class="space-y-2">
-                    <label for="musicPreferences" class="block text-sm font-medium text-gray-300">
+                    <label for="musicPreferences" class="block text-sm font-medium text-black">
                         Music Preferences
                     </label>
                     <textarea id="musicPreferences" name="musicPreferences" rows="4"
                               placeholder="e.g., Love Afrobeats and modern hip-hop, some classic R&B for dinner, high energy dancehall for dancing..."
-                              class="form-input resize-none ${this.getValidationClass('musicPreferences')}">${this.formData.musicPreferences}</textarea>
+                              style="background-color: white !important; color: #111827 !important; border: 1px solid #d1d5db !important; padding: 12px 16px; border-radius: 12px; width: 100%; resize: none;">${this.formData.musicPreferences}</textarea>
                     <p class="text-sm text-gray-500">Tell us about genres you love, specific artists, or the vibe you're going for</p>
                     ${this.renderFieldError('musicPreferences')}
                 </div>
 
                 <!-- Special Requests -->
                 <div class="space-y-2">
-                    <label for="specialRequests" class="block text-sm font-medium text-gray-300">
+                    <label for="specialRequests" class="block text-sm font-medium text-black">
                         Special Requests & Additional Notes
                     </label>
                     <textarea id="specialRequests" name="specialRequests" rows="4"
                               placeholder="e.g., Need wireless microphone for speeches, fog machine for first dance, specific songs for special moments, cultural music requirements..."
-                              class="form-input resize-none ${this.getValidationClass('specialRequests')}">${this.formData.specialRequests}</textarea>
+                              style="background-color: white !important; color: #111827 !important; border: 1px solid #d1d5db !important; padding: 12px 16px; border-radius: 12px; width: 100%; resize: none;">${this.formData.specialRequests}</textarea>
                     <p class="text-sm text-gray-500">Equipment needs, special moments, cultural requirements, or anything else we should know</p>
                     ${this.renderFieldError('specialRequests')}
                 </div>
 
                 <!-- Music Style Suggestions -->
-                <div class="bg-slate-700/30 rounded-lg p-6 border border-slate-600">
-                    <h4 class="text-lg font-display font-semibold uppercase text-gray-100 mb-4">Our Specialties</h4>
+                <div class="bg-white/95 rounded-xl p-8 border border-white/30 shadow-lg backdrop-blur-sm">
+                     <h4 class="text-lg font-display font-semibold uppercase text-gray-100 mb-4">Our Specialties</h4>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                         <div class="text-center">
                             <div class="text-2xl mb-2">🎵</div>
-                            <span class="text-sm text-gray-300">Afrobeats</span>
+                            <span class="text-sm text-black">Afrobeats</span>
                         </div>
                         <div class="text-center">
                             <div class="text-2xl mb-2">🎤</div>
-                            <span class="text-sm text-gray-300">Hip-Hop</span>
+                            <span class="text-sm text-black">Hip-Hop</span>
                         </div>
                         <div class="text-center">
                             <div class="text-2xl mb-2">💃</div>
-                            <span class="text-sm text-gray-300">R&B</span>
+                            <span class="text-sm text-black">R&B</span>
                         </div>
                         <div class="text-center">
                             <div class="text-2xl mb-2">🌴</div>
-                            <span class="text-sm text-gray-300">Reggae</span>
+                            <span class="text-sm text-black">Reggae</span>
                         </div>
                         <div class="text-center">
                             <div class="text-2xl mb-2">💑</div>
-                            <span class="text-sm text-gray-300">Love Songs</span>
+                            <span class="text-sm text-black">Love Songs</span>
                         </div>
                         <div class="text-center">
                             <div class="text-2xl mb-2">🎉</div>
-                            <span class="text-sm text-gray-300">Pop Hits</span>
+                            <span class="text-sm text-black">Pop Hits</span>
                         </div>
                         <div class="text-center">
                             <div class="text-2xl mb-2">🏢</div>
-                            <span class="text-sm text-gray-300">Corporate</span>
+                            <span class="text-sm text-black">Corporate</span>
                         </div>
                         <div class="text-center">
                             <div class="text-2xl mb-2">🌍</div>
-                            <span class="text-sm text-gray-300">World Music</span>
+                            <span class="text-sm text-black">World Music</span>
                         </div>
                     </div>
                 </div>
@@ -387,81 +407,81 @@ class BookingForm {
         return `
             <div class="space-y-8" data-step="4">
                 <div class="text-center mb-8">
-                    <h3 class="text-2xl font-display font-bold uppercase text-gray-100 mb-2">Review your booking request</h3>
-                    <p class="text-gray-400">Please review all details before submitting</p>
+                    <h3 class="text-2xl font-display font-bold uppercase text-black mb-2">Review your booking request</h3>
+                    <p class="text-black">Please review all details before submitting</p>
                 </div>
 
                 <div class="space-y-6">
                     <!-- Event Details Review -->
-                    <div class="bg-slate-700/30 rounded-lg p-6 border border-slate-600">
-                        <h4 class="text-lg font-display font-semibold uppercase text-gray-100 mb-4 flex items-center">
+                    <div class="bg-white/95 rounded-xl p-8 border border-white/30 shadow-lg backdrop-blur-sm">
+                        <h4 class="text-lg font-display font-semibold uppercase text-black mb-4 flex items-center">
                             📅 Event Details
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                             <div>
-                                <span class="text-gray-400">Event Type:</span>
-                                <span class="text-gray-100 ml-2">${this.getEventTypeLabel(this.formData.eventType)}</span>
+                                <span class="text-black">Event Type:</span>
+                                <span class="text-black ml-2">${this.getEventTypeLabel(this.formData.eventType)}</span>
                             </div>
                             <div>
-                                <span class="text-gray-400">Date:</span>
-                                <span class="text-gray-100 ml-2">${this.formatDate(this.formData.eventDate)}</span>
+                                <span class="text-black">Date:</span>
+                                <span class="text-black ml-2">${this.formatDate(this.formData.eventDate)}</span>
                             </div>
                             <div>
-                                <span class="text-gray-400">Guests:</span>
-                                <span class="text-gray-100 ml-2">${this.formData.guestCount}</span>
+                                <span class="text-black">Guests:</span>
+                                <span class="text-black ml-2">${this.formData.guestCount}</span>
                             </div>
                             <div>
-                                <span class="text-gray-400">Budget:</span>
-                                <span class="text-gray-100 ml-2">${this.getBudgetLabel(this.formData.budget)}</span>
+                                <span class="text-black">Budget:</span>
+                                <span class="text-black ml-2">${this.getBudgetLabel(this.formData.budget)}</span>
                             </div>
                             <div class="md:col-span-2">
-                                <span class="text-gray-400">Location:</span>
-                                <span class="text-gray-100 ml-2">${this.formData.eventLocation}</span>
+                                <span class="text-black">Location:</span>
+                                <span class="text-black ml-2">${this.formData.eventLocation}</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Contact Info Review -->
-                    <div class="bg-slate-700/30 rounded-lg p-6 border border-slate-600">
-                        <h4 class="text-lg font-display font-semibold uppercase text-gray-100 mb-4 flex items-center">
+                    <div class="bg-white/95 rounded-xl p-8 border border-white/30 shadow-lg backdrop-blur-sm">
+                        <h4 class="text-lg font-display font-semibold uppercase text-black mb-4 flex items-center">
                             ℹ️ Contact Information
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                             <div>
-                                <span class="text-gray-400">Name:</span>
-                                <span class="text-gray-100 ml-2">${this.formData.name}</span>
+                                <span class="text-black">Name:</span>
+                                <span class="text-black ml-2">${this.formData.name}</span>
                             </div>
                             <div>
-                                <span class="text-gray-400">Email:</span>
-                                <span class="text-gray-100 ml-2">${this.formData.email}</span>
+                                <span class="text-black">Email:</span>
+                                <span class="text-black ml-2">${this.formData.email}</span>
                             </div>
                             <div>
-                                <span class="text-gray-400">Phone:</span>
-                                <span class="text-gray-100 ml-2">${this.formData.phone}</span>
+                                <span class="text-black">Phone:</span>
+                                <span class="text-black ml-2">${this.formData.phone}</span>
                             </div>
                             <div>
-                                <span class="text-gray-400">Contact Method:</span>
-                                <span class="text-gray-100 ml-2">${this.formData.contactMethod}</span>
+                                <span class="text-black">Contact Method:</span>
+                                <span class="text-black ml-2">${this.formData.contactMethod}</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Preferences Review -->
-                    <div class="bg-slate-700/30 rounded-lg p-6 border border-slate-600">
-                        <h4 class="text-lg font-display font-semibold uppercase text-gray-100 mb-4 flex items-center">
+                    <div class="bg-white/95 rounded-xl p-8 border border-white/30 shadow-lg backdrop-blur-sm">
+                        <h4 class="text-lg font-display font-semibold uppercase text-black mb-4 flex items-center">
                             ⚙️ Music & Preferences
                         </h4>
                         <div class="space-y-3 text-sm">
                             ${this.formData.musicPreferences ? `
                                 <div>
-                                    <span class="text-gray-400 block mb-1">Music Preferences:</span>
-                                    <p class="text-gray-100 leading-relaxed">${this.formData.musicPreferences}</p>
+                                    <span class="text-black block mb-1">Music Preferences:</span>
+                                    <p class="text-black leading-relaxed">${this.formData.musicPreferences}</p>
                                 </div>
                             ` : ''}
                             ${this.formData.specialRequests ? `
                                 <div>
-                                    <span class="text-gray-400 block mb-1">Special Requests:</span>
-                                    <p class="text-gray-100 leading-relaxed">${this.formData.specialRequests}</p>
+                                    <span class="text-black block mb-1">Special Requests:</span>
+                                    <p class="text-black leading-relaxed">${this.formData.specialRequests}</p>
                                 </div>
                             ` : ''}
                         </div>
@@ -472,8 +492,8 @@ class BookingForm {
                         <div class="flex items-start space-x-3">
                             <div class="text-blue-400 text-xl">ℹ️</div>
                             <div class="flex-1">
-                                <h5 class="text-blue-300 font-semibold mb-2">What happens next?</h5>
-                                <ul class="text-blue-100 text-sm space-y-1">
+                                <h5 class="text-black font-semibold mb-2">What happens next?</h5>
+                                <ul class="text-black text-sm space-y-1">
                                     <li>• We'll review your event details within 24 hours</li>
                                     <li>• You'll receive a personalized quote via ${this.formData.contactMethod}</li>
                                     <li>• We'll schedule a call to discuss your vision in detail</li>
@@ -495,7 +515,7 @@ class BookingForm {
         const isLastStep = this.currentStep === this.totalSteps;
         
         return `
-            <div class="flex justify-between items-center pt-8 border-t border-slate-700">
+            <div class="flex justify-between items-center pt-8 border-t border-gray-200">
                 <button type="button" id="prev-step" 
                         class="btn-secondary"
                         ${isFirstStep ? 'disabled' : ''}>
@@ -608,7 +628,12 @@ class BookingForm {
         const form = document.getElementById('booking-form');
         if (form) {
             form.addEventListener('input', (e) => {
-                this.handleInputChange(e);
+                // Special handling for eventLocation field
+                if (e.target.name === 'eventLocation') {
+                    this.handleEventLocationInput(e);
+                } else {
+                    this.handleInputChange(e);
+                }
                 this.clearFieldError(e.target.name);
             });
             
@@ -617,9 +642,31 @@ class BookingForm {
                 this.scheduleAutoSave();
             });
         }
+        
+        // Add specific event listeners for eventLocation field
+        const eventLocationInput = document.getElementById('eventLocation');
+        if (eventLocationInput) {
+            // Prevent any interference with normal typing
+            eventLocationInput.addEventListener('keydown', (e) => {
+                e.stopPropagation();
+            });
+            
+            eventLocationInput.addEventListener('keypress', (e) => {
+                e.stopPropagation();
+            });
+            
+            eventLocationInput.addEventListener('keyup', (e) => {
+                e.stopPropagation();
+            });
+        }
 
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
+            // Don't interfere with eventLocation field typing
+            if (e.target && e.target.id === 'eventLocation') {
+                return;
+            }
+            
             if (e.key === 'Enter' && e.target.closest('#booking-form')) {
                 e.preventDefault();
                 this.handleNextStep();
@@ -638,7 +685,31 @@ class BookingForm {
         const { name, value } = event.target;
         
         if (name && this.formData.hasOwnProperty(name)) {
+            // Store cursor position before updating
+            const cursorPosition = event.target.selectionStart;
+            
+            // Update form data
             this.formData[name] = value;
+            
+            // Restore cursor position after any potential DOM updates
+            requestAnimationFrame(() => {
+                if (event.target.selectionStart !== cursorPosition) {
+                    event.target.setSelectionRange(cursorPosition, cursorPosition);
+                }
+            });
+        }
+    }
+
+    /**
+     * Special handler for Event Location field to preserve typing behavior
+     */
+    handleEventLocationInput(event) {
+        // Direct update without any interference
+        this.formData.eventLocation = event.target.value;
+        
+        // Don't trigger auto-save immediately to avoid cursor interference
+        if (this.autoSaveTimer) {
+            clearTimeout(this.autoSaveTimer);
         }
     }
 
@@ -728,7 +799,24 @@ class BookingForm {
         Object.keys(this.formData).forEach(key => {
             const input = form.querySelector(`[name="${key}"]`);
             if (input && this.formData[key]) {
-                input.value = this.formData[key];
+                // Special handling: Never restore eventLocation if it's currently focused
+                if (key === 'eventLocation' && document.activeElement === input) {
+                    return;
+                }
+                
+                // Don't interfere with actively focused inputs to preserve cursor position
+                if (document.activeElement !== input) {
+                    input.value = this.formData[key];
+                } else {
+                    // If this is the focused input, preserve cursor position
+                    const cursorPosition = input.selectionStart;
+                    if (input.value !== this.formData[key]) {
+                        input.value = this.formData[key];
+                        requestAnimationFrame(() => {
+                            input.setSelectionRange(cursorPosition, cursorPosition);
+                        });
+                    }
+                }
             }
         });
     }
@@ -929,7 +1017,14 @@ class BookingForm {
         }
         
         this.autoSaveTimer = setTimeout(() => {
-            this.autoSaveFormData();
+            // Only auto-save if no input is currently focused to avoid cursor interference
+            const activeElement = document.activeElement;
+            if (!activeElement || activeElement.tagName !== 'INPUT' && activeElement.tagName !== 'TEXTAREA') {
+                this.autoSaveFormData();
+            } else {
+                // Reschedule if user is still typing
+                this.scheduleAutoSave();
+            }
         }, 2000); // Save after 2 seconds of inactivity
     }
 
@@ -1036,9 +1131,9 @@ class BookingForm {
                             <p class="text-lg text-gray-300 mb-6">
                                 Thank you ${this.formData.name}! We've received your booking request for ${this.formatDate(this.formData.eventDate)}.
                             </p>
-                            <div class="bg-slate-700/30 rounded-lg p-6 mb-6">
-                                <h3 class="text-lg font-display font-semibold uppercase text-gray-100 mb-3">What happens next:</h3>
-                                <ul class="text-left text-gray-300 space-y-2">
+                            <div class="bg-white rounded-xl p-8 mb-6 border border-gray-100 shadow-lg">
+                                <h3 class="text-lg font-display font-semibold uppercase text-gray-900 mb-3">What happens next:</h3>
+                                <ul class="text-left text-gray-700 space-y-2">
                                     <li>• We'll review your request within 24 hours</li>
                                     <li>• You'll receive a personalized quote via ${this.formData.contactMethod}</li>
                                     <li>• We'll schedule a call to discuss your vision</li>

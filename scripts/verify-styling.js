@@ -293,6 +293,36 @@ function checkButtonStyling() {
     return false;
 }
 
+function checkBookingFormHeadings() {
+    console.log('📋 Checking booking form heading styles...');
+    
+    const css = fs.readFileSync(SOURCE_CSS, 'utf8');
+    
+    const requiredStyles = [
+        '#booking h2,',
+        '#booking h3,',
+        "font-family: 'Oswald', system-ui, sans-serif !important",
+        'text-transform: uppercase !important',
+        'font-weight: 700 !important',
+        'font-size: 2.25rem !important'
+    ];
+    
+    let allPresent = true;
+    requiredStyles.forEach(style => {
+        if (!css.includes(style)) {
+            console.error(`❌ ERROR: Missing booking form heading style: ${style}`);
+            allPresent = false;
+        }
+    });
+    
+    if (allPresent) {
+        console.log('✅ Booking form heading styles (Oswald + prominent sizing) present in source CSS');
+        return true;
+    }
+    
+    return false;
+}
+
 function main() {
     console.log('🎨 DJ Nuff Jamz COMPLETE STYLING Verification');
     console.log('==============================================\n');
@@ -309,6 +339,7 @@ function main() {
     allGood &= checkServiceCardStyles();
     allGood &= checkGalleryCentering();
     allGood &= checkButtonStyling();
+    allGood &= checkBookingFormHeadings();
     
     // HTML Integrity (NEW)
     allGood &= checkHTMLIntegrity();
@@ -326,6 +357,7 @@ function main() {
         console.log('✅ Service Cards: Component styling intact');
         console.log('✅ Gallery: Centering styles properly configured');
         console.log('✅ Buttons: Gradient styling with white text');
+        console.log('✅ Booking Form: Prominent headings with Oswald font + proper sizing');
         console.log('✅ HTML: No corrupted classes, glassmorphism intact');
         console.log('📝 Remember to run "npm run build" to compile changes');
         process.exit(0);
