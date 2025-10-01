@@ -650,6 +650,12 @@ class BookingForm {
             if (field) {
                 // Prevent any interference with normal typing
                 field.addEventListener('keydown', (e) => {
+                    // Handle Enter key BEFORE stopPropagation
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        this.handleNextStep();
+                        return;
+                    }
                     e.stopPropagation();
                 });
                 
@@ -665,14 +671,16 @@ class BookingForm {
 
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
-            // Don't interfere with special text fields typing
-            if (e.target && (e.target.id === 'eventLocation' || e.target.id === 'name' || e.target.id === 'musicPreferences' || e.target.id === 'specialRequests')) {
-                return;
-            }
-            
+            // Handle Enter key for form progression (works for all fields including special ones)
             if (e.key === 'Enter' && e.target.closest('#booking-form')) {
                 e.preventDefault();
                 this.handleNextStep();
+                return;
+            }
+            
+            // Don't interfere with special text fields typing (except Enter which we handled above)
+            if (e.target && (e.target.id === 'eventLocation' || e.target.id === 'name' || e.target.id === 'musicPreferences' || e.target.id === 'specialRequests')) {
+                return;
             }
             
             if (e.key === 'Escape') {
@@ -707,6 +715,13 @@ class BookingForm {
      * Special handler for problematic text fields to preserve typing behavior
      */
     handleSpecialTextInput(event) {
+        // Handle Enter key to advance to next step
+        if (event.type === 'keydown' && event.key === 'Enter') {
+            event.preventDefault();
+            this.handleNextStep();
+            return;
+        }
+        
         // Direct update without any interference
         this.formData[event.target.name] = event.target.value;
         
