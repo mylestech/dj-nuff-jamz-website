@@ -408,7 +408,7 @@ class BookingForm {
             <div class="space-y-8" data-step="4">
                 <div class="text-center mb-8">
                     <h3 class="text-2xl font-display font-bold uppercase text-black mb-2">Review your booking request</h3>
-                    <p class="text-black">Please review all details before submitting</p>
+                    <p class="text-black font-bold">Please review all details before submitting</p>
                 </div>
 
                 <div class="space-y-6">
@@ -419,23 +419,23 @@ class BookingForm {
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                             <div>
-                                <span class="text-black">Event Type:</span>
+                                <span class="text-black font-bold">Event Type:</span>
                                 <span class="text-black ml-2">${this.getEventTypeLabel(this.formData.eventType)}</span>
                             </div>
                             <div>
-                                <span class="text-black">Date:</span>
+                                <span class="text-black font-bold">Date:</span>
                                 <span class="text-black ml-2">${this.formatDate(this.formData.eventDate)}</span>
                             </div>
                             <div>
-                                <span class="text-black">Guests:</span>
+                                <span class="text-black font-bold">Guests:</span>
                                 <span class="text-black ml-2">${this.formData.guestCount}</span>
                             </div>
                             <div>
-                                <span class="text-black">Budget:</span>
+                                <span class="text-black font-bold">Budget:</span>
                                 <span class="text-black ml-2">${this.getBudgetLabel(this.formData.budget)}</span>
                             </div>
                             <div class="md:col-span-2">
-                                <span class="text-black">Location:</span>
+                                <span class="text-black font-bold">Location:</span>
                                 <span class="text-black ml-2">${this.formData.eventLocation}</span>
                             </div>
                         </div>
@@ -448,19 +448,19 @@ class BookingForm {
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                             <div>
-                                <span class="text-black">Name:</span>
+                                <span class="text-black font-bold">Name:</span>
                                 <span class="text-black ml-2">${this.formData.name}</span>
                             </div>
                             <div>
-                                <span class="text-black">Email:</span>
+                                <span class="text-black font-bold">Email:</span>
                                 <span class="text-black ml-2">${this.formData.email}</span>
                             </div>
                             <div>
-                                <span class="text-black">Phone:</span>
+                                <span class="text-black font-bold">Phone:</span>
                                 <span class="text-black ml-2">${this.formData.phone}</span>
                             </div>
                             <div>
-                                <span class="text-black">Contact Method:</span>
+                                <span class="text-black font-bold">Contact Method:</span>
                                 <span class="text-black ml-2">${this.formData.contactMethod}</span>
                             </div>
                         </div>
@@ -474,13 +474,13 @@ class BookingForm {
                         <div class="space-y-3 text-sm">
                             ${this.formData.musicPreferences ? `
                                 <div>
-                                    <span class="text-black block mb-1">Music Preferences:</span>
+                                    <span class="text-black font-bold block mb-1">Music Preferences:</span>
                                     <p class="text-black leading-relaxed">${this.formData.musicPreferences}</p>
                                 </div>
                             ` : ''}
                             ${this.formData.specialRequests ? `
                                 <div>
-                                    <span class="text-black block mb-1">Special Requests:</span>
+                                    <span class="text-black font-bold block mb-1">Special Requests:</span>
                                     <p class="text-black leading-relaxed">${this.formData.specialRequests}</p>
                                 </div>
                             ` : ''}
@@ -628,9 +628,9 @@ class BookingForm {
         const form = document.getElementById('booking-form');
         if (form) {
             form.addEventListener('input', (e) => {
-                // Special handling for eventLocation field
-                if (e.target.name === 'eventLocation') {
-                    this.handleEventLocationInput(e);
+                // Special handling for problematic text fields
+                if (e.target.name === 'eventLocation' || e.target.name === 'name' || e.target.name === 'musicPreferences' || e.target.name === 'specialRequests') {
+                    this.handleSpecialTextInput(e);
                 } else {
                     this.handleInputChange(e);
                 }
@@ -643,27 +643,30 @@ class BookingForm {
             });
         }
         
-        // Add specific event listeners for eventLocation field
-        const eventLocationInput = document.getElementById('eventLocation');
-        if (eventLocationInput) {
-            // Prevent any interference with normal typing
-            eventLocationInput.addEventListener('keydown', (e) => {
-                e.stopPropagation();
-            });
-            
-            eventLocationInput.addEventListener('keypress', (e) => {
-                e.stopPropagation();
-            });
-            
-            eventLocationInput.addEventListener('keyup', (e) => {
-                e.stopPropagation();
-            });
-        }
+        // Add specific event listeners for problematic text fields
+        const specialFields = ['eventLocation', 'name', 'musicPreferences', 'specialRequests'];
+        specialFields.forEach(fieldId => {
+            const field = document.getElementById(fieldId);
+            if (field) {
+                // Prevent any interference with normal typing
+                field.addEventListener('keydown', (e) => {
+                    e.stopPropagation();
+                });
+                
+                field.addEventListener('keypress', (e) => {
+                    e.stopPropagation();
+                });
+                
+                field.addEventListener('keyup', (e) => {
+                    e.stopPropagation();
+                });
+            }
+        });
 
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
-            // Don't interfere with eventLocation field typing
-            if (e.target && e.target.id === 'eventLocation') {
+            // Don't interfere with special text fields typing
+            if (e.target && (e.target.id === 'eventLocation' || e.target.id === 'name' || e.target.id === 'musicPreferences' || e.target.id === 'specialRequests')) {
                 return;
             }
             
@@ -701,11 +704,11 @@ class BookingForm {
     }
 
     /**
-     * Special handler for Event Location field to preserve typing behavior
+     * Special handler for problematic text fields to preserve typing behavior
      */
-    handleEventLocationInput(event) {
+    handleSpecialTextInput(event) {
         // Direct update without any interference
-        this.formData.eventLocation = event.target.value;
+        this.formData[event.target.name] = event.target.value;
         
         // Don't trigger auto-save immediately to avoid cursor interference
         if (this.autoSaveTimer) {
@@ -799,8 +802,8 @@ class BookingForm {
         Object.keys(this.formData).forEach(key => {
             const input = form.querySelector(`[name="${key}"]`);
             if (input && this.formData[key]) {
-                // Special handling: Never restore eventLocation if it's currently focused
-                if (key === 'eventLocation' && document.activeElement === input) {
+                // Special handling: Never restore these fields if they're currently focused
+                if ((key === 'eventLocation' || key === 'name' || key === 'musicPreferences' || key === 'specialRequests') && document.activeElement === input) {
                     return;
                 }
                 
