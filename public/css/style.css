@@ -974,14 +974,6 @@ button {
   border-color: rgb(71 85 105 / var(--tw-border-opacity, 1));
   background: linear-gradient(to right, #4b5563, #374151) !important;
   color: white !important;
-}
-
-.btn-secondary:hover {
-  background: linear-gradient(to right, #374151, #4b5563) !important;
-  color: white !important;
-}
-
-.btn-secondary {
   border-radius: 0.5rem;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
@@ -991,6 +983,18 @@ button {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 200ms;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-style: solid;
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(to right, #374151, #4b5563) !important;
+  color: white !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .btn-secondary:focus {
@@ -1003,6 +1007,14 @@ button {
   --tw-ring-color: rgb(100 116 139 / var(--tw-ring-opacity, 1));
   --tw-ring-offset-width: 2px;
   --tw-ring-offset-color: #0f172a;
+}
+
+.btn-secondary:disabled {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+  background: linear-gradient(to right, #6b7280, #4b5563) !important;
+  transform: none !important;
+  box-shadow: none !important;
 }
 
 /* Accent Button (Gold) */
