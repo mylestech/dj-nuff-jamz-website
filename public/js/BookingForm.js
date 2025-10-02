@@ -1094,7 +1094,7 @@ class BookingForm {
     }
     
     async submitForm() { 
-        // Form submission (will be implemented in step 9.8)
+        // EmailJS form submission
         this.isSubmitting = true;
         
         try {
@@ -1102,36 +1102,36 @@ class BookingForm {
             this.renderForm();
             this.attachEventListeners();
             
-            // Prepare form data
-            const submissionData = {
-                ...this.formData,
-                submittedAt: new Date().toISOString()
+            // Prepare form data for EmailJS template
+            const templateParams = {
+                name: this.formData.name,
+                email: this.formData.email,
+                phone: this.formData.phone,
+                contactMethod: this.formData.contactMethod,
+                eventType: this.formData.eventType,
+                eventDate: this.formData.eventDate,
+                eventLocation: this.formData.eventLocation,
+                guestCount: this.formData.guestCount,
+                budget: this.formData.budget,
+                musicPreferences: this.formData.musicPreferences || 'None specified',
+                specialRequests: this.formData.specialRequests || 'None specified',
+                submittedAt: new Date().toLocaleString()
             };
-            
-            // Wait for API config to be available
-            if (typeof API === 'undefined') {
-                await new Promise(resolve => {
-                    const checkAPI = () => {
-                        if (typeof API !== 'undefined') {
-                            resolve();
-                        } else {
-                            setTimeout(checkAPI, 100);
-                        }
-                    };
-                    checkAPI();
-                });
-            }
 
-            // Submit to backend API
-            const result = await API.post(API_CONFIG.ENDPOINTS.BOOKING, submissionData);
+            // Send email via EmailJS
+            const result = await emailjs.send(
+                'service_v4xq5cu',      // Service ID
+                'template_jfact6w',     // Template ID
+                templateParams
+            );
             
-            // API helper automatically handles response parsing
+            console.log('Email sent successfully:', result);
             this.showSuccessMessage(result);
             this.clearSavedData();
             
         } catch (error) {
-            console.error('Form submission error:', error);
-            this.showErrorMessage(error.message);
+            console.error('EmailJS submission error:', error);
+            this.showErrorMessage(error.text || error.message || 'Unknown error occurred');
         } finally {
             this.isSubmitting = false;
         }
@@ -1146,7 +1146,7 @@ class BookingForm {
                         <div class="bg-green-600/20 border border-green-500/30 rounded-lg p-8">
                             <div class="text-6xl mb-4">✅</div>
                             <h2 class="text-3xl font-display font-bold uppercase text-green-400 mb-4">Booking Request Submitted!</h2>
-                            <p class="text-lg text-gray-300 mb-6">
+                            <p class="text-lg text-black mb-6">
                                 Thank you ${this.formData.name}! We've received your booking request for ${this.formatDate(this.formData.eventDate)}.
                             </p>
                             <div class="bg-white rounded-xl p-8 mb-6 border border-gray-100 shadow-lg">
@@ -1158,7 +1158,6 @@ class BookingForm {
                                     <li>• Once confirmed, we'll secure your date with a contract</li>
                                 </ul>
                             </div>
-                            <a href="#contact" class="btn-accent">Contact Us Directly</a>
                         </div>
                     </div>
                 </div>
