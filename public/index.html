@@ -465,7 +465,14 @@
     </script>
 </head>
 <body class="bg-black text-gray-100">
-    <!-- Password Lockscreen -->
+    <!-- PASSWORD LOCKSCREEN - TEMPORARILY REMOVED 
+    
+    RESTORE INSTRUCTIONS:
+    1. Uncomment this entire section (remove comment tags)
+    2. Uncomment the JavaScript at the bottom (search for "Lockscreen JavaScript")
+    3. Uncomment the "checkAuth()" call at the very end
+    Password: nuffjamZ25
+    
     <div id="lockscreen">
         <div class="particle"></div>
         <div class="particle"></div>
@@ -489,12 +496,10 @@
                 <div id="error-message" class="error-message">Incorrect password. Please try again.</div>
             </form>
             
-            <!-- Trusted by Brands Section -->
             <div class="lockscreen-trusted">
                 <p class="lockscreen-trusted-text">Trusted by Major Brands</p>
                 <div class="lockscreen-logo-container" id="lockscreen-logo-container">
                     <div class="lockscreen-logo-slider" id="lockscreen-logo-slider">
-                        <!-- First set of logos -->
                         <div class="lockscreen-logo-set">
                             <img src="/images/clients/logos/guinness-logo.svg" alt="Guinness" draggable="false">
                             <img src="/images/clients/logos/pepsi-logo.svg" alt="Pepsi" draggable="false">
@@ -505,7 +510,6 @@
                             <img src="/images/clients/logos/crown-fm-logo.svg" alt="Crown FM" draggable="false">
                         </div>
 
-                        <!-- Second set for seamless loop -->
                         <div class="lockscreen-logo-set">
                             <img src="/images/clients/logos/guinness-logo.svg" alt="Guinness" draggable="false">
                             <img src="/images/clients/logos/pepsi-logo.svg" alt="Pepsi" draggable="false">
@@ -520,6 +524,8 @@
             </div>
         </div>
     </div>
+    
+    END PASSWORD LOCKSCREEN SECTION -->
 
     <!-- Main Content Container -->
     <div id="main-content" class="main-content">
@@ -1592,7 +1598,10 @@
     
     </div> <!-- End Main Content -->
 
-    <!-- Lockscreen JavaScript -->
+    <!-- LOCKSCREEN JAVASCRIPT - TEMPORARILY DISABLED
+    
+    To restore password functionality, uncomment this entire script section
+    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const lockscreen = document.getElementById('lockscreen');
@@ -1606,12 +1615,20 @@
             
             // Check if user is already authenticated in this session
             function checkAuth() {
+                // TEMPORARILY DISABLED - Password protection removed for now
+                // Can be re-enabled by uncommenting the code below
+                
+                /* ORIGINAL PASSWORD CHECK - COMMENTED OUT
                 const isAuthenticated = sessionStorage.getItem(SESSION_KEY) === 'true';
                 if (isAuthenticated) {
                     showMainContent();
                 } else {
                     showLockscreen();
                 }
+                */
+                
+                // For now, always show main content (skip password)
+                showMainContent();
             }
             
             // Show the main content
@@ -1787,6 +1804,18 @@
             // Service Card Mobile - No Click Needed (Always Expanded)
             // Mobile service cards now show content by default via CSS
             // No JavaScript interaction needed on mobile
+        });
+    </script>
+    
+    END LOCKSCREEN JAVASCRIPT SECTION -->
+
+    <!-- Simple script to show main content immediately (since lockscreen is disabled) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mainContent = document.getElementById('main-content');
+            if (mainContent) {
+                mainContent.classList.add('show');
+            }
         });
     </script>
 
